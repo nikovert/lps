@@ -1,0 +1,3 @@
+**/build/**
+.DS_Store
+poc/create_marker/markers/*
