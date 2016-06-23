@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B3009071CE8B583002E9DC4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3009061CE8B583002E9DC4 /* main.cpp */; };
 		1B7C99011D1C685300BDA4D1 /* libaruco.1.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7C99001D1C685300BDA4D1 /* libaruco.1.3.0.dylib */; };
+		1B7C99051D1C69E500BDA4D1 /* realworld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B7C99041D1C69E500BDA4D1 /* realworld.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 		1B3009031CE8B583002E9DC4 /* detect_marker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = detect_marker; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3009061CE8B583002E9DC4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1B7C99001D1C685300BDA4D1 /* libaruco.1.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaruco.1.3.0.dylib; path = ../../../../../../../usr/local/lib/libaruco.1.3.0.dylib; sourceTree = "<group>"; };
+		1B7C99041D1C69E500BDA4D1 /* realworld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = realworld.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				1B3009061CE8B583002E9DC4 /* main.cpp */,
+				1B7C99041D1C69E500BDA4D1 /* realworld.cpp */,
 			);
 			path = detect_marker;
 			sourceTree = "<group>";
@@ -122,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B7C99051D1C69E500BDA4D1 /* realworld.cpp in Sources */,
 				1B3009071CE8B583002E9DC4 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

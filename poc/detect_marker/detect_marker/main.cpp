@@ -168,6 +168,7 @@ int main(int argc, char **argv) {
             TheInputImage.copyTo(TheInputImageCopy);
             
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
+                TheMarkers[i].calculateExtrinsics(TheMarkerSize, TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, true); //not sure if it shoould be true
                 cout << endl << TheMarkers[i];
 //                TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255), 1);
             }
