@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B3008F91CE8B1E7002E9DC4 /* libaruco.1.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3008F81CE8B1E7002E9DC4 /* libaruco.1.3.0.dylib */; };
 		1B42B36B1CE8AD05000668E3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B42B36A1CE8AD05000668E3 /* main.cpp */; };
+		1B7C99031D1C688300BDA4D1 /* libaruco.1.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7C99021D1C688300BDA4D1 /* libaruco.1.3.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,9 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1B3008F81CE8B1E7002E9DC4 /* libaruco.1.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaruco.1.3.0.dylib; path = ../../../../../usr/local/lib/libaruco.1.3.0.dylib; sourceTree = "<group>"; };
 		1B42B3671CE8AD05000668E3 /* create_marker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = create_marker; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B42B36A1CE8AD05000668E3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1B7C99021D1C688300BDA4D1 /* libaruco.1.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaruco.1.3.0.dylib; path = ../../../../../../../usr/local/lib/libaruco.1.3.0.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B3008F91CE8B1E7002E9DC4 /* libaruco.1.3.0.dylib in Frameworks */,
+				1B7C99031D1C688300BDA4D1 /* libaruco.1.3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +44,7 @@
 		1B42B35E1CE8AD05000668E3 = {
 			isa = PBXGroup;
 			children = (
-				1B3008F81CE8B1E7002E9DC4 /* libaruco.1.3.0.dylib */,
+				1B7C99021D1C688300BDA4D1 /* libaruco.1.3.0.dylib */,
 				1B42B3691CE8AD05000668E3 /* create_marker.cpp */,
 				1B42B3681CE8AD05000668E3 /* Products */,
 			);
