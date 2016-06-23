@@ -4,15 +4,23 @@
 //
 //  Created by Niko Vertovec on 23/06/16.
 //  Copyright © 2016 Niko Vertovec. All rights reserved.
+//  got parts of the source code from http://stackoverflow.com/questions/15727527/how-to-determine-world-coordinates-of-a-camera
 //
 
 #include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/highgui/highgui.hpp"
 
 using namespace std;
 using namespace cv;
+
+//we need the camera xml file (diffrent for each camera)    // doesn't change
+
+//we need the world coordinates                             // doesn't change
+
+//we need the pixel coordinates                             // changes
+
+//we need the rotation and translation vector               // changes
+// Marker.calculateExtrinsics() then get Rvec and Tvec
 
 void getCoordinates (int argc, char** argv)
 {
@@ -49,15 +57,19 @@ void getCoordinates (int argc, char** argv)
     
     // We need inverse of the world->camera transform (camera->world) to calculate
     // the camera's location
-    cv::Mat R;
-    cv::Rodrigues(rotation_vector, R);
     
-    cv::Mat cameraRotationVector;
+    // cameraTranslationVector contains camera coordinates. cameraRotationVector contains camera pose.
     
-    cv::Rodrigues(R.t(),cameraRotationVector);
-    
-    cv::Mat cameraTranslationVector = -R.t()*translation_vector;
-    
+    // this part was added but not tested
+        cv::Mat R;
+        cv::Rodrigues(rotation_vector, R);
+        
+        cv::Mat cameraRotationVector;
+        
+        cv::Rodrigues(R.t(),cameraRotationVector);
+        
+        cv::Mat cameraTranslationVector = -R.t()*translation_vector;
+    //
     Rodrigues (rotation_vector, rotation_matrix);
     Rodrigues (rotation_matrix.t (), cameraRotationVector);
     Mat t = translation_vector.t ();
