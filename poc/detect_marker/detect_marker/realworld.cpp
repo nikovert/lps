@@ -24,8 +24,26 @@ using namespace cv;
 // Marker.calculateExtrinsics() then get Rvec and Tvec
 
 
-void getCoordinates (Mat rotation_matrix_parsed, Mat translation_matrix_parsed, Mat distortion, Mat camera_intrinsics, Point3d world_coords_single, Point2d pixel_coords_single)
+void getCoordinates (Mat rotation_matrix_passed, Mat translation_matrix_passed, Mat distortion, Mat camera_intrinsics, Point3d world_coords_single, Point2d pixel_coords_single)
 {
+    
+    
+    
+    /*
+        To be done:
+            * understand which data gets put where.
+            * have the parameters and data be put into the model correctly
+            * check that the output stays consistent and reaistic
+            * create a coordinatsystem in which the markers get put and check if the returned data is correct
+                * optional would be to use the gopro as a camera because it can be moved more freely (if it is only a matter of changing the camera id in main)
+            * perfect the data with camera calibration
+            * calculate distance to each marker
+            * have the id and position of the nearest marker as an output of a function
+            * thats all this class should do (calculate direction to nearest marker)
+     */
+    
+    
+    
     //const char          *calibration_filename = argc >= 2 ? argv [1] : "M1011_camera.xml";
     //FileStorage         camera_data (calibration_filename, FileStorage::READ);
     //Mat                 camera_intrinsics, distortion;
