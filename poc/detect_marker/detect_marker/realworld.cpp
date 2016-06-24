@@ -7,6 +7,7 @@
 //  got parts of the source code from http://stackoverflow.com/questions/15727527/how-to-determine-world-coordinates-of-a-camera
 //
 
+#include <iostream>
 #include "opencv2/core/core.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
 
@@ -21,6 +22,10 @@ using namespace cv;
 
 //we need the rotation and translation vector               // changes
 // Marker.calculateExtrinsics() then get Rvec and Tvec
+
+void set(Mat rotation_matrix, Mat translation_matrix, Mat distortion, Mat camera_intrinsics, Point3d world_coords, Point2d pixel_coords){
+    cout << endl << "this wouldbe the point where I calculate my position" << endl;
+}
 
 void getCoordinates (int argc, char** argv)
 {

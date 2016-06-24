@@ -51,6 +51,8 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
+void set(Mat rotation_matrix, Mat translation_matrix, Mat distortion, Mat camera_intrinsics, Point3d world_coords, Point2d pixel_coords);
+
 /************************************
  *
  *
@@ -167,8 +169,19 @@ int main(int argc, char **argv) {
             // print marker info and draw the markers in image
             TheInputImage.copyTo(TheInputImageCopy);
             
+            //test purposes
+            vector<Point3d>     world_coords;
+            
+            world_coords.push_back (Point3d (10.91666666666667, 10.01041666666667, 0));
+            world_coords.push_back (Point3d (10.91666666666667, 8.34375, 0));
+            world_coords.push_back (Point3d (16.08333333333334, 8.34375, 0));
+            world_coords.push_back (Point3d (16.08333333333334, 10.01041666666667, 0));
+            //
+            
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
                 TheMarkers[i].calculateExtrinsics(TheMarkerSize, TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, true); //not sure if it shoould be true
+                //giving information to realworld.cpp
+                set(TheMarkers[i].Rvec, TheMarkers[i].Tvec, TheCameraParameters.Distorsion, TheCameraParameters.CameraMatrix, world_coords[i], TheMarkers[i].getCenter());
                 cout << endl << TheMarkers[i];
 //                TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255), 1);
             }
@@ -181,13 +194,12 @@ int main(int argc, char **argv) {
              }*/
             
             
-            
             // draw a 3d cube in each marker if there is 3d info
-            if (TheCameraParameters.isValid())
-                for (unsigned int i = 0; i < TheMarkers.size(); i++) {
-                    CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
-                    CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
-                }
+//            if (TheCameraParameters.isValid())
+//                for (unsigned int i = 0; i < TheMarkers.size(); i++) {
+//                    CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+//                    CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+//                }
             // DONE! Easy, right?
             // show input with augmented information and  the thresholded image
 //            cv::imshow("in", TheInputImageCopy);
