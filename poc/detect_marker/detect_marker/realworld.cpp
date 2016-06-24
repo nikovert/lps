@@ -23,15 +23,12 @@ using namespace cv;
 //we need the rotation and translation vector               // changes
 // Marker.calculateExtrinsics() then get Rvec and Tvec
 
-void set(Mat rotation_matrix, Mat translation_matrix, Mat distortion, Mat camera_intrinsics, Point3d world_coords, Point2d pixel_coords){
-    cout << endl << "this wouldbe the point where I calculate my position" << endl;
-}
 
-void getCoordinates (int argc, char** argv)
+void getCoordinates (Mat rotation_matrix_parsed, Mat translation_matrix_parsed, Mat distortion, Mat camera_intrinsics, Point3d world_coords_single, Point2d pixel_coords_single)
 {
-    const char          *calibration_filename = argc >= 2 ? argv [1] : "M1011_camera.xml";
-    FileStorage         camera_data (calibration_filename, FileStorage::READ);
-    Mat                 camera_intrinsics, distortion;
+    //const char          *calibration_filename = argc >= 2 ? argv [1] : "M1011_camera.xml";
+    //FileStorage         camera_data (calibration_filename, FileStorage::READ);
+    //Mat                 camera_intrinsics, distortion;
     vector<Point3d>     world_coords;
     vector<Point2d>     pixel_coords;
     Mat                 rotation_vector, translation_vector, rotation_matrix, inverted_rotation_matrix, cw_translate;
@@ -39,9 +36,9 @@ void getCoordinates (int argc, char** argv)
     
     
     // Read camera data
-    camera_data ["camera_matrix"] >> camera_intrinsics;
-    camera_data ["distortion_coefficients"] >> distortion;
-    camera_data.release ();
+    //camera_data ["camera_matrix"] >> camera_intrinsics;
+    //camera_data ["distortion_coefficients"] >> distortion;
+    //camera_data.release ();
     
     // Target rectangle coordinates in feet
     world_coords.push_back (Point3d (10.91666666666667, 10.01041666666667, 0));
@@ -83,3 +80,10 @@ void getCoordinates (int argc, char** argv)
     printf ("Camera position %f, %f, %f\n", cameraTranslationVector.at<double>(0), cameraTranslationVector.at<double>(1), cameraTranslationVector.at<double>(2));
     printf ("Camera pose %f, %f, %f\n", cameraRotationVector.at<double>(0), cameraRotationVector.at<double>(1), cameraRotationVector.at<double>(2));
 }
+
+void set(Mat rotation_matrix, Mat translation_matrix, Mat distortion, Mat camera_intrinsics, Point3d world_coords, Point2d pixel_coords){
+    cout << endl << "this wouldbe the point where I calculate my position" << endl;
+    getCoordinates(rotation_matrix, translation_matrix, distortion, camera_intrinsics, world_coords, pixel_coords);
+}
+
+
