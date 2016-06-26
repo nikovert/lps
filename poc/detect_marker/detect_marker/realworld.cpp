@@ -35,7 +35,6 @@ void getCoordinates (Mat rotation_matrix_passed, Mat translation_matrix_passed, 
             * have the parameters and data be put into the model correctly
             * check that the output stays consistent and reaistic
             * create a coordinatsystem in which the markers get put and check if the returned data is correct
-                * optional would be to use the gopro as a camera because it can be moved more freely (if it is only a matter of changing the camera id in main)
             * perfect the data with camera calibration
             * calculate distance to each marker
             * have the id and position of the nearest marker as an output of a function
