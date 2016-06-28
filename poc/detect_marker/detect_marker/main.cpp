@@ -51,7 +51,7 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
-void set(Mat rotation_matrix, Mat translation_matrix, Mat distortion, Mat camera_intrinsics, Point3d world_coords, Point2d pixel_coords);
+//void getCoordinates (lps_marker lpsMarker, Mat rotation_matrix, Mat translation_matrix_passed, Mat distortion, Mat camera_intrinsics);
 
 /************************************
  *
@@ -59,6 +59,13 @@ void set(Mat rotation_matrix, Mat translation_matrix, Mat distortion, Mat camera
  *
  *
  ************************************/
+
+//lps_marker cast(Marker m){
+//    //Child *pChild =  (Child *) &parent;
+//    lps_marker *lps = (lps_marker *) &m;
+//    return *lps;
+//}
+
 bool readArguments(int argc, char **argv) {
     if (argc < 2) {
         cerr << "Invalid number of arguments" << endl;
@@ -149,27 +156,30 @@ int main(int argc, char **argv) {
             // check the speed by calculating the mean speed of all iterations
             AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
             AvrgTime.second++;
-            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
+//            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
             
-            // print marker info and draw the markers in image
-            
-            //3D points for test purposes
+            //3D and 2D points for test purposes
+            //extend Marks with the value of world and pixel coords
             vector<Point3d>     world_coords;
+            vector<Point2d>     pixel_coords;
             
-            world_coords.push_back (Point3d (10.91666666666667, 10.01041666666667, 0));
-            world_coords.push_back (Point3d (10.91666666666667, 8.34375, 0));
-            world_coords.push_back (Point3d (16.08333333333334, 8.34375, 0));
-            world_coords.push_back (Point3d (16.08333333333334, 10.01041666666667, 0));
-            //
             
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
+//                lpsMarkers[i].cast(TheMarkers[i], Point3d (10.91666666666667, 10.01041666666667, 0), Point3d (10.91666666666667, 8.34375, 0), Point3d (16.08333333333334, 8.34375, 0), Point3d (16.08333333333334, 10.01041666666667, 0));
+                
+                
+//                cout << "the area of the marker: " << TheMarkers[0].getArea() << endl;
+                //Does not have to be done, already performed in Detect Marker:
                 TheMarkers[i].calculateExtrinsics(TheMarkerSize, TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, true); //not sure if it should be true
                 
                 //giving information to realworld.cpp
-                set(TheMarkers[i].Rvec, TheMarkers[i].Tvec, TheCameraParameters.Distorsion, TheCameraParameters.CameraMatrix, world_coords[i], TheMarkers[i].getCenter());
+//                getCoordinates(lpsMarkers[i], TheMarkers[i].Rvec, TheMarkers[i].Tvec, TheCameraParameters.Distorsion, TheCameraParameters.CameraMatrix);
                 
-                cout << endl << TheMarkers[i];
+//                cout << endl << TheMarkers[i];
+                
+                cout << "Location realative to Marker" << i << ": " << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
             }
+            
             if (TheMarkers.size() != 0)
                 cout << endl;
             
