@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		1BE9E02B1D22B0D600739C51 /* ar_drone */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ar_drone; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE9E02E1D22B0D600739C51 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1BE9E0351D22B68E00739C51 /* ARDroneLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ARDroneLib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		1BE9E0221D22B0D600739C51 = {
 			isa = PBXGroup;
 			children = (
+				1BE9E0351D22B68E00739C51 /* ARDroneLib */,
 				1BE9E02D1D22B0D600739C51 /* ar_drone */,
 				1BE9E02C1D22B0D600739C51 /* Products */,
 			);
@@ -209,6 +211,21 @@
 		1BE9E0331D22B0D700739C51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				HEADER_SEARCH_PATHS = (
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/VP_SDK/,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/Lib,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/Common,
+					/usr/local/include,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/VP_SDK/VP_Os/linux,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/Lib/**",
+					/usr/local/lib,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -216,6 +233,21 @@
 		1BE9E0341D22B0D700739C51 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				HEADER_SEARCH_PATHS = (
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/VP_SDK/,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/Lib,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/Common,
+					/usr/local/include,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/VP_SDK/VP_Os/linux,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/Soft/Lib/**",
+					/usr/local/lib,
+					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ARDroneLib/,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -239,6 +271,7 @@
 				1BE9E0341D22B0D700739C51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

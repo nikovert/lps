@@ -31,6 +31,8 @@
 #include "aruco.h"
 #include "cvdrawingutils.h"
 #include <opencv2/highgui/highgui.hpp>
+#include "opencv2/calib3d/calib3d.hpp"
+
 using namespace cv;
 using namespace aruco;
 
@@ -51,7 +53,7 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
-//void getCoordinates (lps_marker lpsMarker, Mat rotation_matrix, Mat translation_matrix_passed, Mat distortion, Mat camera_intrinsics);
+//void getLocation(Marker m, CameraParameters TheCameraParameters);
 
 /************************************
  *
@@ -60,11 +62,6 @@ int waitTime = 0;
  *
  ************************************/
 
-//lps_marker cast(Marker m){
-//    //Child *pChild =  (Child *) &parent;
-//    lps_marker *lps = (lps_marker *) &m;
-//    return *lps;
-//}
 
 bool readArguments(int argc, char **argv) {
     if (argc < 2) {
@@ -99,6 +96,8 @@ int findParam(std::string param, int argc, char *argv[]) {
  ************************************/
 
 int main(int argc, char **argv) {
+    
+    
     try {
         if (readArguments(argc, argv) == false) {
             return 0;
@@ -143,7 +142,10 @@ int main(int argc, char **argv) {
         char key = 0;
         int index = 0;
         // capture until press ESC or until the end of the video
-//        TheVideoCapturer.retrieve(TheInputImage);
+        
+//*********************************************************************************************************************************************************
+// Loop begins
+//*********************************************************************************************************************************************************
         
         do {
             
@@ -158,26 +160,8 @@ int main(int argc, char **argv) {
             AvrgTime.second++;
 //            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
             
-            //3D and 2D points for test purposes
-            //extend Marks with the value of world and pixel coords
-            vector<Point3d>     world_coords;
-            vector<Point2d>     pixel_coords;
-            
-            
-            for (unsigned int i = 0; i < TheMarkers.size(); i++) {
-//                lpsMarkers[i].cast(TheMarkers[i], Point3d (10.91666666666667, 10.01041666666667, 0), Point3d (10.91666666666667, 8.34375, 0), Point3d (16.08333333333334, 8.34375, 0), Point3d (16.08333333333334, 10.01041666666667, 0));
-                
-                
-//                cout << "the area of the marker: " << TheMarkers[0].getArea() << endl;
-                //Does not have to be done, already performed in Detect Marker:
-                TheMarkers[i].calculateExtrinsics(TheMarkerSize, TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, true); //not sure if it should be true
-                
-                //giving information to realworld.cpp
-//                getCoordinates(lpsMarkers[i], TheMarkers[i].Rvec, TheMarkers[i].Tvec, TheCameraParameters.Distorsion, TheCameraParameters.CameraMatrix);
-                
-//                cout << endl << TheMarkers[i];
-                
-                cout << "Location realative to Marker" << i << ": " << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
+            for (unsigned int i = 0; i < TheMarkers.size()-1; i++) {
+                cout << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
             }
             
             if (TheMarkers.size() != 0)
