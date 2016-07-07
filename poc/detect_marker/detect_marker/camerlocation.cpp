@@ -45,7 +45,6 @@ void getLocation(Marker m, CameraParameters TheCameraParameters){
     //solvePnP returns the rotation and the translation vectors
     solvePnP(world_coords, setPixelCoords(m), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
     cout << "tvec: " << tvec << endl;
-    cout << "Location realative to Marker: " << TheCameraParameters.getCameraLocation(m.Rvec, m.Tvec) << endl;
     
     Mat imagePoints;
     Mat jacobian;

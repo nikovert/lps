@@ -67,11 +67,11 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/nikovertovec/Documents/lps/lps/poc/camera_calibration/include/out_camera_data.xml"
+            argument = "../../../camera_calibration/include/out_camera_data.xml"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "8.8"
+            argument = "8.89"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
