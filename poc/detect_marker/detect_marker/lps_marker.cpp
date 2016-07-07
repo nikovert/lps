@@ -36,6 +36,7 @@ class lps_marker{
         world_coords.push_back (bottom_left);
         world_coords.push_back (bottom_right);
     }
+    
     void setPixelCoords(){
         int a = sqrt(m.getArea())/2;
         pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y + a));

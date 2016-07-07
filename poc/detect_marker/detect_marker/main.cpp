@@ -53,7 +53,7 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
-//void getLocation(Marker m, CameraParameters TheCameraParameters);
+void getLocation(Marker m, CameraParameters TheCameraParameters);
 
 /************************************
  *
@@ -160,8 +160,9 @@ int main(int argc, char **argv) {
             AvrgTime.second++;
 //            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
             
-            for (unsigned int i = 0; i < TheMarkers.size()-1; i++) {
-                cout << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
+            for (unsigned int i = 0; i < TheMarkers.size(); i++) {
+                getLocation(TheMarkers[i], TheCameraParameters);
+                //cout << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
             }
             
             if (TheMarkers.size() != 0)

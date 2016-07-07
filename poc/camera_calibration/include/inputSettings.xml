@@ -6,7 +6,8 @@
   <BoardSize_Height>6</BoardSize_Height>
   
   <!-- The size of a square in some user defined metric system (pixel, millimeter)-->
-  <Square_Size>28</Square_Size>
+  <!-- In this case, cenitmeters are used-->
+  <Square_Size>2.42</Square_Size>
   
   <!-- The type of input used for camera calibration. One of: CHESSBOARD CIRCLES_GRID ASYMMETRIC_CIRCLES_GRID -->
   <Calibrate_Pattern>"CHESSBOARD"</Calibrate_Pattern>
@@ -24,7 +25,7 @@
   <Input_Delay>100</Input_Delay>	
   
   <!-- How many frames to use, for calibration. -->
-  <Calibrate_NrOfFrameToUse>10</Calibrate_NrOfFrameToUse>
+  <Calibrate_NrOfFrameToUse>30</Calibrate_NrOfFrameToUse>
   <!-- Consider only fy as a free parameter, the ratio fx/fy stays the same as in the input cameraMatrix. 
 	   Use or not setting. 0 - False Non-Zero - True-->
   <Calibrate_FixAspectRatio> 1 </Calibrate_FixAspectRatio>

@@ -5,8 +5,8 @@ using namespace cv;
 
 int take_image(void)
 {
-    int i = 0;
-    while(i<10){
+    int i = 10;
+    while(i<30){
         Mat frame;
         VideoCapture cap;
         // open the default camera, use something different from 0 otherwise;
@@ -18,7 +18,7 @@ int take_image(void)
             cap >> frame;
             if( frame.empty() ) break; // end of video stream
             imshow("camera calibration", frame);
-            if( waitKey(1) == 27 ) break; // stop capturing by pressing ESC
+            if( waitKey(10) == 49 ) break; // stop capturing by pressing ESC
         }
         
         if(!frame.data )
@@ -32,7 +32,7 @@ int take_image(void)
         
         imwrite(str,frame);
         i++;
-        waitKey(0);
+        waitKey(1);
     }
     
     return 0;

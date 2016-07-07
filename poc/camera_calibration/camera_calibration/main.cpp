@@ -231,7 +231,6 @@ enum { DETECTION = 0, CAPTURING = 1, CALIBRATED = 2 };
 
 bool runCalibrationAndSave(Settings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
                            vector<vector<Point2f> > imagePoints );
-//#include "take_image.cpp"
 int take_image(void);
 
 int delete_file()
