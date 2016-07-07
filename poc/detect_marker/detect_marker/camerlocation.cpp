@@ -11,6 +11,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/calib3d/calib3d.hpp"
 #include "aruco.h"
+#include <opencv2/highgui.hpp>
 
 using namespace cv;
 using namespace aruco;
@@ -24,27 +25,41 @@ vector<Point3d> setWorldCoords(Point3d top_left, Point3d top_right, Point3d bott
     return world_coords;
 }
 
-vector<Point2d> setPixelCoords(Marker m){
+vector<Point2d> setPixelCoords(Marker m, bool center){
     vector<Point2d> pixel_coords;
+    if(center) {
     int a = sqrt(m.getArea())/2;
-    pixel_coords.push_back (Point2d (m.getCenter().x - a, m.getCenter().y + a));
-    pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y + a));
-    pixel_coords.push_back (Point2d (m.getCenter().x - a, m.getCenter().y - a));
-    pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y - a));
-    return pixel_coords;
+        pixel_coords.push_back (Point2d (m.getCenter().x - a, m.getCenter().y + a));
+        pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y + a));
+        pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y - a));
+        pixel_coords.push_back (Point2d (m.getCenter().x - a, m.getCenter().y - a));
+    }else{
+        pixel_coords.push_back (m[0]);
+        pixel_coords.push_back (m[1]);
+        pixel_coords.push_back (m[2]);
+        pixel_coords.push_back (m[3]);
+    }return pixel_coords;
 }
+
 
 void getLocation(Marker m, CameraParameters TheCameraParameters){
     vector<Point3d> world_coords;
     //bool debug = false;
     cout << "Marker id: " << m.id << endl;
     Mat rvec, tvec;
-    if(m.id==50)world_coords = setWorldCoords(Point3d (0, -8.89, 12.7), Point3d (0, 0, 12.7), Point3d (0, -8.89, 3.81), Point3d (0, 0, 3.81));
-    if(m.id==698)world_coords = setWorldCoords(Point3d (0, 0, 0), Point3d (0, 8.89, 0), Point3d (0, 0, -8.89), Point3d (0, 8.89, -8.89));
+    if(m.id==50){
+        cout <<"setting world coords for id 50" << endl;
+        world_coords = setWorldCoords(Point3d(-8.89,12.7,0),Point3d(0,12.7,0),Point3d(0,3.81,0),Point3d(-8.89,3.81,0));
+    }
+    if(m.id==698){
+        cout <<"setting world coords for id 698" << endl;
+        world_coords = setWorldCoords(Point3d (0, 0, 0), Point3d (8.89, 0, 0), Point3d (8.89, -8.89, 0), Point3d (0, -8.89, 0));
+    }
     if(m.id!=50 && m.id!=698) return;
+    
     //solvePnP returns the rotation and the translation vectors
-    solvePnP(world_coords, setPixelCoords(m), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
-    cout << "tvec: " << tvec << endl;
+    solvePnP(world_coords, setPixelCoords(m,false), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
+    cout << "tvec: " << tvec << endl << endl;
     
     Mat imagePoints;
     Mat jacobian;
@@ -52,10 +67,8 @@ void getLocation(Marker m, CameraParameters TheCameraParameters){
     projectPoints(world_coords, rvec, tvec, TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, imagePoints, jacobian, aspectRatio);
     
     //cout << "imagePoints: " << imagePoints << endl;
-    //cout << "pre given Points: " << setPixelCoords(m) << endl;
-    
-    nanosleep((const struct timespec[]){{0, 500000000L}}, NULL);
-    
+    //cout << "pre given Points: " << setPixelCoords(m,false) << endl;
+    waitKey(100);
     /*
     if(debug)cout << "rvec: "<< rvec << endl << "tvec: " << tvec << endl;
     Mat R;

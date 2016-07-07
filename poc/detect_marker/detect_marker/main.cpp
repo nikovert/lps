@@ -161,8 +161,9 @@ int main(int argc, char **argv) {
 //            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
             
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
+                //cout << endl << TheMarkers[i] << endl;
                 getLocation(TheMarkers[i], TheCameraParameters);
-                //cout << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
+                                //cout << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
             }
             
             if (TheMarkers.size() != 0)
