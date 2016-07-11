@@ -53,7 +53,7 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
-void getLocation(Marker m, CameraParameters TheCameraParameters);
+Mat getLocation(Marker m, CameraParameters TheCameraParameters);
 
 /************************************
  *
@@ -162,8 +162,7 @@ int main(int argc, char **argv) {
             
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
                 //cout << endl << TheMarkers[i] << endl;
-                getLocation(TheMarkers[i], TheCameraParameters);
-                                //cout << TheCameraParameters.getCameraLocation(TheMarkers[i].Rvec, TheMarkers[i].Tvec) << endl;
+                cout << "tvec: " << getLocation(TheMarkers[i], TheCameraParameters) << endl;
             }
             
             if (TheMarkers.size() != 0)

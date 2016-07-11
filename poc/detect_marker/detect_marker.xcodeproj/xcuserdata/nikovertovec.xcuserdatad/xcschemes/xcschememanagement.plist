@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>detect_marker_rpi.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1B3009021CE8B583002E9DC4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1B930BD11D2FCCF2007F7D55</key>
 		<dict>
 			<key>primary</key>
 			<true/>

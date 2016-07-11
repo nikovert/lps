@@ -42,7 +42,7 @@ vector<Point2d> setPixelCoords(Marker m, bool center){
 }
 
 
-void getLocation(Marker m, CameraParameters TheCameraParameters){
+Mat getLocation(Marker m, CameraParameters TheCameraParameters){
     vector<Point3d> world_coords;
     //bool debug = false;
     cout << "Marker id: " << m.id << endl;
@@ -55,12 +55,13 @@ void getLocation(Marker m, CameraParameters TheCameraParameters){
         cout <<"setting world coords for id 698" << endl;
         world_coords = setWorldCoords(Point3d (0, 0, 0), Point3d (8.89, 0, 0), Point3d (8.89, -8.89, 0), Point3d (0, -8.89, 0));
     }
-    if(m.id!=50 && m.id!=698) return;
+    if(m.id!=50 && m.id!=698) return tvec;
     
     //solvePnP returns the rotation and the translation vectors
     solvePnP(world_coords, setPixelCoords(m,false), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
     cout << "tvec: " << tvec << endl << endl;
-    
+    return tvec;
+    /*
     Mat imagePoints;
     Mat jacobian;
     double aspectRatio=0;
@@ -69,7 +70,7 @@ void getLocation(Marker m, CameraParameters TheCameraParameters){
     //cout << "imagePoints: " << imagePoints << endl;
     //cout << "pre given Points: " << setPixelCoords(m,false) << endl;
     waitKey(100);
-    /*
+    
     if(debug)cout << "rvec: "<< rvec << endl << "tvec: " << tvec << endl;
     Mat R;
     //The direction of the rotation vector indicates the axis of rotation, while the length (or “norm”) of the vector gives the angle.
