@@ -4,6 +4,7 @@
 // main(Number of arguments, Argument values)
 // Description  : This is the entry point of the program.
 // Return value : SUCCESS:0  ERROR:-1
+// Thanks to puku0x @ github
 // --------------------------------------------------------------------------
 
 int main(int argc, char *argv[])
