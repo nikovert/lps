@@ -28,10 +28,10 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "aruco.h"
-#include "cvdrawingutils.h"
+#include <aruco/aruco.h>
+#include <aruco/cvdrawingutils.h>
 #include <opencv2/highgui/highgui.hpp>
-#include "opencv2/calib3d/calib3d.hpp"
+#include <opencv2/calib3d/calib3d.hpp>
 
 using namespace cv;
 using namespace aruco;
