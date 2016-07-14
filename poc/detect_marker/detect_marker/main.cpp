@@ -97,7 +97,6 @@ int findParam(std::string param, int argc, char *argv[]) {
 
 int main(int argc, char **argv) {
     
-    
     try {
         if (readArguments(argc, argv) == false) {
             return 0;

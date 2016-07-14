@@ -1,5 +1,5 @@
 #include "ardrone/ardrone.h"
-#include "move.hpp"
+#include "move.h"
 // --------------------------------------------------------------------------
 // main(Number of arguments, Argument values)
 // Description  : This is the entry point of the program.
@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------
 using namespace std;
 
-int main(int argc, char *argv[])
+int fly()
 {
     int tick= 0;
     land = false;

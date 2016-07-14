@@ -6,7 +6,10 @@
 //  Copyright © 2016 Niko Vertovec. All rights reserved.
 //
 
-#include "move.hpp"
+#include "move.h"
+
+bool straight, backward, up, down, port, starbourd, clockwise, anticlockwise, land;
+int int_straight, int_backward, int_up, int_down, int_port, int_starbourd, int_clockwise, int_anticlockwise;
 
 void move_straight(int x){
     int_straight = x;
