@@ -8,59 +8,30 @@
 
 #include <stdio.h>
 #include <math.h>
-#include "opencv2/core/core.hpp"
-#include "opencv2/calib3d/calib3d.hpp"
-#include "aruco.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <aruco/aruco.h>
 #include <opencv2/highgui.hpp>
+#include "location.h"
 
 using namespace cv;
 using namespace aruco;
 
-vector<Point3d> setWorldCoords(Point3d top_left, Point3d top_right, Point3d bottom_left, Point3d bottom_right){
-    vector<Point3d> world_coords;
-    world_coords.push_back (top_left);
-    world_coords.push_back (top_right);
-    world_coords.push_back (bottom_left);
-    world_coords.push_back (bottom_right);
-    return world_coords;
-}
-
-vector<Point2d> setPixelCoords(Marker m, bool center){
-    vector<Point2d> pixel_coords;
-    if(center) {
-    int a = sqrt(m.getArea())/2;
-        pixel_coords.push_back (Point2d (m.getCenter().x - a, m.getCenter().y + a));
-        pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y + a));
-        pixel_coords.push_back (Point2d (m.getCenter().x + a, m.getCenter().y - a));
-        pixel_coords.push_back (Point2d (m.getCenter().x - a, m.getCenter().y - a));
-    }else{
-        pixel_coords.push_back (m[0]);
-        pixel_coords.push_back (m[1]);
-        pixel_coords.push_back (m[2]);
-        pixel_coords.push_back (m[3]);
-    }return pixel_coords;
-}
-
-
 Mat getLocation(Marker m, CameraParameters TheCameraParameters){
-    vector<Point3d> world_coords;
     //bool debug = false;
     cout << "Marker id: " << m.id << endl;
     Mat rvec, tvec;
-    if(m.id==50){
-        cout <<"setting world coords for id 50" << endl;
-        world_coords = setWorldCoords(Point3d(-8.89,12.7,0),Point3d(0,12.7,0),Point3d(0,3.81,0),Point3d(-8.89,3.81,0));
-    }
-    if(m.id==698){
-        cout <<"setting world coords for id 698" << endl;
-        world_coords = setWorldCoords(Point3d (0, 0, 0), Point3d (8.89, 0, 0), Point3d (8.89, -8.89, 0), Point3d (0, -8.89, 0));
-    }
+    vector<Point3d> world_coords = setup(m.id);
     if(m.id!=50 && m.id!=698) return tvec;
     
     //solvePnP returns the rotation and the translation vectors
-    solvePnP(world_coords, setPixelCoords(m,false), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
+    solvePnP(world_coords, setPixelCoords(m), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
+    
     cout << "tvec: " << tvec << endl << endl;
     return tvec;
+    
+    //May be used for pose estimate at later point
+    
     /*
     Mat imagePoints;
     Mat jacobian;

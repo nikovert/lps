@@ -28,10 +28,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "aruco.h"
-#include "cvdrawingutils.h"
+#include <aruco/aruco.h>
+#include <aruco/cvdrawingutils.h>
 #include <opencv2/highgui/highgui.hpp>
-#include "opencv2/calib3d/calib3d.hpp"
+#include <opencv2/calib3d/calib3d.hpp>
+#include "location.h"
 
 using namespace cv;
 using namespace aruco;
@@ -52,8 +53,6 @@ pair< double, double > AvrgTime(0, 0); // determines the average time required f
 double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
-
-Mat getLocation(Marker m, CameraParameters TheCameraParameters);
 
 /************************************
  *
@@ -96,7 +95,6 @@ int findParam(std::string param, int argc, char *argv[]) {
  ************************************/
 
 int main(int argc, char **argv) {
-    
     
     try {
         if (readArguments(argc, argv) == false) {
