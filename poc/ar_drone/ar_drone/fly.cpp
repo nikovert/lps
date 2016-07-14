@@ -48,6 +48,8 @@ int fly()
         
         ardrone.move3D(vx(), vy(), vz(), vr());
         
+        if(tick==50) land=true;
+        
         if(check()){
             ardrone.landing();
         }

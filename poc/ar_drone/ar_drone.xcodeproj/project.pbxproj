@@ -640,16 +640,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/ar_drone/3rdparty/ffmpeg/include,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/lib,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/3rdparty/ffmpeg/lib,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/3rdparty/glut/lib,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/3rdparty/pthread/lib,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-lopencv_calib3d",
 					"-lopencv_core",
@@ -684,16 +676,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/ar_drone/3rdparty/ffmpeg/include,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/lib,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/3rdparty/ffmpeg/lib,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/3rdparty/glut/lib,
-					/Users/nikovertovec/Documents/lps/lps/poc/ar_drone/ar_drone/3rdparty/pthread/lib,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-lopencv_calib3d",
 					"-lopencv_core",
