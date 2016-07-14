@@ -15,6 +15,7 @@
 		1B8FDA6B1D36766200EDB925 /* udp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FD7CC1D36766100EDB925 /* udp.cpp */; };
 		1B8FDA6D1D36766200EDB925 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FD7CF1D36766100EDB925 /* version.cpp */; };
 		1B8FDA6F1D36766200EDB925 /* video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B8FD7D11D36766100EDB925 /* video.cpp */; };
+		1B91432D1D37A3C900FDF867 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B91432B1D37A3C900FDF867 /* move.cpp */; };
 		1BE9E02F1D22B0D600739C51 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BE9E02E1D22B0D600739C51 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,8 @@
 		1B8FDA5D1D36766200EDB925 /* semaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semaphore.h; sourceTree = "<group>"; };
 		1B8FDA5F1D36766200EDB925 /* pthreadVC2.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = pthreadVC2.lib; sourceTree = "<group>"; };
 		1B8FDA601D36766200EDB925 /* pthreads-w32-2-9-1-release.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "pthreads-w32-2-9-1-release.zip"; sourceTree = "<group>"; };
+		1B91432B1D37A3C900FDF867 /* move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = move.cpp; sourceTree = "<group>"; };
+		1B91432C1D37A3C900FDF867 /* move.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = move.hpp; sourceTree = "<group>"; };
 		1BE9E02B1D22B0D600739C51 /* ar_drone */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ar_drone; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE9E02E1D22B0D600739C51 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -468,6 +471,8 @@
 				1B8FD7C01D36766100EDB925 /* ardrone */,
 				1B8FD7D31D36766100EDB925 /* 3rdparty */,
 				1BE9E02E1D22B0D600739C51 /* main.cpp */,
+				1B91432B1D37A3C900FDF867 /* move.cpp */,
+				1B91432C1D37A3C900FDF867 /* move.hpp */,
 			);
 			path = ar_drone;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				1B8FDA691D36766200EDB925 /* tcp.cpp in Sources */,
 				1B8FDA671D36766200EDB925 /* navdata.cpp in Sources */,
 				1B8FDA6B1D36766200EDB925 /* udp.cpp in Sources */,
+				1B91432D1D37A3C900FDF867 /* move.cpp in Sources */,
 				1B8FDA611D36766200EDB925 /* ardrone.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
