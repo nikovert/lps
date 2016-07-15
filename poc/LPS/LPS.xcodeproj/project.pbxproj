@@ -39,21 +39,12 @@
 
 /* Begin PBXFileReference section */
 		1B2166781D38E383004626D0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1B21667C1D3943D6004626D0 /* img0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img0.jpg; sourceTree = "<group>"; };
-		1B21667D1D3943D6004626D0 /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
-		1B21667E1D3943D6004626D0 /* img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img2.jpg; sourceTree = "<group>"; };
-		1B21667F1D3943D6004626D0 /* img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img3.jpg; sourceTree = "<group>"; };
-		1B2166801D3943D6004626D0 /* img4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img4.jpg; sourceTree = "<group>"; };
-		1B2166811D3943D6004626D0 /* img5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img5.jpg; sourceTree = "<group>"; };
-		1B2166821D3943D6004626D0 /* img6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img6.jpg; sourceTree = "<group>"; };
-		1B2166831D3943D6004626D0 /* img7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img7.jpg; sourceTree = "<group>"; };
-		1B2166841D3943D6004626D0 /* img8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img8.jpg; sourceTree = "<group>"; };
-		1B2166851D3943D6004626D0 /* img9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img9.jpg; sourceTree = "<group>"; };
 		1B2166861D3943D6004626D0 /* include_img.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = include_img.xml; sourceTree = "<group>"; };
-		1B2166871D3943D6004626D0 /* inputSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = inputSettings.xml; sourceTree = "<group>"; };
+		1B2166871D3943D6004626D0 /* calibration_inputSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = calibration_inputSettings.xml; sourceTree = "<group>"; };
 		1B2166881D3943D6004626D0 /* out_camera_data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = out_camera_data.xml; sourceTree = "<group>"; };
 		1B21668A1D3943D6004626D0 /* calibrate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = calibrate.cpp; sourceTree = "<group>"; };
 		1B21668B1D3943D6004626D0 /* take_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = take_image.cpp; sourceTree = "<group>"; };
+		1B2166911D39492E004626D0 /* inputSettings.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inputSettings.xml; sourceTree = "<group>"; };
 		1B91433E1D37D2AA00FDF867 /* LPS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LPS; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B9143411D37D2AA00FDF867 /* tmp_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tmp_main.cpp; sourceTree = "<group>"; };
 		1B91434B1D37D3F500FDF867 /* ffmpeg-2.2.3.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "ffmpeg-2.2.3.tar.gz"; sourceTree = "<group>"; };
@@ -198,8 +189,9 @@
 			children = (
 				1B21667B1D3943D6004626D0 /* images */,
 				1B2166861D3943D6004626D0 /* include_img.xml */,
-				1B2166871D3943D6004626D0 /* inputSettings.xml */,
+				1B2166871D3943D6004626D0 /* calibration_inputSettings.xml */,
 				1B2166881D3943D6004626D0 /* out_camera_data.xml */,
+				1B2166911D39492E004626D0 /* inputSettings.xml */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -207,16 +199,6 @@
 		1B21667B1D3943D6004626D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				1B21667C1D3943D6004626D0 /* img0.jpg */,
-				1B21667D1D3943D6004626D0 /* img1.jpg */,
-				1B21667E1D3943D6004626D0 /* img2.jpg */,
-				1B21667F1D3943D6004626D0 /* img3.jpg */,
-				1B2166801D3943D6004626D0 /* img4.jpg */,
-				1B2166811D3943D6004626D0 /* img5.jpg */,
-				1B2166821D3943D6004626D0 /* img6.jpg */,
-				1B2166831D3943D6004626D0 /* img7.jpg */,
-				1B2166841D3943D6004626D0 /* img8.jpg */,
-				1B2166851D3943D6004626D0 /* img9.jpg */,
 			);
 			path = images;
 			sourceTree = "<group>";

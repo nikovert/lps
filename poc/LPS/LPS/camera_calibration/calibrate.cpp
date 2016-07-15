@@ -21,17 +21,16 @@
 using namespace cv;
 using namespace std;
 
-static void help()
-{
+static void help() {
     cout <<  "This is a camera calibration sample." << endl
     <<  "Usage: calibration configurationFile"  << endl
     <<  "Near the sample file you'll find the configuration file, which has detailed help of "
     "how to edit it.  It may be any OpenCV supported file format XML/YAML." << endl;
 }
-class Settings
-{
+
+class CalibrationSettings {
 public:
-    Settings() : goodInput(false) {}
+    CalibrationSettings() : goodInput(false) {}
     enum Pattern { NOT_EXISTING, CHESSBOARD, CIRCLES_GRID, ASYMMETRIC_CIRCLES_GRID };
     enum InputType { INVALID, CAMERA, VIDEO_FILE, IMAGE_LIST };
     
@@ -58,6 +57,7 @@ public:
         << "Input" << input
         << "}";
     }
+    
     void read(const FileNode& node)                          //Read serialization for this class
     {
         node["BoardSize_Width" ] >> boardSize.width;
@@ -78,6 +78,7 @@ public:
         node["Input_Delay"] >> delay;
         validate();
     }
+    
     void validate()
     {
         goodInput = true;
@@ -154,6 +155,7 @@ public:
         atImageList = 0;
         
     }
+    
     Mat nextImage()
     {
         Mat result;
@@ -183,6 +185,7 @@ public:
             l.push_back((string)*it);
         return true;
     }
+    
 public:
     Size boardSize;              // The size of the board -> Number of items by width and height
     Pattern calibrationPattern;  // One of the Chessboard, circles, or asymmetric circle pattern
@@ -214,27 +217,24 @@ private:
     
 };
 
-static inline void read(const FileNode& node, Settings& x, const Settings& default_value = Settings())
-{
+static inline void read(const FileNode& node, CalibrationSettings& x, const CalibrationSettings& default_value = CalibrationSettings()) {
     if(node.empty())
         x = default_value;
     else
         x.read(node);
 }
 
-/*static inline void write(FileStorage& fs, const String&, const Settings& s )
-{
+/*static inline void write(FileStorage& fs, const String&, const Settings& s ) {
     s.write(fs);
 }*/
 
 enum { DETECTION = 0, CAPTURING = 1, CALIBRATED = 2 };
 
-bool runCalibrationAndSave(Settings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
+bool runCalibrationAndSave(CalibrationSettings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
                            vector<vector<Point2f> > imagePoints );
 int take_image(void);
 
-int delete_file()
-{
+int delete_file() {
     ifstream fin("../../include/out_camera_data.xml");
     if (fin)
     {
@@ -250,11 +250,11 @@ int delete_file()
     return 0;
 }
 
-int calibrate()
-{
-    bool take_photo = true;
+int calibrate() {
+    bool take_photo = false;
     if(take_photo)
         take_image();
+    
     //delete_file();
     
     //fprintf( stderr, "cwd: %s\n", getenv("PWD") );
@@ -263,8 +263,8 @@ int calibrate()
     if(bhelp) help();
     
     //! [file_read]
-    Settings s;
-    const string inputSettingsFile = "../../include/inputSettings.xml";
+    CalibrationSettings s;
+    const string inputSettingsFile = "../../include/calibration_inputSettings.xml";
     FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
     if (!fs.isOpened())
     {
@@ -287,7 +287,7 @@ int calibrate()
     vector<vector<Point2f> > imagePoints;
     Mat cameraMatrix, distCoeffs;
     Size imageSize;
-    int mode = s.inputType == Settings::IMAGE_LIST ? CAPTURING : DETECTION;
+    int mode = s.inputType == CalibrationSettings::IMAGE_LIST ? CAPTURING : DETECTION;
     clock_t prevTimestamp = 0;
     const Scalar RED(0,0,255), GREEN(0,255,0);
     const char ESC_KEY = 27;
@@ -334,13 +334,13 @@ int calibrate()
         
         switch( s.calibrationPattern ) // Find feature points on the input format
         {
-            case Settings::CHESSBOARD:
+            case CalibrationSettings::CHESSBOARD:
                 found = findChessboardCorners( view, s.boardSize, pointBuf, chessBoardFlags);
                 break;
-            case Settings::CIRCLES_GRID:
+            case CalibrationSettings::CIRCLES_GRID:
                 found = findCirclesGrid( view, s.boardSize, pointBuf );
                 break;
-            case Settings::ASYMMETRIC_CIRCLES_GRID:
+            case CalibrationSettings::ASYMMETRIC_CIRCLES_GRID:
                 found = findCirclesGrid( view, s.boardSize, pointBuf, CALIB_CB_ASYMMETRIC_GRID );
                 break;
             default:
@@ -352,7 +352,7 @@ int calibrate()
         if ( found)                // If done with success,
         {
             // improve the found corners' coordinate accuracy for chessboard
-            if( s.calibrationPattern == Settings::CHESSBOARD)
+            if( s.calibrationPattern == CalibrationSettings::CHESSBOARD)
             {
                 Mat viewGray;
                 cvtColor(view, viewGray, COLOR_BGR2GRAY);
@@ -422,7 +422,7 @@ int calibrate()
     
     // -----------------------Show the undistorted image for the image list ------------------------
     //! [show_results]
-    if( s.inputType == Settings::IMAGE_LIST && s.showUndistorsed )
+    if( s.inputType == CalibrationSettings::IMAGE_LIST && s.showUndistorsed )
     {
         Mat view, rview, map1, map2;
         
@@ -495,20 +495,20 @@ static double computeReprojectionErrors( const vector<vector<Point3f> >& objectP
 //! [compute_errors]
 //! [board_corners]
 static void calcBoardCornerPositions(Size boardSize, float squareSize, vector<Point3f>& corners,
-                                     Settings::Pattern patternType /*= Settings::CHESSBOARD*/)
+                                     CalibrationSettings::Pattern patternType /*= Settings::CHESSBOARD*/)
 {
     corners.clear();
     
     switch(patternType)
     {
-        case Settings::CHESSBOARD:
-        case Settings::CIRCLES_GRID:
+        case CalibrationSettings::CHESSBOARD:
+        case CalibrationSettings::CIRCLES_GRID:
             for( int i = 0; i < boardSize.height; ++i )
                 for( int j = 0; j < boardSize.width; ++j )
                     corners.push_back(Point3f(j*squareSize, i*squareSize, 0));
             break;
             
-        case Settings::ASYMMETRIC_CIRCLES_GRID:
+        case CalibrationSettings::ASYMMETRIC_CIRCLES_GRID:
             for( int i = 0; i < boardSize.height; i++ )
                 for( int j = 0; j < boardSize.width; j++ )
                     corners.push_back(Point3f((2*j + i % 2)*squareSize, i*squareSize, 0));
@@ -518,7 +518,7 @@ static void calcBoardCornerPositions(Size boardSize, float squareSize, vector<Po
     }
 }
 //! [board_corners]
-static bool runCalibration( Settings& s, Size& imageSize, Mat& cameraMatrix, Mat& distCoeffs,
+static bool runCalibration( CalibrationSettings& s, Size& imageSize, Mat& cameraMatrix, Mat& distCoeffs,
                            vector<vector<Point2f> > imagePoints, vector<Mat>& rvecs, vector<Mat>& tvecs,
                            vector<float>& reprojErrs,  double& totalAvgErr)
 {
@@ -568,7 +568,7 @@ static bool runCalibration( Settings& s, Size& imageSize, Mat& cameraMatrix, Mat
 }
 
 // Print camera parameters to the output file
-static void saveCameraParams( Settings& s, Size& imageSize, Mat& cameraMatrix, Mat& distCoeffs,
+static void saveCameraParams( CalibrationSettings& s, Size& imageSize, Mat& cameraMatrix, Mat& distCoeffs,
                              const vector<Mat>& rvecs, const vector<Mat>& tvecs,
                              const vector<float>& reprojErrs, const vector<vector<Point2f> >& imagePoints,
                              double totalAvgErr )
@@ -661,7 +661,7 @@ static void saveCameraParams( Settings& s, Size& imageSize, Mat& cameraMatrix, M
 }
 
 //! [run_and_save]
-bool runCalibrationAndSave(Settings& s, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs,
+bool runCalibrationAndSave(CalibrationSettings& s, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs,
                            vector<vector<Point2f> > imagePoints)
 {
     vector<Mat> rvecs, tvecs;
