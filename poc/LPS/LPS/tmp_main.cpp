@@ -7,11 +7,9 @@
 //
 
 #include <iostream>
-#include "tmp_main.h"
 using namespace std;
 
 int tmp_main(int argc, char **argv) {
-    //detect();
     cout << "Hello World" << endl;
     return 0;
 }

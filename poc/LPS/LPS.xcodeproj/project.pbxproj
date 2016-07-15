@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B2166791D38E383004626D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B2166781D38E383004626D0 /* main.cpp */; };
+		1B21668C1D3943D6004626D0 /* calibrate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B21668A1D3943D6004626D0 /* calibrate.cpp */; };
+		1B21668D1D3943D6004626D0 /* take_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B21668B1D3943D6004626D0 /* take_image.cpp */; };
 		1B9143421D37D2AA00FDF867 /* tmp_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143411D37D2AA00FDF867 /* tmp_main.cpp */; };
 		1B9144141D37D3F500FDF867 /* ardrone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143F81D37D3F500FDF867 /* ardrone.cpp */; };
 		1B9144151D37D3F500FDF867 /* command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143FA1D37D3F500FDF867 /* command.cpp */; };
@@ -37,6 +39,21 @@
 
 /* Begin PBXFileReference section */
 		1B2166781D38E383004626D0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1B21667C1D3943D6004626D0 /* img0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img0.jpg; sourceTree = "<group>"; };
+		1B21667D1D3943D6004626D0 /* img1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img1.jpg; sourceTree = "<group>"; };
+		1B21667E1D3943D6004626D0 /* img2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img2.jpg; sourceTree = "<group>"; };
+		1B21667F1D3943D6004626D0 /* img3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img3.jpg; sourceTree = "<group>"; };
+		1B2166801D3943D6004626D0 /* img4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img4.jpg; sourceTree = "<group>"; };
+		1B2166811D3943D6004626D0 /* img5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img5.jpg; sourceTree = "<group>"; };
+		1B2166821D3943D6004626D0 /* img6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img6.jpg; sourceTree = "<group>"; };
+		1B2166831D3943D6004626D0 /* img7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img7.jpg; sourceTree = "<group>"; };
+		1B2166841D3943D6004626D0 /* img8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img8.jpg; sourceTree = "<group>"; };
+		1B2166851D3943D6004626D0 /* img9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img9.jpg; sourceTree = "<group>"; };
+		1B2166861D3943D6004626D0 /* include_img.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = include_img.xml; sourceTree = "<group>"; };
+		1B2166871D3943D6004626D0 /* inputSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = inputSettings.xml; sourceTree = "<group>"; };
+		1B2166881D3943D6004626D0 /* out_camera_data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = out_camera_data.xml; sourceTree = "<group>"; };
+		1B21668A1D3943D6004626D0 /* calibrate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = calibrate.cpp; sourceTree = "<group>"; };
+		1B21668B1D3943D6004626D0 /* take_image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = take_image.cpp; sourceTree = "<group>"; };
 		1B91433E1D37D2AA00FDF867 /* LPS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LPS; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B9143411D37D2AA00FDF867 /* tmp_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tmp_main.cpp; sourceTree = "<group>"; };
 		1B91434B1D37D3F500FDF867 /* ffmpeg-2.2.3.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "ffmpeg-2.2.3.tar.gz"; sourceTree = "<group>"; };
@@ -163,7 +180,6 @@
 		1B91441F1D37D40500FDF867 /* camerlocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camerlocation.cpp; sourceTree = "<group>"; };
 		1B9144201D37D40500FDF867 /* location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = location.h; sourceTree = "<group>"; };
 		1B9144221D37D40500FDF867 /* markerlocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = markerlocation.cpp; sourceTree = "<group>"; };
-		1B9144261D37DB5200FDF867 /* tmp_main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tmp_main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +193,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B21667A1D3943D6004626D0 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1B21667B1D3943D6004626D0 /* images */,
+				1B2166861D3943D6004626D0 /* include_img.xml */,
+				1B2166871D3943D6004626D0 /* inputSettings.xml */,
+				1B2166881D3943D6004626D0 /* out_camera_data.xml */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1B21667B1D3943D6004626D0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1B21667C1D3943D6004626D0 /* img0.jpg */,
+				1B21667D1D3943D6004626D0 /* img1.jpg */,
+				1B21667E1D3943D6004626D0 /* img2.jpg */,
+				1B21667F1D3943D6004626D0 /* img3.jpg */,
+				1B2166801D3943D6004626D0 /* img4.jpg */,
+				1B2166811D3943D6004626D0 /* img5.jpg */,
+				1B2166821D3943D6004626D0 /* img6.jpg */,
+				1B2166831D3943D6004626D0 /* img7.jpg */,
+				1B2166841D3943D6004626D0 /* img8.jpg */,
+				1B2166851D3943D6004626D0 /* img9.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		1B2166891D3943D6004626D0 /* camera_calibration */ = {
+			isa = PBXGroup;
+			children = (
+				1B21668A1D3943D6004626D0 /* calibrate.cpp */,
+				1B21668B1D3943D6004626D0 /* take_image.cpp */,
+			);
+			path = camera_calibration;
+			sourceTree = "<group>";
+		};
 		1B9143351D37D2AA00FDF867 = {
 			isa = PBXGroup;
 			children = (
@@ -196,10 +249,11 @@
 		1B9143401D37D2AA00FDF867 /* LPS */ = {
 			isa = PBXGroup;
 			children = (
+				1B21667A1D3943D6004626D0 /* include */,
+				1B2166891D3943D6004626D0 /* camera_calibration */,
 				1B91441E1D37D40500FDF867 /* detect_marker */,
 				1B9143481D37D3F500FDF867 /* ar_drone */,
 				1B9143411D37D2AA00FDF867 /* tmp_main.cpp */,
-				1B9144261D37DB5200FDF867 /* tmp_main.h */,
 			);
 			path = LPS;
 			sourceTree = "<group>";
@@ -573,8 +627,10 @@
 				1B9144191D37D3F500FDF867 /* udp.cpp in Sources */,
 				1B2166791D38E383004626D0 /* main.cpp in Sources */,
 				1B9144231D37D40500FDF867 /* camerlocation.cpp in Sources */,
+				1B21668D1D3943D6004626D0 /* take_image.cpp in Sources */,
 				1B9144171D37D3F500FDF867 /* navdata.cpp in Sources */,
 				1B9144141D37D3F500FDF867 /* ardrone.cpp in Sources */,
+				1B21668C1D3943D6004626D0 /* calibrate.cpp in Sources */,
 				1B9143421D37D2AA00FDF867 /* tmp_main.cpp in Sources */,
 				1B91441A1D37D3F500FDF867 /* version.cpp in Sources */,
 				1B91441D1D37D3F500FDF867 /* move.cpp in Sources */,

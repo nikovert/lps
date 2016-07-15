@@ -250,7 +250,7 @@ int delete_file()
     return 0;
 }
 
-int main(int argc, char* argv[])
+int calibrate()
 {
     bool take_photo = true;
     if(take_photo)
@@ -264,7 +264,7 @@ int main(int argc, char* argv[])
     
     //! [file_read]
     Settings s;
-    const string inputSettingsFile = argc > 1 ? argv[1] : "../../include/inputSettings.xml";
+    const string inputSettingsFile = "../../include/inputSettings.xml";
     FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
     if (!fs.isOpened())
     {
