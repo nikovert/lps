@@ -39,7 +39,7 @@ using namespace aruco;
 
 string TheInputVideo;
 string TheIntrinsicFile;
-float TheMarkerSize = -1;
+double TheMarkerSize = -1;
 int ThePyrDownLevel;
 MarkerDetector MDetector;
 VideoCapture TheVideoCapturer;
@@ -61,32 +61,127 @@ int waitTime = 0;
  *
  ************************************/
 
-
-bool readArguments(int argc, char **argv) {
-    if (argc < 2) {
-        cerr << "Invalid number of arguments" << endl;
-        cerr << "Usage: (in.avi|live[:idx_cam=0]) [intrinsics.yml] [size]" << endl;
-        return false;
+class Settings{
+public:
+    Settings() : goodInput(false) {}
+    bool goodInput;
+    
+    void read(const FileNode& node){
+        node["TheInputVideo" ] >> TheInputVideo;
+        node["TheIntrinsicFile"] >> TheIntrinsicFile;
+        node["TheMarkerSize"] >> TheMarkerSize;
+        validate();
     }
-    
-    TheInputVideo = argv[1];
-    if (argc >= 3)
-        TheIntrinsicFile = argv[2]; //Camera calibration file, not sure!
-    if (argc >= 4)
-        TheMarkerSize = atof(argv[3]);
-    
-    if (argc == 3)
-        cerr << "NOTE: You need makersize to see 3d info!!!!" << endl;
-    return true;
+
+    void validate() {
+        goodInput = true;
+//        if (boardSize.width <= 0 || boardSize.height <= 0)
+//        {
+//            cerr << "Invalid Board size: " << boardSize.width << " " << boardSize.height << endl;
+//            goodInput = false;
+//        }
+//        if (squareSize <= 10e-6)
+//        {
+//            cerr << "Invalid square size " << squareSize << endl;
+//            goodInput = false;
+//        }
+//        if (nrFrames <= 0)
+//        {
+//            cerr << "Invalid number of frames " << nrFrames << endl;
+//            goodInput = false;
+//        }
+//        
+//        if (input.empty())      // Check for valid input
+//            inputType = INVALID;
+//        else
+//        {
+//            if (input[0] >= '0' && input[0] <= '9')
+//            {
+//                stringstream ss(input);
+//                ss >> cameraID;
+//                inputType = CAMERA;
+//            }
+//            else
+//            {
+//                if (readStringList(input, imageList))
+//                {
+//                    inputType = IMAGE_LIST;
+//                    nrFrames = (nrFrames < (int)imageList.size()) ? nrFrames : (int)imageList.size();
+//                }
+//                else
+//                    inputType = VIDEO_FILE;
+//            }
+//            if (inputType == CAMERA)
+//                inputCapture.open(cameraID);
+//            if (inputType == VIDEO_FILE)
+//                inputCapture.open(input);
+//            if (inputType != IMAGE_LIST && !inputCapture.isOpened())
+//                inputType = INVALID;
+//        }
+//        if (inputType == INVALID)
+//        {
+//            cerr << " Input does not exist: " << input;
+//            goodInput = false;
+//        }
+//        
+//        flag = CALIB_FIX_K4 | CALIB_FIX_K5;
+//        if(calibFixPrincipalPoint) flag |= CALIB_FIX_PRINCIPAL_POINT;
+//        if(calibZeroTangentDist)   flag |= CALIB_ZERO_TANGENT_DIST;
+//        if(aspectRatio)            flag |= CALIB_FIX_ASPECT_RATIO;
+//        
+//        if (useFisheye) {
+//            // the fisheye model has its own enum, so overwrite the flags
+//            flag = fisheye::CALIB_FIX_SKEW | fisheye::CALIB_RECOMPUTE_EXTRINSIC |
+//            // fisheye::CALIB_FIX_K1 |
+//            fisheye::CALIB_FIX_K2 | fisheye::CALIB_FIX_K3 | fisheye::CALIB_FIX_K4;
+//        }
+//        
+//        calibrationPattern = NOT_EXISTING;
+//        if (!patternToUse.compare("CHESSBOARD")) calibrationPattern = CHESSBOARD;
+//        if (!patternToUse.compare("CIRCLES_GRID")) calibrationPattern = CIRCLES_GRID;
+//        if (!patternToUse.compare("ASYMMETRIC_CIRCLES_GRID")) calibrationPattern = ASYMMETRIC_CIRCLES_GRID;
+//        if (calibrationPattern == NOT_EXISTING)
+//        {
+//            cerr << " Camera calibration mode does not exist: " << patternToUse << endl;
+//            goodInput = false;
+//        }
+//        atImageList = 0;
+    }
+};
+
+static inline void read(const FileNode& node, Settings& x, const Settings& default_value = Settings()) {
+    if(node.empty())
+        x = default_value;
+    else
+        x.read(node);
 }
 
-int findParam(std::string param, int argc, char *argv[]) {
-    for (int i = 0; i < argc; i++)
-        if (string(argv[i]) == param)
-            return i;
-    
-    return -1;
-}
+//bool readArguments(int argc, char **argv) {
+//    if (argc < 2) {
+//        cerr << "Invalid number of arguments" << endl;
+//        cerr << "Usage: (in.avi|live[:idx_cam=0]) [intrinsics.yml] [size]" << endl;
+//        return false;
+//    }
+//    
+//    TheInputVideo = argv[1];
+//    if (argc >= 3)
+//        TheIntrinsicFile = argv[2]; //Camera calibration file, not sure!
+//    if (argc >= 4)
+//        TheMarkerSize = atof(argv[3]);
+//    
+//    if (argc == 3)
+//        cerr << "NOTE: You need makersize to see 3d info!!!!" << endl;
+//    return true;
+//}
+//
+//int findParam(std::string param, int argc, char *argv[]) {
+//    for (int i = 0; i < argc; i++)
+//        if (string(argv[i]) == param)
+//            return i;
+//    
+//    return -1;
+//}
+
 /************************************
  *
  *
@@ -94,14 +189,34 @@ int findParam(std::string param, int argc, char *argv[]) {
  *
  ************************************/
 
-int main(int argc, char **argv) {
+void detect(int argc, char **argv){
     
     try {
-        if (readArguments(argc, argv) == false) {
-            return 0;
+        
+/////////////////////////////////////////////////////////////////////////////////////////////////// parse arguments
+        //! [file_read]
+        Settings s;
+        const string inputSettingsFile = "../../LPS/include/inputSettings.xml";
+        FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
+        if (!fs.isOpened()) {
+            cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
+            return;
         }
         
-        // parse arguments
+        fs["Settings"] >> s;
+        fs.release();                                         // close Settings file
+        //! [file_read]
+        
+        //FileStorage fout("settings.yml", FileStorage::WRITE); // write config as YAML
+        //fout << "Settings" << s;
+        
+        if (!s.goodInput)
+        {
+            cout << "Invalid input detected. Application stopping. " << endl;
+            return;
+        }
+        
+////////////////////////////////////////////////
         
         // read from camera or from  file
         if (TheInputVideo.find("live") != string::npos) {
@@ -120,7 +235,7 @@ int main(int argc, char **argv) {
         // check video is open
         if (!TheVideoCapturer.isOpened()) {
             cerr << "Could not open video" << endl;
-            return -1;
+            return;
         }
         bool isVideoFile = false;
         if (TheInputVideo.find(".avi") != std::string::npos || TheInputVideo.find("live") != string::npos)
@@ -140,10 +255,6 @@ int main(int argc, char **argv) {
         char key = 0;
         int index = 0;
         // capture until press ESC or until the end of the video
-        
-//*********************************************************************************************************************************************************
-// Loop begins
-//*********************************************************************************************************************************************************
         
         do {
             

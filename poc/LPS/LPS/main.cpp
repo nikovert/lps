@@ -7,11 +7,11 @@
 //
 
 #include <iostream>
-#include "tmp_main.h"
+void calibrate();
 using namespace std;
 
-int tmp_main(int argc, char **argv) {
-    //detect();
+int main(int argc, char **argv){
+    calibrate();
     cout << "Hello World" << endl;
     return 0;
 }

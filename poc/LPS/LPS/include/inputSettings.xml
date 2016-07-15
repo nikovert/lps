@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<Settings>
+  <!-- input videostream, in this case live -->
+  <TheInputVideo>"live[:idx_cam=0]"</TheInputVideo>
+  
+  <!-- the calibrationfile of the camera used-->
+   <TheIntrinsicFile>"../../LPS/include/out_camera_data.xml"</TheIntrinsicFile>
+  
+  <!-- The size of the markers, in this case in cm -->
+  <TheMarkerSize>8.89</TheMarkerSize>
+      
+</Settings>
+</opencv_storage>
