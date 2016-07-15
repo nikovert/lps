@@ -25,7 +25,6 @@
  authors and should not be interpreted as representing official policies, either expressed
  or implied, of Rafael Muñoz Salinas.
  ********************************************************************************************/
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -96,6 +95,7 @@ int findParam(std::string param, int argc, char *argv[]) {
  ************************************/
 
 int main(int argc, char **argv) {
+    
     try {
         if (readArguments(argc, argv) == false) {
             return 0;
@@ -139,12 +139,11 @@ int main(int argc, char **argv) {
         
         char key = 0;
         int index = 0;
-        return 5;
         // capture until press ESC or until the end of the video
         
-//*********************************************************************************************************************************************
+//*********************************************************************************************************************************************************
 // Loop begins
-//*********************************************************************************************************************************************
+//*********************************************************************************************************************************************************
         
         do {
             
@@ -174,7 +173,9 @@ int main(int argc, char **argv) {
             
         } while (key != 27 && (TheVideoCapturer.grab() || !isVideoFile));
         
-    } catch (std::exception &ex){
+    } catch (std::exception &ex)
+    
+    {
         cout << "Exception :" << ex.what() << endl;
     }
 }

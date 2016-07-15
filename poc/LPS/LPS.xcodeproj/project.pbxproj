@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B9143421D37D2AA00FDF867 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143411D37D2AA00FDF867 /* main.cpp */; };
+		1B2166791D38E383004626D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B2166781D38E383004626D0 /* main.cpp */; };
+		1B9143421D37D2AA00FDF867 /* tmp_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143411D37D2AA00FDF867 /* tmp_main.cpp */; };
 		1B9144141D37D3F500FDF867 /* ardrone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143F81D37D3F500FDF867 /* ardrone.cpp */; };
 		1B9144151D37D3F500FDF867 /* command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143FA1D37D3F500FDF867 /* command.cpp */; };
 		1B9144161D37D3F500FDF867 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143FB1D37D3F500FDF867 /* config.cpp */; };
@@ -19,7 +20,6 @@
 		1B91441C1D37D3F500FDF867 /* fly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144031D37D3F500FDF867 /* fly.cpp */; };
 		1B91441D1D37D3F500FDF867 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144041D37D3F500FDF867 /* move.cpp */; };
 		1B9144231D37D40500FDF867 /* camerlocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B91441F1D37D40500FDF867 /* camerlocation.cpp */; };
-		1B9144241D37D40500FDF867 /* detect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144211D37D40500FDF867 /* detect.cpp */; };
 		1B9144251D37D40500FDF867 /* markerlocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144221D37D40500FDF867 /* markerlocation.cpp */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +36,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B2166781D38E383004626D0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1B91433E1D37D2AA00FDF867 /* LPS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LPS; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B9143411D37D2AA00FDF867 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1B9143411D37D2AA00FDF867 /* tmp_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tmp_main.cpp; sourceTree = "<group>"; };
 		1B91434B1D37D3F500FDF867 /* ffmpeg-2.2.3.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "ffmpeg-2.2.3.tar.gz"; sourceTree = "<group>"; };
 		1B91434E1D37D3F500FDF867 /* avcodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avcodec.h; sourceTree = "<group>"; };
 		1B91434F1D37D3F500FDF867 /* avfft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avfft.h; sourceTree = "<group>"; };
@@ -161,9 +162,8 @@
 		1B9144091D37D3F500FDF867 /* test.exe.manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.exe.manifest; sourceTree = "<group>"; };
 		1B91441F1D37D40500FDF867 /* camerlocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camerlocation.cpp; sourceTree = "<group>"; };
 		1B9144201D37D40500FDF867 /* location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = location.h; sourceTree = "<group>"; };
-		1B9144211D37D40500FDF867 /* detect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = detect.cpp; sourceTree = "<group>"; };
 		1B9144221D37D40500FDF867 /* markerlocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = markerlocation.cpp; sourceTree = "<group>"; };
-		1B9144261D37DB5200FDF867 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		1B9144261D37DB5200FDF867 /* tmp_main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tmp_main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,8 +198,8 @@
 			children = (
 				1B91441E1D37D40500FDF867 /* detect_marker */,
 				1B9143481D37D3F500FDF867 /* ar_drone */,
-				1B9143411D37D2AA00FDF867 /* main.cpp */,
-				1B9144261D37DB5200FDF867 /* main.h */,
+				1B9143411D37D2AA00FDF867 /* tmp_main.cpp */,
+				1B9144261D37DB5200FDF867 /* tmp_main.h */,
 			);
 			path = LPS;
 			sourceTree = "<group>";
@@ -503,9 +503,9 @@
 		1B91441E1D37D40500FDF867 /* detect_marker */ = {
 			isa = PBXGroup;
 			children = (
+				1B2166781D38E383004626D0 /* main.cpp */,
 				1B91441F1D37D40500FDF867 /* camerlocation.cpp */,
 				1B9144201D37D40500FDF867 /* location.h */,
-				1B9144211D37D40500FDF867 /* detect.cpp */,
 				1B9144221D37D40500FDF867 /* markerlocation.cpp */,
 			);
 			path = detect_marker;
@@ -571,11 +571,11 @@
 				1B9144251D37D40500FDF867 /* markerlocation.cpp in Sources */,
 				1B91441B1D37D3F500FDF867 /* video.cpp in Sources */,
 				1B9144191D37D3F500FDF867 /* udp.cpp in Sources */,
+				1B2166791D38E383004626D0 /* main.cpp in Sources */,
 				1B9144231D37D40500FDF867 /* camerlocation.cpp in Sources */,
-				1B9144241D37D40500FDF867 /* detect.cpp in Sources */,
 				1B9144171D37D3F500FDF867 /* navdata.cpp in Sources */,
 				1B9144141D37D3F500FDF867 /* ardrone.cpp in Sources */,
-				1B9143421D37D2AA00FDF867 /* main.cpp in Sources */,
+				1B9143421D37D2AA00FDF867 /* tmp_main.cpp in Sources */,
 				1B91441A1D37D3F500FDF867 /* version.cpp in Sources */,
 				1B91441D1D37D3F500FDF867 /* move.cpp in Sources */,
 				1B9144151D37D3F500FDF867 /* command.cpp in Sources */,

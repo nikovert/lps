@@ -9,6 +9,6 @@
 #ifndef main_h
 #define main_h
 
-int detect(int argc, char **argv);
+//void detect();
 
 #endif /* main_h */
