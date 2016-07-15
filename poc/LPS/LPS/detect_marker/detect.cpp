@@ -39,7 +39,7 @@ using namespace aruco;
 
 string TheInputVideo;
 string TheIntrinsicFile;
-float TheMarkerSize = -1;
+double TheMarkerSize = -1;
 int ThePyrDownLevel;
 MarkerDetector MDetector;
 VideoCapture TheVideoCapturer;
@@ -156,31 +156,32 @@ static inline void read(const FileNode& node, Settings& x, const Settings& defau
         x.read(node);
 }
 
-bool readArguments(int argc, char **argv) {
-    if (argc < 2) {
-        cerr << "Invalid number of arguments" << endl;
-        cerr << "Usage: (in.avi|live[:idx_cam=0]) [intrinsics.yml] [size]" << endl;
-        return false;
-    }
-    
-    TheInputVideo = argv[1];
-    if (argc >= 3)
-        TheIntrinsicFile = argv[2]; //Camera calibration file, not sure!
-    if (argc >= 4)
-        TheMarkerSize = atof(argv[3]);
-    
-    if (argc == 3)
-        cerr << "NOTE: You need makersize to see 3d info!!!!" << endl;
-    return true;
-}
+//bool readArguments(int argc, char **argv) {
+//    if (argc < 2) {
+//        cerr << "Invalid number of arguments" << endl;
+//        cerr << "Usage: (in.avi|live[:idx_cam=0]) [intrinsics.yml] [size]" << endl;
+//        return false;
+//    }
+//    
+//    TheInputVideo = argv[1];
+//    if (argc >= 3)
+//        TheIntrinsicFile = argv[2]; //Camera calibration file, not sure!
+//    if (argc >= 4)
+//        TheMarkerSize = atof(argv[3]);
+//    
+//    if (argc == 3)
+//        cerr << "NOTE: You need makersize to see 3d info!!!!" << endl;
+//    return true;
+//}
+//
+//int findParam(std::string param, int argc, char *argv[]) {
+//    for (int i = 0; i < argc; i++)
+//        if (string(argv[i]) == param)
+//            return i;
+//    
+//    return -1;
+//}
 
-int findParam(std::string param, int argc, char *argv[]) {
-    for (int i = 0; i < argc; i++)
-        if (string(argv[i]) == param)
-            return i;
-    
-    return -1;
-}
 /************************************
  *
  *
@@ -188,20 +189,20 @@ int findParam(std::string param, int argc, char *argv[]) {
  *
  ************************************/
 
-int main(int argc, char **argv) {
+void detect(int argc, char **argv){
     
     try {
         
 /////////////////////////////////////////////////////////////////////////////////////////////////// parse arguments
         //! [file_read]
         Settings s;
-        const string inputSettingsFile = "../../include/inputSettings.xml";
+        const string inputSettingsFile = "../../LPS/include/inputSettings.xml";
         FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
-        if (!fs.isOpened())
-        {
+        if (!fs.isOpened()) {
             cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
-            return -1;
+            return;
         }
+        
         fs["Settings"] >> s;
         fs.release();                                         // close Settings file
         //! [file_read]
@@ -212,7 +213,7 @@ int main(int argc, char **argv) {
         if (!s.goodInput)
         {
             cout << "Invalid input detected. Application stopping. " << endl;
-            return -1;
+            return;
         }
         
 ////////////////////////////////////////////////
@@ -234,7 +235,7 @@ int main(int argc, char **argv) {
         // check video is open
         if (!TheVideoCapturer.isOpened()) {
             cerr << "Could not open video" << endl;
-            return -1;
+            return;
         }
         bool isVideoFile = false;
         if (TheInputVideo.find(".avi") != std::string::npos || TheInputVideo.find("live") != string::npos)
@@ -254,10 +255,6 @@ int main(int argc, char **argv) {
         char key = 0;
         int index = 0;
         // capture until press ESC or until the end of the video
-        
-//*********************************************************************************************************************************************************
-// Loop begins
-//*********************************************************************************************************************************************************
         
         do {
             

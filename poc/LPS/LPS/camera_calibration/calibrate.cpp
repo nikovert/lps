@@ -264,7 +264,7 @@ int calibrate() {
     
     //! [file_read]
     CalibrationSettings s;
-    const string inputSettingsFile = "../../include/calibration_inputSettings.xml";
+    const string inputSettingsFile = "../../LPS/include/calibration_inputSettings.xml";
     FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
     if (!fs.isOpened())
     {

@@ -10,7 +10,7 @@
 void calibrate();
 using namespace std;
 
-int tmp_main(int argc, char **argv) {
+int main(int argc, char **argv){
     calibrate();
     cout << "Hello World" << endl;
     return 0;
