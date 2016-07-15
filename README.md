@@ -63,6 +63,10 @@ hand tab). You should now have three tabs in the centre window. BuildSettings | 
 
 		/Users/"username"/Documents/OpenCv/aruco-1.3.0/src
 
+•	Alternativly one can add the content of src to the include path 
+	
+		/usr/local/include/aruco
+	
 •	Next Double Click the Library Search Paths option, then Click the plus icon 
 
 •	Type in the following: 
