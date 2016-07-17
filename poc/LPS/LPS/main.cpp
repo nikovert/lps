@@ -7,11 +7,12 @@
 //
 
 #include <iostream>
-void calibrate();
+#include "drone.h"
+
 using namespace std;
 
+
 int main(int argc, char **argv){
-    calibrate();
-    cout << "Hello World" << endl;
+    fly();
     return 0;
 }

@@ -25,9 +25,6 @@
  authors and should not be interpreted as representing official policies, either expressed
  or implied, of Rafael Muñoz Salinas.
  ********************************************************************************************/
-/*
- 
- 
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -35,14 +32,13 @@
 #include <aruco/cvdrawingutils.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
-#include "location.h"
-
+#include <raspicam/raspicam_cv.h>
 using namespace cv;
 using namespace aruco;
 
 string TheInputVideo;
 string TheIntrinsicFile;
-double TheMarkerSize = -1;
+float TheMarkerSize = -1;
 int ThePyrDownLevel;
 MarkerDetector MDetector;
 VideoCapture TheVideoCapturer;
@@ -57,118 +53,72 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
-class Settings{
-public:
-    Settings() : goodInput(false) {}
-    bool goodInput;
-    
-    void read(const FileNode& node){
-        node["TheInputVideo" ] >> TheInputVideo;
-        node["TheIntrinsicFile"] >> TheIntrinsicFile;
-        node["TheMarkerSize"] >> TheMarkerSize;
-        validate();
-    }
-    
-    void validate() {
-        goodInput = true;
-        if (TheInputVideo.empty()) {
-            cerr << "No input video provided in settings file" << endl;
-            goodInput = false;
-        }
-        if (TheIntrinsicFile.empty()){
-            cerr << "No intrinsic file provided in settings file" << endl;
-            goodInput = false;
-        }
-        if (TheMarkerSize <= 0)
-        {
-            cerr << "Marker size not provided " << endl;
-            goodInput = false;
-        }
-    }
-};
+Mat getLocation(Marker m, CameraParameters TheCameraParameters);
 
-static inline void read(const FileNode& node, Settings& x, const Settings& default_value = Settings()) {
-    if(node.empty())
-        x = default_value;
-    else
-        x.read(node);
+/************************************
+ *
+ *
+ *
+ *
+ ************************************/
+
+
+bool readArguments(int argc, char **argv) {
+    if (argc < 2) {
+        cerr << "Invalid number of arguments" << endl;
+        cerr << "Usage: (in.avi|live[:idx_cam=0]) [intrinsics.yml] [size]" << endl;
+        return false;
+    }
+    
+    TheInputVideo = argv[1];
+    if (argc >= 3)
+        TheIntrinsicFile = argv[2]; //Camera calibration file, not sure!
+    if (argc >= 4)
+        TheMarkerSize = atof(argv[3]);
+    
+    if (argc == 3)
+        cerr << "NOTE: You need makersize to see 3d info!!!!" << endl;
+    return true;
 }
 
-//bool readArguments(int argc, char **argv) {
-//    if (argc < 2) {
-//        cerr << "Invalid number of arguments" << endl;
-//        cerr << "Usage: (in.avi|live[:idx_cam=0]) [intrinsics.yml] [size]" << endl;
-//        return false;
-//    }
-//    
-//    TheInputVideo = argv[1];
-//    if (argc >= 3)
-//        TheIntrinsicFile = argv[2]; //Camera calibration file, not sure!
-//    if (argc >= 4)
-//        TheMarkerSize = atof(argv[3]);
-//    
-//    if (argc == 3)
-//        cerr << "NOTE: You need makersize to see 3d info!!!!" << endl;
-//    return true;
-//}
-//
-//int findParam(std::string param, int argc, char *argv[]) {
-//    for (int i = 0; i < argc; i++)
-//        if (string(argv[i]) == param)
-//            return i;
-//    
-//    return -1;
-//}
+int findParam(std::string param, int argc, char *argv[]) {
+    for (int i = 0; i < argc; i++)
+        if (string(argv[i]) == param)
+            return i;
+    
+    return -1;
+}
+/************************************
+ *
+ *
+ *
+ *
+ ************************************/
 
-void detect(){
+int main(int argc, char **argv) {
+    
     try {
-        
-        //! [file_read]
-        Settings s;
-        const string inputSettingsFile = "../../LPS/include/inputSettings.xml";
-        FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
-        if (!fs.isOpened()) {
-            cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
-            return;
+        if (readArguments(argc, argv) == false) {
+            return 0;
         }
         
-        fs["Settings"] >> s;
-        fs.release();                                         // close Settings file
-        //! [file_read]
+        // parse arguments
         
-        //FileStorage fout("settings.yml", FileStorage::WRITE); // write config as YAML
-        //fout << "Settings" << s;
-        
-        if (!s.goodInput)
-        {
-            cout << "Invalid input detected. Application stopping. " << endl;
-            return;
-        }
-
         // read from camera or from  file
-        if (TheInputVideo.find("live") != string::npos) {
-            int vIdx = 0;
-            // check if the :idx is here
-            char cad[100];
-            if (TheInputVideo.find(":") != string::npos) {
-                std::replace(TheInputVideo.begin(), TheInputVideo.end(), ':', ' ');
-                sscanf(TheInputVideo.c_str(), "%s %d", cad, &vIdx);
-            }
-            cout << "Opening camera index " << vIdx << endl;
-            TheVideoCapturer.open(vIdx);
-            waitTime = 10;
-        } else
-            TheVideoCapturer.open(TheInputVideo);
+        raspicam::RaspiCam_Cv Camera; //Camera object
+        
+        //set camera params
+        Camera.set( CV_CAP_PROP_FORMAT, CV_8UC1 );
+        
+        //Open camera
+        cout<<"Opening Camera..."<<endl;
+        
         // check video is open
-        if (!TheVideoCapturer.isOpened()) {
-            cerr << "Could not open video" << endl;
-            return;
-        }
-        bool isVideoFile = false;
-        if (TheInputVideo.find(".avi") != std::string::npos || TheInputVideo.find("live") != string::npos)
-            isVideoFile = true;
+        if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return -1;}
+        Camera.grab();
+        
         // read first image to get the dimensions
-        TheVideoCapturer >> TheInputImage;
+        Camera.retrieve(TheInputImage);
         
         // read camera parameters if passed
         if (TheIntrinsicFile != "") {
@@ -182,10 +132,11 @@ void detect(){
         char key = 0;
         int index = 0;
         // capture until press ESC or until the end of the video
+
+        cout << "starting scan" << endl;
         
         do {
             
-            // copy image
             index++; // number of images captured
             double tick = (double)getTickCount(); // for checking the speed
             // Detection of markers in the image passed
@@ -193,7 +144,7 @@ void detect(){
             // check the speed by calculating the mean speed of all iterations
             AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
             AvrgTime.second++;
-//            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
+            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
             
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
                 //cout << endl << TheMarkers[i] << endl;
@@ -203,12 +154,13 @@ void detect(){
             if (TheMarkers.size() != 0)
                 cout << endl;
             
-            key = cv::waitKey(waitTime); // wait for key to be pressed
+            Camera.retrieve (TheInputImage);
             
-            if (isVideoFile)
-                TheVideoCapturer.retrieve(TheInputImage);
-            
-        } while (key != 27 && (TheVideoCapturer.grab() || !isVideoFile));
+        } while (key != 27 && (Camera.grab()));
+        
+        cout<<"Stop camera..."<<endl;
+        Camera.release();
+
         
     } catch (std::exception &ex)
     
@@ -216,5 +168,3 @@ void detect(){
         cout << "Exception :" << ex.what() << endl;
     }
 }
- 
- */

@@ -79,8 +79,7 @@ public:
         validate();
     }
     
-    void validate()
-    {
+    void validate(){
         goodInput = true;
         if (boardSize.width <= 0 || boardSize.height <= 0)
         {
@@ -156,8 +155,7 @@ public:
         
     }
     
-    Mat nextImage()
-    {
+    Mat nextImage(){
         Mat result;
         if( inputCapture.isOpened() )
         {
@@ -171,8 +169,7 @@ public:
         return result;
     }
     
-    static bool readStringList( const string& filename, vector<string>& l )
-    {
+    static bool readStringList( const string& filename, vector<string>& l ){
         l.clear();
         FileStorage fs(filename, FileStorage::READ);
         if( !fs.isOpened() )
@@ -232,14 +229,14 @@ enum { DETECTION = 0, CAPTURING = 1, CALIBRATED = 2 };
 
 bool runCalibrationAndSave(CalibrationSettings& s, Size imageSize, Mat&  cameraMatrix, Mat& distCoeffs,
                            vector<vector<Point2f> > imagePoints );
-int take_image(void);
+int take_image(int x);
 
 int delete_file() {
-    ifstream fin("../../include/out_camera_data.xml");
+    ifstream fin("../../LPS/include/out_camera_data.xml");
     if (fin)
     {
         cout << "File found, deleting..." << endl;
-        system("DEL /F ../../include/out_camera_data.xml");
+        system("DEL /F ../../LPS/include/out_camera_data.xml");
         fin.close();
     }
     else
@@ -253,7 +250,7 @@ int delete_file() {
 int calibrate() {
     bool take_photo = false;
     if(take_photo)
-        take_image();
+        take_image(1);
     
     //delete_file();
     

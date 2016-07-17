@@ -19,10 +19,11 @@
 		1B9144191D37D3F500FDF867 /* udp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9143FE1D37D3F500FDF867 /* udp.cpp */; };
 		1B91441A1D37D3F500FDF867 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144001D37D3F500FDF867 /* version.cpp */; };
 		1B91441B1D37D3F500FDF867 /* video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144011D37D3F500FDF867 /* video.cpp */; };
-		1B91441C1D37D3F500FDF867 /* fly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144031D37D3F500FDF867 /* fly.cpp */; };
+		1B91441C1D37D3F500FDF867 /* drone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144031D37D3F500FDF867 /* drone.cpp */; };
 		1B91441D1D37D3F500FDF867 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144041D37D3F500FDF867 /* move.cpp */; };
 		1B9144231D37D40500FDF867 /* camerlocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B91441F1D37D40500FDF867 /* camerlocation.cpp */; };
 		1B9144251D37D40500FDF867 /* markerlocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B9144221D37D40500FDF867 /* markerlocation.cpp */; };
+		1BFD10461D3A46BE00F643CD /* reaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BFD10441D3A46BE00F643CD /* reaction.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -162,7 +163,7 @@
 		1B9144001D37D3F500FDF867 /* version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = version.cpp; sourceTree = "<group>"; };
 		1B9144011D37D3F500FDF867 /* video.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = video.cpp; sourceTree = "<group>"; };
 		1B9144021D37D3F500FDF867 /* drone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drone.h; sourceTree = "<group>"; };
-		1B9144031D37D3F500FDF867 /* fly.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fly.cpp; sourceTree = "<group>"; };
+		1B9144031D37D3F500FDF867 /* drone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drone.cpp; sourceTree = "<group>"; };
 		1B9144041D37D3F500FDF867 /* move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = move.cpp; sourceTree = "<group>"; };
 		1B9144051D37D3F500FDF867 /* move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = move.h; sourceTree = "<group>"; };
 		1B9144071D37D3F500FDF867 /* icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = icon.ico; sourceTree = "<group>"; };
@@ -171,6 +172,8 @@
 		1B91441F1D37D40500FDF867 /* camerlocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camerlocation.cpp; sourceTree = "<group>"; };
 		1B9144201D37D40500FDF867 /* location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = location.h; sourceTree = "<group>"; };
 		1B9144221D37D40500FDF867 /* markerlocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = markerlocation.cpp; sourceTree = "<group>"; };
+		1BFD10441D3A46BE00F643CD /* reaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = reaction.cpp; sourceTree = "<group>"; };
+		1BFD10451D3A46BE00F643CD /* reaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reaction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +249,7 @@
 				1B9143491D37D3F500FDF867 /* 3rdparty */,
 				1B9143F71D37D3F500FDF867 /* ardrone */,
 				1B9144021D37D3F500FDF867 /* drone.h */,
-				1B9144031D37D3F500FDF867 /* fly.cpp */,
+				1B9144031D37D3F500FDF867 /* drone.cpp */,
 				1B9144041D37D3F500FDF867 /* move.cpp */,
 				1B9144051D37D3F500FDF867 /* move.h */,
 				1B9144061D37D3F500FDF867 /* resource */,
@@ -543,6 +546,8 @@
 				1B91441F1D37D40500FDF867 /* camerlocation.cpp */,
 				1B9144201D37D40500FDF867 /* location.h */,
 				1B9144221D37D40500FDF867 /* markerlocation.cpp */,
+				1BFD10441D3A46BE00F643CD /* reaction.cpp */,
+				1BFD10451D3A46BE00F643CD /* reaction.h */,
 			);
 			path = detect_marker;
 			sourceTree = "<group>";
@@ -604,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B9144181D37D3F500FDF867 /* tcp.cpp in Sources */,
+				1BFD10461D3A46BE00F643CD /* reaction.cpp in Sources */,
 				1B9144251D37D40500FDF867 /* markerlocation.cpp in Sources */,
 				1B91441B1D37D3F500FDF867 /* video.cpp in Sources */,
 				1B9144191D37D3F500FDF867 /* udp.cpp in Sources */,
@@ -617,7 +623,7 @@
 				1B91441A1D37D3F500FDF867 /* version.cpp in Sources */,
 				1B91441D1D37D3F500FDF867 /* move.cpp in Sources */,
 				1B9144151D37D3F500FDF867 /* command.cpp in Sources */,
-				1B91441C1D37D3F500FDF867 /* fly.cpp in Sources */,
+				1B91441C1D37D3F500FDF867 /* drone.cpp in Sources */,
 				1B9144161D37D3F500FDF867 /* config.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
