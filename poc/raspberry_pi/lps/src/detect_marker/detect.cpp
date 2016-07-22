@@ -59,6 +59,7 @@ double ThresParam1, ThresParam2;
 int iThresParam1, iThresParam2;
 int waitTime = 0;
 
+//saves inputs form xml file
 class Settings{
 public:
     Settings() : goodInput(false) {}
@@ -83,6 +84,7 @@ public:
     }
 };
 
+//reads xml settings file
 static inline void read(const FileNode& node, Settings& x, const Settings& default_value = Settings()) {
     if(node.empty())
         x = default_value;
@@ -99,6 +101,7 @@ static inline void read(const FileNode& node, Settings& x, const Settings& defau
 //    return tvec;
 //}
 
+//converts a Mat to a 3d point, not universal, do not use!!
 Point3d MatPoint(Mat mat){
     if(mat.rows==3){
         return Point3d(mat.at<double>(0, 0), mat.at<double>(1, 0), mat.at<double>(2, 0));
@@ -110,6 +113,7 @@ Point3d MatPoint(Mat mat){
     return Point3d(0,0,0);
 }
 
+//initializes the marker detection, must be executed first time
 void initialize_detection(){
     try {
         //! [file_read]
@@ -177,6 +181,7 @@ void initialize_detection(){
     }
 }
 
+//can be looped, detects the marker and sets the drone_location
 void detect(){
     try {
         if(!detection_init){

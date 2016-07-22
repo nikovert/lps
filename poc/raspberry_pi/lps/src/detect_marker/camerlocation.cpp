@@ -19,6 +19,7 @@ using namespace aruco;
 
 Point3d drone_location;
 
+// calculates the coordinates of the drone, may be used in future to calculate camera pose
 Mat getLocation(Marker m, CameraParameters TheCameraParameters, bool print){
     //bool debug = false;
     if(print) cout << "Marker id: " << m.id << endl;

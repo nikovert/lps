@@ -14,54 +14,59 @@ using namespace std;
 bool straight, backward, up, down, port, starbourd, clockwise, anticlockwise, land;
 int int_straight, int_backward, int_up, int_down, int_port, int_starbourd, int_clockwise, int_anticlockwise;
 
+bool output_movement = false;
+
+//these functions prepare the drone to be moved in a particular direction
+
 void move_straight(int x){
-    cout << "moving " << "forward" << endl;
+    if(output_movement)cout << "moving " << "forward" << endl;
     int_straight = x;
     straight = true;
 }
 
 void move_backward(int x){
-    cout << "moving " << "backward" << endl;
+    if(output_movement)cout << "moving " << "backward" << endl;
     int_backward = x;
     backward = true;
 }
 
 void move_up(int x){
-    cout << "moving " << "up" << endl;
+    if(output_movement)cout << "moving " << "up" << endl;
     int_up = x;
     up = true;
 }
 
 void move_down(int x){
-    cout << "moving " << "down" << endl;
+    if(output_movement)cout << "moving " << "down" << endl;
     int_down = x;
     down = true;
 }
 
 void move_port(int x){
-    cout << "moving " << "left" << endl;
+    if(output_movement)cout << "moving " << "left" << endl;
     int_up = x;
     port = true;
 }
 
 void move_starbourd(int x){
-    cout << "moving " << "right" << endl;
+    if(output_movement)cout << "moving " << "right" << endl;
     int_up = x;
     starbourd = true;
 }
 
 void move_clockwise(int x){
-    cout << "turning " << "clockwise" << endl;
+    if(output_movement)cout << "turning " << "clockwise" << endl;
     int_clockwise = x;
     clockwise = true;
 }
 
 void move_anticlockwise(int x){
-    cout << "turning " << "anticlockwise" << endl;
+    if(output_movement)cout << "turning " << "anticlockwise" << endl;
     int_anticlockwise = x;
     anticlockwise = true;
 }
 
+//checks if the drone needs to move forward or backward and returns by how much
 double vx(){
     double vx = 0.0;
     if(straight){
@@ -76,6 +81,7 @@ double vx(){
     return vx;
 }
 
+//checks if the drone needs to move left or right and returns by how much
 double vy(){
     double vy = 0;
     if(port){
@@ -90,6 +96,7 @@ double vy(){
     return vy;
 }
 
+//checks if the drone needs to move up or down and returns by how much
 double vz(){
     double vz = 0;
     if(up){
@@ -104,6 +111,7 @@ double vz(){
     return vz;
 }
 
+//checks if the drone needs to be turned and returns by how much
 double vr(){
     double vr = 0;
     if(clockwise){
@@ -118,7 +126,7 @@ double vr(){
     return vr;
 }
 
-
+//checks if the drone still needs to be moved
 bool check(){
     if(int_straight == 0){
         straight = false;

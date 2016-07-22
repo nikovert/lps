@@ -21,6 +21,7 @@
 using namespace cv;
 using namespace std;
 
+//prints help information for the camera calibration
 static void help() {
     cout <<  "This is a camera calibration sample." << endl
     <<  "Usage: calibration configurationFile"  << endl
@@ -28,6 +29,7 @@ static void help() {
     "how to edit it.  It may be any OpenCV supported file format XML/YAML." << endl;
 }
 
+//saves the calibration settings from the xml file
 class CalibrationSettings {
 public:
     CalibrationSettings() : goodInput(false) {}

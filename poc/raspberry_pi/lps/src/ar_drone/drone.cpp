@@ -1,10 +1,8 @@
 #include "move.h"
 #include "drone.h"
+#include <unistd.h> // for usleep function
 // --------------------------------------------------------------------------
-// main(Number of arguments, Argument values)
-// Description  : This is the entry point of the program.
-// Return value : SUCCESS:0  ERROR:-1
-// Thanks to puku0x @ github
+// Thanks to puku0x @ github for supplying the main implementation od the ardrone fuction
 // --------------------------------------------------------------------------
 using namespace std;
 
@@ -13,10 +11,15 @@ bool drone_initialised;
 bool altitude;
 int tick;
 
+//lands the drone and returns if this was successful;
 bool landing(){
     ardrone.landing();
+    usleep(5000); // wait 5 seconds
+    if(!ardrone.onGround())
+        return false;
     // See you
     ardrone.close();
+    return true;
 }
 
 //Initialisizes Drone, first time only
@@ -31,7 +34,6 @@ void initialize_drone(){
     }
     
     drone_initialised = true;
-    bool front_camera = true;
     
     // Battery
     std::cout << "Battery = " << ardrone.getBatteryPercentage() << "[%]" << std::endl;
@@ -49,15 +51,12 @@ void fly(){
     if(!drone_initialised)
         initialize_drone();
     
-    // Get an image
-    //cv::Mat image = ardrone.getImage();
+    // Take off
+    if (ardrone.onGround()) ardrone.takeoff();
     
     // detect marker
     detect();
     
-    // Take off
-    if (ardrone.onGround()) ardrone.takeoff();
-        
     ardrone.move3D(vx(), vy(), vz(), vr());
         
     if(check()){
