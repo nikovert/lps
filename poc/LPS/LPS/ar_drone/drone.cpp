@@ -28,7 +28,7 @@ int fly(){
 
     // Outdoor mode
     ardrone.setOutdoorMode(true);
-    init_detect(ardrone.getImage());
+    //init_detect(ardrone.getImage());
     while (1) {
         // Key input
         int key = cv::waitKey(33);
@@ -38,7 +38,7 @@ int fly(){
         cv::Mat image = ardrone.getImage();
         
         // detect marker
-        ar_detect(image);
+        //ar_detect(image);
         
         // Take off
 //        if (ardrone.onGround()) ardrone.takeoff();

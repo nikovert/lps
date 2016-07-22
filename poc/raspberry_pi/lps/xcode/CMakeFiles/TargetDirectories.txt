@@ -1,0 +1,3 @@
+/Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/CMakeFiles/lps.dir
+/Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/CMakeFiles/ALL_BUILD.dir
+/Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/CMakeFiles/ZERO_CHECK.dir

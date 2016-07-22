@@ -25,9 +25,7 @@
  authors and should not be interpreted as representing official policies, either expressed
  or implied, of Rafael Muñoz Salinas.
  ********************************************************************************************/
-/*
- 
- 
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -120,9 +118,17 @@ static inline void read(const FileNode& node, Settings& x, const Settings& defau
 //    return -1;
 //}
 
+Mat average(vector<Mat> positions){
+    Mat tvec;
+    for(int i = 0; i<positions.size();i++){
+        tvec = tvec + positions[i];
+    }
+    tvec/positions.size();
+    return tvec;
+}
+
 void detect(){
     try {
-        
         //! [file_read]
         Settings s;
         const string inputSettingsFile = "../../LPS/include/inputSettings.xml";
@@ -194,11 +200,26 @@ void detect(){
             AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
             AvrgTime.second++;
 //            cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
+
+            
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            
+            
+            vector<Mat> positions;
             
             for (unsigned int i = 0; i < TheMarkers.size(); i++) {
                 //cout << endl << TheMarkers[i] << endl;
-                cout << "tvec: " << getLocation(TheMarkers[i], TheCameraParameters) << endl;
+                positions.push_back(getLocation(TheMarkers[i], TheCameraParameters));
             }
+            if(TheMarkers.size()>0)
+                cout << "tvec: " << average(positions);
+            
+            
+            
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            
             
             if (TheMarkers.size() != 0)
                 cout << endl;
@@ -217,4 +238,3 @@ void detect(){
     }
 }
  
- */

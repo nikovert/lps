@@ -21,8 +21,8 @@
 
 int fly();
 bool init_stream(int camera_channel);
-void ar_detect(cv::Mat TheInputImage);
-void init_detect(cv::Mat TheInputImage);
+//void ar_detect(cv::Mat TheInputImage);
+//void init_detect(cv::Mat TheInputImage);
     
 extern aruco::MarkerDetector MDetector;
 extern double TheMarkerSize;

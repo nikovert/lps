@@ -252,7 +252,7 @@ int delete_file()
 
 int main(int argc, char* argv[])
 {
-    bool take_photo = true;
+    bool take_photo = false;
     if(take_photo)
         take_image();
     //delete_file();

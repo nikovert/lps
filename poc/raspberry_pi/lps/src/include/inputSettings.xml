@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<Settings>
+  <!-- the calibrationfile of the camera used-->
+   <TheIntrinsicFile>"../src/include/out_camera_data.xml"</TheIntrinsicFile>
+  <!-- The size of the markers, in this case in cm -->
+  <TheMarkerSize>8.89</TheMarkerSize>
+</Settings>
+</opencv_storage>

@@ -11,8 +11,9 @@
 
 using namespace std;
 
+void detect();
 
 int main(int argc, char **argv){
-    fly();
+    detect();
     return 0;
 }

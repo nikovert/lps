@@ -5,7 +5,7 @@
 //  Created by Niko Vertovec on 16/07/16.
 //  Copyright © 2016 Niko Vertovec. All rights reserved.
 //
-
+/*
 #include "reaction.h"
 #include "location.h"
 #include "drone.h"
@@ -42,3 +42,4 @@ void ar_detect(Mat TheInputImage){
             if (TheMarkers.size() != 0)
                 cout << endl;
 }
+*/

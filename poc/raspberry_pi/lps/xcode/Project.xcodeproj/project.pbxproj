@@ -1,0 +1,748 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1B40185899B24B189F7DC306 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1246FF2095D34D0188902B1B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				5716AA5BE68941F6936CC8FF /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		7279D78895C34B6288E9A8BA /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C758FD9E9F474967B75A7230 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				B6D9071D06FD4DE888FCA383 /* CMake Rules */,
+			);
+			dependencies = (
+				B29393A4967B41AA9A7564DD /* PBXTargetDependency */,
+				E65634C8FE5A4887A6B70D62 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		050DEFA543A44948827E0750 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/command.cpp */ = {isa = PBXBuildFile; fileRef = F40BEC8AA44040858D5B476C /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/command.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		2AE9DEC19B904FF8A1FEB5D5 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 9C039736D9C5428990C8603B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */; settings = {COMPILER_FLAGS = ""; }; };
+		32CBC9D871E543F9AA1EE9A7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/flyto.cpp */ = {isa = PBXBuildFile; fileRef = 7593E213423F4F0AAB2D3FF9 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/flyto.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		37D716ABB7FC4F8A8DE293C0 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/tcp.cpp */ = {isa = PBXBuildFile; fileRef = 8C3C0E34D4CF4F48A1A7E5F7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/tcp.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		38F6AF54DB4C43DEB22ADC37 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/main.cpp */ = {isa = PBXBuildFile; fileRef = 67FADF3F72F941EF80962969 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/main.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		405CB8AB1CB8478E9AAC025D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/camerlocation.cpp */ = {isa = PBXBuildFile; fileRef = A98E89041633459B9D1EC9E7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/camerlocation.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		42AF50F6A5CC4783A63A240D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/markerlocation.cpp */ = {isa = PBXBuildFile; fileRef = F96C65ED72494ECB8BC624C6 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/markerlocation.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		4807080BC1BD407D9BCBF75F /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/navdata.cpp */ = {isa = PBXBuildFile; fileRef = 77120C3074F84C3CBBD75650 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/navdata.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		658D2F4396B94FD0A6F216F0 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/calibrate.cpp */ = {isa = PBXBuildFile; fileRef = 68C629E93DF74D8E8BC9E777 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/calibrate.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		6D5400A8A4E445DF9EF033EF /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/drone.cpp */ = {isa = PBXBuildFile; fileRef = 4AA570F332BC4A2BAE1E3404 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/drone.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		976D3096EE6B4422966DDD78 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/take_image.cpp */ = {isa = PBXBuildFile; fileRef = DB03BFB7060B4AD68A0841A8 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/take_image.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		ABECE6599136476387707D23 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/detect.cpp */ = {isa = PBXBuildFile; fileRef = CFFFE2CD034C4398864C3074 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/detect.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		B1311FCD31B243F59FB6218B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/udp.cpp */ = {isa = PBXBuildFile; fileRef = 7ED9551BA60A4A1A8A74784B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/udp.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		C425B62E14214534A1551E21 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/ardrone.cpp */ = {isa = PBXBuildFile; fileRef = 8F33F720325943C492152779 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/ardrone.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		C93FCD5CC9E14809A3F8ED86 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/config.cpp */ = {isa = PBXBuildFile; fileRef = 353C0236EFAA4EC18B4EBEA1 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/config.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		F150E91350D2434CA1FF226A /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/version.cpp */ = {isa = PBXBuildFile; fileRef = ED715E609451496BA45CAE5A /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/version.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		F402FBA5F3BB4F62A9FA6BF3 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/video.cpp */ = {isa = PBXBuildFile; fileRef = 3AC0E25EB0004B6792B5C92D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/video.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		FAB957CD748D407596308E14 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/move.cpp */ = {isa = PBXBuildFile; fileRef = ED06DB71E35E41DCA25C80AD /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/move.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		1DB4506B54984A708C5D1E8B /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		4EBC1D1E6B23429285A5479F /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		56479AB60CE142168B6664D2 = {
+			isa = PBXBuildStyle;
+		};
+		9375D270EB924418A4C5C751 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		DAF3420F288E49F5B19F5739 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		372E45751FC04CE2AF7A3ACA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B05591AB1CF472C82C8BF73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B40185899B24B189F7DC306;
+			remoteInfo = ZERO_CHECK;
+		};
+		E8367248CED64382A1D42257 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B05591AB1CF472C82C8BF73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC71BADDE09546028E021049;
+			remoteInfo = lps;
+		};
+		EA61AF4FB10D4436AC128872 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B05591AB1CF472C82C8BF73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B40185899B24B189F7DC306;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		266862C3F4614B9EB3B70134 /* lps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = lps; refType = 0; sourceTree = BUILT_PRODUCTS_DIR; };
+		353C0236EFAA4EC18B4EBEA1 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/config.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = config.cpp; path = ar_drone/ardrone/config.cpp; sourceTree = SOURCE_ROOT; };
+		3AC0E25EB0004B6792B5C92D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/video.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = video.cpp; path = ar_drone/ardrone/video.cpp; sourceTree = SOURCE_ROOT; };
+		4AA570F332BC4A2BAE1E3404 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/drone.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = drone.cpp; path = ar_drone/drone.cpp; sourceTree = SOURCE_ROOT; };
+		67FADF3F72F941EF80962969 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		68C629E93DF74D8E8BC9E777 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/calibrate.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = calibrate.cpp; path = camera_calibration/calibrate.cpp; sourceTree = SOURCE_ROOT; };
+		7593E213423F4F0AAB2D3FF9 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/flyto.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = flyto.cpp; path = detect_marker/flyto.cpp; sourceTree = SOURCE_ROOT; };
+		77120C3074F84C3CBBD75650 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/navdata.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = navdata.cpp; path = ar_drone/ardrone/navdata.cpp; sourceTree = SOURCE_ROOT; };
+		7ED9551BA60A4A1A8A74784B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/udp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = udp.cpp; path = ar_drone/ardrone/udp.cpp; sourceTree = SOURCE_ROOT; };
+		8C3C0E34D4CF4F48A1A7E5F7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/tcp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tcp.cpp; path = ar_drone/ardrone/tcp.cpp; sourceTree = SOURCE_ROOT; };
+		8F33F720325943C492152779 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/ardrone.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ardrone.cpp; path = ar_drone/ardrone/ardrone.cpp; sourceTree = SOURCE_ROOT; };
+		9C039736D9C5428990C8603B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A98E89041633459B9D1EC9E7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/camerlocation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = camerlocation.cpp; path = detect_marker/camerlocation.cpp; sourceTree = SOURCE_ROOT; };
+		CFFFE2CD034C4398864C3074 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/detect.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = detect.cpp; path = detect_marker/detect.cpp; sourceTree = SOURCE_ROOT; };
+		DB03BFB7060B4AD68A0841A8 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/take_image.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = take_image.cpp; path = camera_calibration/take_image.cpp; sourceTree = SOURCE_ROOT; };
+		E8A3586BAFEB481B858106B9 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		ED06DB71E35E41DCA25C80AD /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/move.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = move.cpp; path = ar_drone/move.cpp; sourceTree = SOURCE_ROOT; };
+		ED715E609451496BA45CAE5A /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/version.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = version.cpp; path = ar_drone/ardrone/version.cpp; sourceTree = SOURCE_ROOT; };
+		F40BEC8AA44040858D5B476C /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/command.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = command.cpp; path = ar_drone/ardrone/command.cpp; sourceTree = SOURCE_ROOT; };
+		F6C8329977714567B3006580 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		F96C65ED72494ECB8BC624C6 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/markerlocation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = markerlocation.cpp; path = detect_marker/markerlocation.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		08761415A0F54FD6BD58CDD8 /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				FA4860C7C7454CECBFABF8E1 /* CMake Rules */,
+				E8A3586BAFEB481B858106B9 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		0C3BF92B5A6C49F6B79A6F5E /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		0CD169A173A947F794754F66 = {
+			isa = PBXGroup;
+			children = (
+				F21E58B5DDDA4D42A93745AC /* Sources */,
+				CC378627080649FE8CC3FAC7 /* Resources */,
+				2EF0556DD71247F9BAE59631 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		171913B023DB455C97F346B4 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F33F720325943C492152779 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/ardrone.cpp */,
+				F40BEC8AA44040858D5B476C /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/command.cpp */,
+				353C0236EFAA4EC18B4EBEA1 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/config.cpp */,
+				77120C3074F84C3CBBD75650 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/navdata.cpp */,
+				8C3C0E34D4CF4F48A1A7E5F7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/tcp.cpp */,
+				7ED9551BA60A4A1A8A74784B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/udp.cpp */,
+				ED715E609451496BA45CAE5A /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/version.cpp */,
+				3AC0E25EB0004B6792B5C92D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/video.cpp */,
+				4AA570F332BC4A2BAE1E3404 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/drone.cpp */,
+				ED06DB71E35E41DCA25C80AD /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/move.cpp */,
+				68C629E93DF74D8E8BC9E777 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/calibrate.cpp */,
+				DB03BFB7060B4AD68A0841A8 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/take_image.cpp */,
+				A98E89041633459B9D1EC9E7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/camerlocation.cpp */,
+				CFFFE2CD034C4398864C3074 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/detect.cpp */,
+				7593E213423F4F0AAB2D3FF9 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/flyto.cpp */,
+				F96C65ED72494ECB8BC624C6 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/markerlocation.cpp */,
+				67FADF3F72F941EF80962969 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/main.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		2EF0556DD71247F9BAE59631 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				266862C3F4614B9EB3B70134 /* lps */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7899B141087745E1AC8E75E1 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				0C3BF92B5A6C49F6B79A6F5E /* CMake Rules */,
+				F6C8329977714567B3006580 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		AF8900F8D332420C88C663F6 /* lps */ = {
+			isa = PBXGroup;
+			children = (
+				171913B023DB455C97F346B4 /* Source Files */,
+				9C039736D9C5428990C8603B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/CMakeLists.txt */,
+			);
+			name = lps;
+			sourceTree = "<group>";
+		};
+		CC378627080649FE8CC3FAC7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F21E58B5DDDA4D42A93745AC /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AF8900F8D332420C88C663F6 /* lps */,
+				7899B141087745E1AC8E75E1 /* ALL_BUILD */,
+				08761415A0F54FD6BD58CDD8 /* ZERO_CHECK */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		FA4860C7C7454CECBFABF8E1 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC71BADDE09546028E021049 /* lps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C5A1DCA23D74004B6BB7D04 /* Build configuration list for PBXNativeTarget "lps" */;
+			buildPhases = (
+				0F936A833A9B4B1593F3F261 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72E7EAF8700E4CBB9BEFBA23 /* PBXTargetDependency */,
+			);
+			name = lps;
+			productName = lps;
+			productReference = 266862C3F4614B9EB3B70134 /* lps */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B05591AB1CF472C82C8BF73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0730;
+			};
+			buildConfigurationList = 984E4A917E0644E386DF43F9 /* Build configuration list for PBXProject "Project" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4EBC1D1E6B23429285A5479F /* Debug */,
+				1DB4506B54984A708C5D1E8B /* Release */,
+				DAF3420F288E49F5B19F5739 /* MinSizeRel */,
+				9375D270EB924418A4C5C751 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 0CD169A173A947F794754F66;
+			projectDirPath = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src;
+			projectRoot = "";
+			targets = (
+				7279D78895C34B6288E9A8BA /* ALL_BUILD */,
+				1B40185899B24B189F7DC306 /* ZERO_CHECK */,
+				AC71BADDE09546028E021049 /* lps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5716AA5BE68941F6936CC8FF /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode -f /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		B6D9071D06FD4DE888FCA383 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode -f /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		BEEACC3915A048DD9FBB023C = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		C4B003A7B0684839BA467F0E = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F936A833A9B4B1593F3F261 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C425B62E14214534A1551E21 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/ardrone.cpp */,
+				050DEFA543A44948827E0750 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/command.cpp */,
+				C93FCD5CC9E14809A3F8ED86 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/config.cpp */,
+				4807080BC1BD407D9BCBF75F /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/navdata.cpp */,
+				37D716ABB7FC4F8A8DE293C0 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/tcp.cpp */,
+				B1311FCD31B243F59FB6218B /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/udp.cpp */,
+				F150E91350D2434CA1FF226A /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/version.cpp */,
+				F402FBA5F3BB4F62A9FA6BF3 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/ardrone/video.cpp */,
+				6D5400A8A4E445DF9EF033EF /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/drone.cpp */,
+				FAB957CD748D407596308E14 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/ar_drone/move.cpp */,
+				658D2F4396B94FD0A6F216F0 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/calibrate.cpp */,
+				976D3096EE6B4422966DDD78 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/camera_calibration/take_image.cpp */,
+				405CB8AB1CB8478E9AAC025D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/camerlocation.cpp */,
+				ABECE6599136476387707D23 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/detect.cpp */,
+				32CBC9D871E543F9AA1EE9A7 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/flyto.cpp */,
+				42AF50F6A5CC4783A63A240D /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/detect_marker/markerlocation.cpp */,
+				38F6AF54DB4C43DEB22ADC37 /* /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/src/main.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72E7EAF8700E4CBB9BEFBA23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B40185899B24B189F7DC306 /* ZERO_CHECK */;
+			targetProxy = EA61AF4FB10D4436AC128872 /* PBXContainerItemProxy */;
+		};
+		B29393A4967B41AA9A7564DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC71BADDE09546028E021049 /* lps */;
+			targetProxy = E8367248CED64382A1D42257 /* PBXContainerItemProxy */;
+		};
+		E65634C8FE5A4887A6B70D62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B40185899B24B189F7DC306 /* ZERO_CHECK */;
+			targetProxy = 372E45751FC04CE2AF7A3ACA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0C40DE9D580342909BDEAC82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Release;
+		};
+		0DDAA47A62094F988A5D07B7 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = MinSizeRel;
+		};
+		1477952691524B6AA3423D9E /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = MinSizeRel;
+		};
+		1DC11098A32B478F85DBF438 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++11'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lswscale -lavutil -lavformat -lavcodec -lavdevice -lavfilter -laruco -lraspicam -lraspicam_cv -lm -lpthread";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = lps;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Debug;
+		};
+		33E04D5900414C01AB0D4F62 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = RelWithDebInfo;
+		};
+		4873F41EC92C46359CAB3139 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/build;
+			};
+			name = Debug;
+		};
+		50E6C5988498466D84385C15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Release;
+		};
+		716A71C0411F40D3A8E68C1B /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++11'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lswscale -lavutil -lavformat -lavcodec -lavdevice -lavfilter -laruco -lraspicam -lraspicam_cv -lm -lpthread";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = lps;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = RelWithDebInfo;
+		};
+		81CE8AE5AB964C96A1FAE000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++11'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lswscale -lavutil -lavformat -lavcodec -lavdevice -lavfilter -laruco -lraspicam -lraspicam_cv -lm -lpthread";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = lps;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Release;
+		};
+		89F27456E09040C888754B93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Debug;
+		};
+		8DE3DF4B7C174853A44019F3 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++11'  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lswscale -lavutil -lavformat -lavcodec -lavdevice -lavfilter -laruco -lraspicam -lraspicam_cv -lm -lpthread";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = lps;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = MinSizeRel;
+		};
+		9D23930D1BC0496196698EF9 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/build;
+			};
+			name = MinSizeRel;
+		};
+		C9025174F8F042F9A4848C4F /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = RelWithDebInfo;
+		};
+		D680EBA93E9C4B1FB651E34E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/build;
+			};
+			name = Release;
+		};
+		E6D58ABB13D04BFCBB256DC2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk;
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode/build;
+			};
+			name = RelWithDebInfo;
+		};
+		F391FAED15984DB79A86D3A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'", );
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include, );
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/nikovertovec/Documents/lps/lps/poc/raspberry_pi/lps/xcode;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost", "-Wno-four-char-constants", "-Wno-unknown-pragmas", "$(inherited)", );
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1246FF2095D34D0188902B1B /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89F27456E09040C888754B93 /* Debug */,
+				50E6C5988498466D84385C15 /* Release */,
+				1477952691524B6AA3423D9E /* MinSizeRel */,
+				33E04D5900414C01AB0D4F62 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8C5A1DCA23D74004B6BB7D04 /* Build configuration list for PBXNativeTarget "lps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC11098A32B478F85DBF438 /* Debug */,
+				81CE8AE5AB964C96A1FAE000 /* Release */,
+				8DE3DF4B7C174853A44019F3 /* MinSizeRel */,
+				716A71C0411F40D3A8E68C1B /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		984E4A917E0644E386DF43F9 /* Build configuration list for PBXProject "Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4873F41EC92C46359CAB3139 /* Debug */,
+				D680EBA93E9C4B1FB651E34E /* Release */,
+				9D23930D1BC0496196698EF9 /* MinSizeRel */,
+				E6D58ABB13D04BFCBB256DC2 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C758FD9E9F474967B75A7230 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F391FAED15984DB79A86D3A3 /* Debug */,
+				0C40DE9D580342909BDEAC82 /* Release */,
+				0DDAA47A62094F988A5D07B7 /* MinSizeRel */,
+				C9025174F8F042F9A4848C4F /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B05591AB1CF472C82C8BF73 /* Project object */;
+}

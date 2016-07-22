@@ -13,6 +13,9 @@
 
 vector<cv::Point3d> setup(int id);
 vector<cv::Point2d> setPixelCoords(aruco::Marker m);
-cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters);
+cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
+double distance(int id);
+extern double TheMarkerSize;
+extern cv::Mat drone_location;
 
 #endif /* markerlocation_hpp */
