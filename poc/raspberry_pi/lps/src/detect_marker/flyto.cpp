@@ -12,18 +12,51 @@
 
 using namespace cv;
 
-//calculate distance to point
-int distancetofly(Point3d point){
+
+// --------------------------------------------------------------------------
+//! @brief calculate distance to point
+//! @param a point in the realworld
+//! @return the distance to the point
+// --------------------------------------------------------------------------
+double distancetofly(Point3d point){
     return sqrt(pow(point.x - drone_location.x, 2) + pow(point.y - drone_location.y, 2) + pow(point.z - drone_location.z, 2));
 }
 
-//calculate vector to point
+
+// --------------------------------------------------------------------------
+//! @brief calculate vector to point
+//! @param a point in the realworld
+//! @return a vector that points to the point
+// --------------------------------------------------------------------------
 Point3d vectortofly(Point3d point){
     return Point3d((point.x - drone_location.x), (point.y - drone_location.y), (point.z - drone_location.z));
 }
 
+// --------------------------------------------------------------------------
+//! @brief calculate required speed to marker
+//! @param which aches speed is wanted (0=x, 1=y, 2=z, 3=r)
+//! @return the speed at which to fly to the marker
+// --------------------------------------------------------------------------
+double getspeed(int x){
+	switch(x){
+	case 0:
+		return 5;
+	case 1:
+		return 5;
+	case 2:
+		return 5;
+	case 3:
+		return 5;
+	}
+}
 
-//fly along a vector
+
+
+// --------------------------------------------------------------------------
+//! @brief fly along a vector
+//! @param a vector that should be flown
+//! @return  None
+// --------------------------------------------------------------------------
 void flyto(Point3d vector){
     if(vector.x>0){
         int_straight = vector.x;

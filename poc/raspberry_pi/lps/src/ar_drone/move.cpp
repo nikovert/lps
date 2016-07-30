@@ -66,67 +66,92 @@ void move_anticlockwise(int x){
     anticlockwise = true;
 }
 
-//checks if the drone needs to move forward or backward and returns by how much
+// --------------------------------------------------------------------------
+//! @brief checks if the drone needs to move forward or backward and returns by how much
+//! @param None
+//! @return how fast the drone should move on x-aches
+// --------------------------------------------------------------------------
 double vx(){
-    double vx = 0.0;
+    double vx = 0;
+    speed = getspeed(0);
     if(straight){
-        vx++;
+        vx = speed;
         int_straight--;
     }
     
     if(backward){
-        vx--;
+        vx = -speed;
         int_backward--;
     }
     return vx;
 }
 
-//checks if the drone needs to move left or right and returns by how much
+// --------------------------------------------------------------------------
+//! @brief checks if the drone needs to move left or right and returns by how much
+//! @param None
+//! @return how fast the drone should move on y-aches
+// --------------------------------------------------------------------------
 double vy(){
     double vy = 0;
+    speed = getspeed(1);
     if(port){
-        vy++;
+        vy = speed;
         int_port--;
     }
     
     if(starbourd){
-        vy--;
+        vy = -speed;
         int_starbourd--;
     }
     return vy;
 }
 
-//checks if the drone needs to move up or down and returns by how much
+// --------------------------------------------------------------------------
+//! @brief checks if the drone needs to move up or down and returns by how much
+//! @param None
+//! @return how fast the drone should move on z-aches
+// --------------------------------------------------------------------------
 double vz(){
     double vz = 0;
+    speed = getspeed(2);
     if(up){
-        vz++;
+        vz = speed;
         int_up--;
     }
     
     if(down){
-        vz--;
+        vz = -speed;
         int_down--;
     }
     return vz;
 }
 
-//checks if the drone needs to be turned and returns by how much
+// --------------------------------------------------------------------------
+//! @brief checks if the drone needs to be turned and returns by how much
+//! @param Nonde
+//! @return how fast to rotate
+// --------------------------------------------------------------------------
 double vr(){
     double vr = 0;
+    speed = getspeed(3);
     if(clockwise){
-        vr++;
+        vr = speed;
         int_clockwise--;
     }
     
     if(anticlockwise){
-        vr--;
+        vr = -speed;
         int_anticlockwise--;
     }
     return vr;
 }
 
-//checks if the drone still needs to be moved
+
+// --------------------------------------------------------------------------
+//! @brief checks if the drone still needs to be moved
+//! @param None
+//! @return if the drone should land
+// --------------------------------------------------------------------------
 bool check(){
     if(int_straight == 0){
         straight = false;

@@ -22,6 +22,11 @@ using namespace cv;
 using namespace std;
 
 //prints help information for the camera calibration
+// --------------------------------------------------------------------------
+//! @brief
+//! @param
+//! @return  None
+// --------------------------------------------------------------------------
 static void help() {
     cout <<  "This is a camera calibration sample." << endl
     <<  "Usage: calibration configurationFile"  << endl
@@ -60,8 +65,12 @@ public:
         << "}";
     }
     
-    void read(const FileNode& node)                          //Read serialization for this class
-    {
+    // --------------------------------------------------------------------------
+    //! @brief
+    //! @param
+    //! @return  None
+    // --------------------------------------------------------------------------
+    void read(const FileNode& node){                          //Read serialization for this class
         node["BoardSize_Width" ] >> boardSize.width;
         node["BoardSize_Height"] >> boardSize.height;
         node["Calibrate_Pattern"] >> patternToUse;
@@ -81,6 +90,11 @@ public:
         validate();
     }
     
+    // --------------------------------------------------------------------------
+    //! @brief
+    //! @param
+    //! @return  None
+    // --------------------------------------------------------------------------
     void validate(){
         goodInput = true;
         if (boardSize.width <= 0 || boardSize.height <= 0)
@@ -157,6 +171,11 @@ public:
         
     }
     
+    // --------------------------------------------------------------------------
+    //! @brief
+    //! @param
+    //! @return  None
+    // --------------------------------------------------------------------------
     Mat nextImage(){
         Mat result;
         if( inputCapture.isOpened() )
@@ -171,6 +190,11 @@ public:
         return result;
     }
     
+    // --------------------------------------------------------------------------
+    //! @brief
+    //! @param
+    //! @return  None
+    // --------------------------------------------------------------------------
     static bool readStringList( const string& filename, vector<string>& l ){
         l.clear();
         FileStorage fs(filename, FileStorage::READ);
@@ -214,6 +238,11 @@ private:
     string patternToUse;
 };
 
+// --------------------------------------------------------------------------
+//! @brief
+//! @param
+//! @return  None
+// --------------------------------------------------------------------------
 static inline void read(const FileNode& node, CalibrationSettings& x, const CalibrationSettings& default_value = CalibrationSettings()) {
     if(node.empty())
         x = default_value;
@@ -231,6 +260,11 @@ bool runCalibrationAndSave(CalibrationSettings& s, Size imageSize, Mat&  cameraM
                            vector<vector<Point2f> > imagePoints );
 
 
+// --------------------------------------------------------------------------
+//! @brief
+//! @param
+//! @return  None
+// --------------------------------------------------------------------------
 int delete_file() {
     ifstream fin("../src/include/out_camera_data.xml");
     if (fin)
@@ -249,6 +283,11 @@ int delete_file() {
 
 int take_image();
 
+// --------------------------------------------------------------------------
+//! @brief
+//! @param
+//! @return  None
+// --------------------------------------------------------------------------
 int calibrate() {
     cout << "calibrating..." << endl;
     //take_image();

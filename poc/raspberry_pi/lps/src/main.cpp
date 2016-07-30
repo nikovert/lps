@@ -12,6 +12,11 @@
 
 using namespace std;
 
+// --------------------------------------------------------------------------
+//! @brief this is the fist function that must be called
+//! @param None
+//! @return  0 if all was successful
+// --------------------------------------------------------------------------
 int main(int argc, char **argv){
     while(1){
         fly();

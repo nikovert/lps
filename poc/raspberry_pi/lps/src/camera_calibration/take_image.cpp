@@ -10,6 +10,11 @@ using namespace cv;
 using namespace std;
 
 //takes images, used for camera calibration
+// --------------------------------------------------------------------------
+//! @brief
+//! @param
+//! @return  None
+// --------------------------------------------------------------------------
 int take_image(void){
     FileStorage fs("../src/include/include_img.xml", FileStorage::WRITE );
     vector<string> list;

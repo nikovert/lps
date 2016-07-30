@@ -11,7 +11,12 @@ bool drone_initialised;
 bool altitude;
 int tick;
 
-//lands the drone and returns if this was successful;
+
+// --------------------------------------------------------------------------
+//! @brief   lands the drone and returns if this was successful
+//! @param None
+//! @return  if the drone has landed
+// --------------------------------------------------------------------------
 bool landing(){
     ardrone.landing();
     usleep(5000); // wait 5 seconds
@@ -22,7 +27,12 @@ bool landing(){
     return true;
 }
 
-//Initialisizes Drone, first time only
+
+// --------------------------------------------------------------------------
+//! @brief   Initialisizes Drone, first time only
+//! @param None
+//! @return  None
+// --------------------------------------------------------------------------
 void initialize_drone(){
     tick= 0;
     land = false;
@@ -46,7 +56,11 @@ void initialize_drone(){
     return;
 }
 
-//main fly function
+// --------------------------------------------------------------------------
+//! @brief   main fly function
+//! @param None
+//! @return  None
+// --------------------------------------------------------------------------
 void fly(){
     if(!drone_initialised)
         initialize_drone();
@@ -62,6 +76,7 @@ void fly(){
     if(check()){
         if(!landing()) cout << "error landing";
     }
+
     // optional altitude check
     if(altitude) cout << "Altitude: " << ardrone.getAltitude() << endl;
             
@@ -156,6 +171,33 @@ bool init_stream(int camera_channel){
     }
     return true;
 }
+
+// --------------------------------------------------------------------------
+//! @brief returns the location of the drone according to the GPS
+//! @param None
+//! @return a 3D Point of the drones location
+// --------------------------------------------------------------------------
+Point3d get_GPS_position(){
+	double x,y,z;
+	ardrone.getPosition(&x,&y,&z);
+	return Point3d(x,y,z);
+}
+
+// --------------------------------------------------------------------------
+//! @brief returns the location of the drone according to the IMU
+//! @param None
+//! @return a 3D Point of the drones location
+// --------------------------------------------------------------------------
+Point3d get_IMU_position(){
+	double x,y,z;
+	cerr << "this fuction stil needs to be implemented" << endl;
+	//calculate position with IMU datas
+		//by getting constant readings of the IMU velocity in the 6 directions of orientation,
+		//we can calculate the new position of the drone.
+	return Point3d(x,y,z);
+}
+
+
 
 
 

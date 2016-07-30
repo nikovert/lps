@@ -28,6 +28,8 @@ void move_clockwise(int x);
 
 void move_anticlockwise(int x);
 
+double getspeed(int x);
+
 double vx();
 
 double vy();

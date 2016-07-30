@@ -84,7 +84,12 @@ public:
     }
 };
 
-//reads xml settings file
+
+// --------------------------------------------------------------------------
+//! @brief reads xml settings file
+//! @param the Settings
+//! @return  None
+// --------------------------------------------------------------------------
 static inline void read(const FileNode& node, Settings& x, const Settings& default_value = Settings()) {
     if(node.empty())
         x = default_value;
@@ -101,7 +106,12 @@ static inline void read(const FileNode& node, Settings& x, const Settings& defau
 //    return tvec;
 //}
 
-//converts a Mat to a 3d point, not universal, do not use!!
+
+// --------------------------------------------------------------------------
+//! @brief converts a Mat to a 3d point, not universal, do not use!!
+//! @param a 1x3 Matrix
+//! @return  a 3D Point
+// --------------------------------------------------------------------------
 Point3d MatPoint(Mat mat){
     if(mat.rows==3){
         return Point3d(mat.at<double>(0, 0), mat.at<double>(1, 0), mat.at<double>(2, 0));
@@ -113,7 +123,11 @@ Point3d MatPoint(Mat mat){
     return Point3d(0,0,0);
 }
 
-//initializes the marker detection, must be executed first time
+// --------------------------------------------------------------------------
+//! @brief initializes the marker detection, must be executed first time
+//! @param None
+//! @return None
+// --------------------------------------------------------------------------
 void initialize_detection(){
     try {
         //! [file_read]
@@ -134,9 +148,6 @@ void initialize_detection(){
             return;
         }
 
-        // read from camera or from  file
-        
-        
         //set camera params
         Camera.set( CV_CAP_PROP_FORMAT, CV_8UC1 );
         
@@ -181,7 +192,12 @@ void initialize_detection(){
     }
 }
 
-//can be looped, detects the marker and sets the drone_location
+
+// --------------------------------------------------------------------------
+//! @brief can be looped, detects the marker and sets the drone_location
+//! @param None
+//! @return None
+// --------------------------------------------------------------------------
 void detect(){
     try {
         if(!detection_init){
@@ -202,6 +218,9 @@ void detect(){
             position /= TheMarkers.size();
             drone_location = MatPoint(position);
             cout << "\rDrone position: x = " << drone_location.x << "\ty = " << drone_location.y << "\tz = " << drone_location.z; // "\e[A" to go up a line
+        }else{
+        	//currently only GPS data works!
+        	//get IMU data
         }
         Camera.retrieve (TheInputImage);
         //detect();
