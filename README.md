@@ -79,4 +79,47 @@ hand tab). You should now have three tabs in the centre window. BuildSettings | 
 
 		-lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab
 
- 
+###Installing on Raspberry
+
+		sudo apt-get update
+		sudo apt-get upgrade -y
+		sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libjpeg-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libtiff5-dev libjasper-dev libpng12-dev libxvidcore-dev libx264-dev libgtk2.0-dev libatlas-base-dev gfortran -y
+		cd ~
+		wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.1.0.zip
+		unzip opencv.zip
+		cd ~/opencv-3.1.0/
+		mkdir build
+		cd build
+		cmake -D CMAKE_BUILD_TYPE=RELEASE \ -D CMAKE_INSTALL_PREFIX=/usr/local \ -D INSTALL_C_EXAMPLES=OFF \ -D INSTALL_PYTHON_EXAMPLES=ON \ -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.0.0/modules \ -D BUILD_EXAMPLES=ON ..
+		make -j7
+		sudo make install
+		sudo ldconfig
+		sudo apt-get update
+		sudo apt-get upgrade -y
+		sudo apt-get install libicu-dev freeglut3 freeglut3-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libxine2-dev -y
+		export OpenCV_DIR= ~/opencv-3.1.0/ build/
+		cd
+		wget https://sourceforge.net/projects/aruco/files/2.0.10/aruco-2.0.10.zip
+		unzip aruco-2.0.10.zip
+		cd aruco-2.0.10
+		mkdir build
+		cd build
+		cmake ..
+		make
+		sudo make install
+		cd
+		git clone https://github.com/cedricve/raspicam.git
+		cd raspicam/
+		mkdir build
+		cd build 
+		cmake ..
+		make
+		sudo make install
+		sudo apt-get install libavdevice-dev libavfilter-dev
+		git clone https://github.com/felixge/lps.git
+		cd lps/poc/raspberry_pi/lps/
+		mkdir build
+		cd build
+		cmake ../src
+		make
+	
