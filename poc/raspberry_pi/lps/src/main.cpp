@@ -18,9 +18,17 @@ using namespace std;
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
-    while(1){
-        fly();
-    }
-    cout << "finished"<< endl;
+	if(argc > 1){
+		if(strcmp(argv[1], "test_connection") == 0){
+			cout << "testing connection, drone will activate for 3 seconds" << endl;
+			testconnection();
+			cout << "finished!"<< endl;
+			return 0;
+		}
+	}
+	while(1){
+		fly();
+	}
+    cout << "finished!"<< endl;
     return 0;
 }

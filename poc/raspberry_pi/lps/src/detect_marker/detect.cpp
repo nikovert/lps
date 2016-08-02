@@ -166,9 +166,6 @@ void initialize_detection(){
             TheCameraParameters.readFromXMLFile(TheIntrinsicFile);
             TheCameraParameters.resize(TheInputImage.size());
         }
-        // Configure other parameters
-        if (ThePyrDownLevel > 0)
-            MDetector.pyrDown(ThePyrDownLevel);
         
         int index = 0;
                 index++; // number of images captured
