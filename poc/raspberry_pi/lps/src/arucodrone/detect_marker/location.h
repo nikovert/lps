@@ -10,15 +10,17 @@
 
 #include <aruco/aruco.h>
 
+
+
+//added
+extern double TheMarkerSize;
+extern cv::Point3d drone_location;
 vector<cv::Point3d> setup(int id);
 vector<cv::Point2d> setPixelCoords(aruco::Marker m);
 cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 double distance(int id);
-void detect();
 double distancetofly(cv::Point3d point);
 cv::Point3d vectortofly(cv::Point3d point);
 cv::Point3d MatPoint(cv::Mat mat);
-extern double TheMarkerSize;
-extern cv::Point3d drone_location;
 
 #endif /* location.h */

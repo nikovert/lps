@@ -21,8 +21,8 @@
 #include <raspicam/raspicam_cv.h>
 #include "../detect_marker/location.h"
 
+
 void fly();
-bool init_stream(int camera_channel);
 void ar_detect(cv::Mat TheInputImage);
 void init_detect(cv::Mat TheInputImage);
     

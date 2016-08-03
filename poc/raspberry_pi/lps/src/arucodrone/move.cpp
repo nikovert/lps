@@ -6,13 +6,13 @@
 //  Copyright © 2016 Niko Vertovec. All rights reserved.
 //
 
-#include "move.h"
+#include "arucodrone.h"
 #include <iostream>
 
 using namespace std;
 
-bool straight, backward, up, down, port, starbourd, clockwise, anticlockwise, land;
-int int_straight, int_backward, int_up, int_down, int_port, int_starbourd, int_clockwise, int_anticlockwise;
+//bool straight, backward, up, down, port, starbourd, clockwise, anticlockwise, land;
+//int int_straight, int_backward, int_up, int_down, int_port, int_starbourd, int_clockwise, int_anticlockwise;
 
 bool output_movement = false;
 
@@ -23,49 +23,49 @@ bool output_movement = false;
 //! @return None
 // --------------------------------------------------------------------------
 
-void move_straight(int x){
+void ArucoDrone::move_straight(int x){
     if(output_movement)cout << "moving " << "forward" << endl;
     int_straight = x;
     straight = true;
 }
 
-void move_backward(int x){
+void ArucoDrone::move_backward(int x){
     if(output_movement)cout << "moving " << "backward" << endl;
     int_backward = x;
     backward = true;
 }
 
-void move_up(int x){
+void ArucoDrone::move_up(int x){
     if(output_movement)cout << "moving " << "up" << endl;
     int_up = x;
     up = true;
 }
 
-void move_down(int x){
+void ArucoDrone::move_down(int x){
     if(output_movement)cout << "moving " << "down" << endl;
     int_down = x;
     down = true;
 }
 
-void move_port(int x){
+void ArucoDrone::move_port(int x){
     if(output_movement)cout << "moving " << "left" << endl;
     int_up = x;
     port = true;
 }
 
-void move_starbourd(int x){
+void ArucoDrone::move_starbourd(int x){
     if(output_movement)cout << "moving " << "right" << endl;
     int_up = x;
     starbourd = true;
 }
 
-void move_clockwise(int x){
+void ArucoDrone::move_clockwise(int x){
     if(output_movement)cout << "turning " << "clockwise" << endl;
     int_clockwise = x;
     clockwise = true;
 }
 
-void move_anticlockwise(int x){
+void ArucoDrone::move_anticlockwise(int x){
     if(output_movement)cout << "turning " << "anticlockwise" << endl;
     int_anticlockwise = x;
     anticlockwise = true;
@@ -76,7 +76,7 @@ void move_anticlockwise(int x){
 //! @param None
 //! @return how fast the drone should move on x-aches
 // --------------------------------------------------------------------------
-double vx(){
+double ArucoDrone::vx(){
     double vx = 0;
     double speed = getspeed(0);
     if(straight){
@@ -96,7 +96,7 @@ double vx(){
 //! @param None
 //! @return how fast the drone should move on y-aches
 // --------------------------------------------------------------------------
-double vy(){
+double ArucoDrone::vy(){
     double vy = 0;
     double speed = getspeed(1);
     if(port){
@@ -116,7 +116,7 @@ double vy(){
 //! @param None
 //! @return how fast the drone should move on z-aches
 // --------------------------------------------------------------------------
-double vz(){
+double ArucoDrone::vz(){
     double vz = 0;
     double speed = getspeed(2);
     if(up){
@@ -136,7 +136,7 @@ double vz(){
 //! @param None
 //! @return how fast to rotate
 // --------------------------------------------------------------------------
-double vr(){
+double ArucoDrone::vr(){
     double vr = 0;
     double speed = getspeed(3);
     if(clockwise){
@@ -157,7 +157,7 @@ double vr(){
 //! @param None
 //! @return if the drone should land
 // --------------------------------------------------------------------------
-bool check(){
+bool ArucoDrone::check(){
     if(int_straight == 0){
         straight = false;
     }
