@@ -39,9 +39,10 @@ void input(){
 int main(int argc, char **argv){
 	boolexit = false;
 	thread t1(input);
-
+	int tick = 0;
 	while(!boolexit){
-		cout << "waiting" << endl;
+	if(tick == 0) cout << "looping" << endl;
+		tick++;
 	}
 
 	ArucoDrone drone;
