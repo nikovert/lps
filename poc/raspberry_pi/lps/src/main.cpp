@@ -40,7 +40,7 @@ int main(int argc, char **argv){
 	exit = false;
 	thread t1(input);
 
-	wait(!exit){
+	while(!exit){
 		cout << "waiting" << endl;
 	}
 
