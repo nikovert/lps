@@ -20,6 +20,7 @@ using namespace std;
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
 	ArucoDrone drone;
+	drone.initAll();
 	cv::Point3d point = drone.drone_location;
 
 //	if(argc > 1){

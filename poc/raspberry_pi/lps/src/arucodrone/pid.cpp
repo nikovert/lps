@@ -36,21 +36,18 @@ void PID::initClock(){
 /**
  * calculates the speed
  */
-double PID::refresh(double dronelocation, double destination){
+double PID::refresh(double error){
 
 	//calculate time difference
 	clock_gettime(CLOCK_REALTIME, &gettime_now);
-	_dt = (gettime_now.tv_nsec - last_heartbeat)/1000000000;
-
-	//calculate current error
-	double error = dronelocation-destination;
+	_dt = (gettime_now.tv_nsec - last_heartbeat) / 1000000000;
 
 	//Proportional
 	double p = error * _kp; //accounts for present values of the error.
 
 	//Integral
-	_integral = _integral+error;
-	double i = _integral*_ki; //accounts for past values of the error.
+	_integral = _integral + error;
+	double i = _integral * _ki; //accounts for past values of the error.
 
 	//Derivative
 	double derivative = (error - _pre_error) / _dt;
@@ -66,5 +63,4 @@ double PID::refresh(double dronelocation, double destination){
 		return _min;
 
 	return output;
-
 }

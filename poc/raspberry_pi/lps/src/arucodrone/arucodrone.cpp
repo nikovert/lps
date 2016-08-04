@@ -50,6 +50,7 @@ ArucoDrone::~ArucoDrone() {
 	close();
 }
 
+int s;
 void ArucoDrone::fly(){
 
     // Take off
@@ -60,6 +61,9 @@ void ArucoDrone::fly(){
 
     move3D(vx(), vy(), vz(), vr());
 
+    cin >> s;
+    if(s==5)
+    	cout << "cin worked :)" << endl;
     if(check()){
         landing();
     }
