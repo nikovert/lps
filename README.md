@@ -115,8 +115,6 @@ hand tab). You should now have three tabs in the centre window. BuildSettings | 
 		cmake ..
 		make
 		sudo make install
-		sudo raspi-config
-then enabel the camera and reboot
 		sudo apt-get install libavdevice-dev libavfilter-dev
 		git clone https://github.com/felixge/lps.git
 		cd lps/poc/raspberry_pi/lps/
@@ -124,4 +122,7 @@ then enabel the camera and reboot
 		cd build
 		cmake ../src
 		make
+
+•	enabel the camera and reboot with the command
+		sudo raspi-config
 	
