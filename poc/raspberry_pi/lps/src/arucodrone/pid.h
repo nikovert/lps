@@ -14,7 +14,7 @@ class PID {
 public:
 	PID(double kp, double ki, double kd,  double dt);
 	virtual ~PID();
-	double refresh(double dronelocation, double destination);
+	double refresh(double error);
 	void initClock();
 private:
 	double _kp; // -  proportional gain
