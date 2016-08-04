@@ -21,7 +21,9 @@ public:
 	ArucoDrone();
 	virtual ~ArucoDrone();
 	void fly();
+	void initialize_drone();
 	void initAll();
+	cv::Point3d get_GPS_position();
 
 	//detect
 	void initialize_detection();
