@@ -7,21 +7,20 @@
 //
 
 #include <iostream>
-#include <pthread.h>
+#include <thread>
 #include "ar_drone/drone.h"
 #include "detect_marker/location.h"
 #include "arucodrone/arucodrone.h"
 
 using namespace std;
 
-void *input(){
+void input(){
 	int s;
 	cin >> s;
 	if(s==5)
 		cout << "s is 5" <<endl;
 	else
 		cout << "s is not 5" <<endl;
-	pthread_exit(NULL);
 }
 
 // --------------------------------------------------------------------------
@@ -30,8 +29,7 @@ void *input(){
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
-	pthread_t thread;
-	pthread_create(&thread, NULL, input, NULL);
+	thread t1(input, void);
 
 	ArucoDrone drone;
 	drone.initAll();
