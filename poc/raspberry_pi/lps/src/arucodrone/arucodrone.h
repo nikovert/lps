@@ -15,6 +15,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <raspicam/raspicam_cv.h>
+#include <string.h>
 
 class ArucoDrone: public ARDrone {
 public:
@@ -68,6 +69,11 @@ public:
 
 	//cameralocation
 	cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
+
+	//commands
+	string terminal_input;
+	bool getinput;
+	void initialize_thread();
 
 private:
 	//move

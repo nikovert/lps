@@ -58,7 +58,7 @@ double PID::refresh(double error){
 
 	//saves current error as previous error
 	_pre_error = error;
-
+	
 	//limit to min or max
 	if(output > _max)
 		return _max;

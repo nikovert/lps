@@ -83,12 +83,17 @@ void ArucoDrone::fly(){
 void ArucoDrone::initAll(){
 	//Initialize the AR Drone
 	initialize_drone();
+
 	//Initialize the Camera and the marker detect function
 	initialize_detection();
+
 	//Initialize PID clock
 	pid_x.initClock();
 	pid_y.initClock();
 	pid_z.initClock();
+
+	//Initialize thread to get input
+	initialize_thread();
 }
 
 
