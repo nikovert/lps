@@ -62,7 +62,7 @@ public:
 	void flyto(cv::Point3d vector);
 
 	//cameralocation
-	Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
+	cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 
 private:
 	//move
