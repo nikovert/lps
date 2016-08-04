@@ -21,7 +21,7 @@ ArucoDrone::ArucoDrone():
 	pid_x(0,0,0,0),
 	pid_y(0,0,0,0),
 	pid_z(0,0,0,0)
-	{initialize_drone(); initialize_detection();}
+	{}
 
 
 // --------------------------------------------------------------------------
@@ -66,6 +66,21 @@ void ArucoDrone::fly(){
 
     tick++;
 }
+
+// --------------------------------------------------------------------------
+//! @brief Initializes the Ar Drone and the Marker Detector
+//! @param None
+//! @return None
+// --------------------------------------------------------------------------
+void ArucoDrone::initAll(){
+	//Initialize the AR Drone
+	initialize_drone();
+	//Initialize the Camera and the marker detect function
+	initialize_detection();
+}
+
+
+
 
 // --------------------------------------------------------------------------
 //! @brief returns the location of the drone according to the GPS

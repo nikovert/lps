@@ -21,6 +21,7 @@ public:
 	ArucoDrone();
 	virtual ~ArucoDrone();
 	void fly();
+	void initAll();
 
 	//detect
 	void initialize_detection();
