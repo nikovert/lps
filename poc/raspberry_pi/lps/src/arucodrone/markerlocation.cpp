@@ -104,7 +104,7 @@ double ArucoDrone::distance(int id){
 //! @param the id of the aruco marker
 //! @return a vector of the §D coordinates of the marker corners
 // --------------------------------------------------------------------------
-vector<Point3d> setup(int id){
+vector<Point3d> ArucoDrone::setup(int id){
     if(id==50){
         world_coords = setWorldCoords(Point3d(-8.89,12.7,0),Point3d(0,12.7,0),Point3d(0,3.81,0),Point3d(-8.89,3.81,0));
     }

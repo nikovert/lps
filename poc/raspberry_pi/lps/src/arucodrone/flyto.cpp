@@ -6,9 +6,8 @@
 //  Copyright © 2016 Niko Vertovec. All rights reserved.
 //
 
-#include "location.h"
+#include "arucodrone.h"
 #include <math.h>
-#include "../ar_drone/move.h"
 
 using namespace cv;
 

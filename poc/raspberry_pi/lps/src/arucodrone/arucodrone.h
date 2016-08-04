@@ -57,6 +57,8 @@ public:
 	vector<cv::Point3d> setWorldCoords(cv::Point3d top_left, cv::Point3d top_right, cv::Point3d bottom_left, cv::Point3d bottom_right);
 	vector<cv::Point3d> setWorldCoords(int id);
 	double distance(int id);
+	//to be removed in later versions
+	vector<Point3d> setup(int id);
 
 	//flyto
 	double distancetofly(cv::Point3d point);

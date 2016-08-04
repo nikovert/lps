@@ -17,7 +17,6 @@ using namespace cv;
 using namespace aruco;
 
 
-
 // --------------------------------------------------------------------------
 //! @brief calculates the coordinates of the drone, may be used in future to calculate camera pose
 //! @param the aruco marker, the camera parametera, and an  optional boolean if the location should be printed
