@@ -9,6 +9,12 @@
 #define ARUCODRONE_H_
 
 #include "../ar_drone/ardrone/ardrone.h"
+#include "pid.h"
+#include <aruco/aruco.h>
+#include <aruco/cvdrawingutils.h>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <raspicam/raspicam_cv.h>
 
 class ArucoDrone: public ARDrone {
 public:
@@ -43,20 +49,20 @@ public:
 	double TheMarkerSize;
 
 	//markerlocation
-	Point2d getWorldCoordsfromID(int id);
-	vector<Point2d> setPixelCoords(aruco::Marker m);
-	vector<Point3d> setWorldCoords(Point3d top_left, Point3d top_right, Point3d bottom_left, Point3d bottom_right);
-	vector<Point3d> setWorldCoords(int id);
+	cv::Point2d getWorldCoordsfromID(int id);
+	vector<cv::Point2d> setPixelCoords(aruco::Marker m);
+	vector<cv::Point3d> setWorldCoords(cv::Point3d top_left, cv::Point3d top_right, cv::Point3d bottom_left, cv::Point3d bottom_right);
+	vector<cv::Point3d> setWorldCoords(int id);
 	double distance(int id);
 
 	//flyto
-	double distancetofly(Point3d point);
-	Point3d vectortofly(Point3d point);
+	double distancetofly(cv::Point3d point);
+	cv::Point3d vectortofly(cv::Point3d point);
 	double getspeed(int x);
-	void flyto(Point3d vector);
+	void flyto(cv::Point3d vector);
 
 	//cameralocation
-	Mat getLocation(Marker m, CameraParameters TheCameraParameters, bool print);
+	Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 
 private:
 	//move
