@@ -19,7 +19,7 @@ bool output_movement = false;
 
 // --------------------------------------------------------------------------
 //! @brief these functions prepare the drone to be moved in a particular direction
-//! @param how long the drone shoulde move in the required direction
+//! @param how long the drone should move in the required direction
 //! @return None
 // --------------------------------------------------------------------------
 

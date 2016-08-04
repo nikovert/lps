@@ -7,11 +7,22 @@
 //
 
 #include <iostream>
+#include <pthread.h>
 #include "ar_drone/drone.h"
 #include "detect_marker/location.h"
 #include "arucodrone/arucodrone.h"
 
 using namespace std;
+
+void *input(){
+	int s;
+	cin >> s;
+	if(s==5)
+		cout << "s is 5" <<endl;
+	else
+		cout << "s is not 5" <<endl;
+	pthread_exit(NULL);
+}
 
 // --------------------------------------------------------------------------
 //! @brief this is the fist function that must be called
@@ -19,9 +30,11 @@ using namespace std;
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
+	pthread_t thread;
+	pthread_create(&thread, NULL, input, NULL);
+
 	ArucoDrone drone;
 	drone.initAll();
-	cv::Point3d point = drone.drone_location;
 
 //	if(argc > 1){
 //		if(strcmp(argv[1], "test_connection") == 0){

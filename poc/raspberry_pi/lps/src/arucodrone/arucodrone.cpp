@@ -59,11 +59,15 @@ void ArucoDrone::fly(){
     // detect marker and updates the drone_location
     detect();
 
+    //mov.cpp and this function will be removed in later versions
     move3D(vx(), vy(), vz(), vr());
 
+    //cin with a switch will be used to take commands during flight
     cin >> s;
     if(s==5)
     	cout << "cin worked :)" << endl;
+
+    //check will be removed in later versions
     if(check()){
         landing();
     }
