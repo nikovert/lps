@@ -9,17 +9,32 @@
 
 using namespace std;
 
+cv::Point3d drone_location;
+
+// --------------------------------------------------------------------------
+//! @brief   Constructor
+// --------------------------------------------------------------------------
+ArucoDrone::ArucoDrone():
+	tick(0),
+	land(false),
+	// PID controllers for X,Y and Z direction
+	pid_x(0,0,0,0),
+	pid_y(0,0,0,0),
+	pid_z(0,0,0,0),
+	// Initialize the Camera and the detection
+	initialize_detection(),
+	initialize_drone() {}
+
+
 // --------------------------------------------------------------------------
 //! @brief   Initialisizes Drone, first time only
 //! @param None
 //! @return  None
 // --------------------------------------------------------------------------
-ArucoDrone::ArucoDrone(){
-    tick= 0;
-    land = false;
+void ArucoDrone::initialize_drone(){
     cout << "Initializing drone" << endl;
     // Initialize
-    if (!open()) {
+    if (!ardrone.open()) {
         cout << "Failed to initialize." << endl;
         return;
     }
@@ -30,15 +45,7 @@ ArucoDrone::ArucoDrone(){
     // Outdoor mode
     setOutdoorMode(true);
 
-    // PID controllers for X,Y and Z direction
-    PID pid_x(0,0,0,0);
-    PID pid_y(0,0,0,0);
-   	PID pid_z(0,0,0,0);
-
-   	// Initialize the Camera and the detection
-	initialize_detection();
-
-	Point3d drone_location;
+    return;
 }
 
 ArucoDrone::~ArucoDrone() {
@@ -60,7 +67,7 @@ void ArucoDrone::fly(){
     }
 
     // optional altitude check
-    if(altitude) cout << "Altitude: " << ardrone.getAltitude() << endl;
+    if(altitude) cout << "Altitude: " << getAltitude() << endl;
 
     tick++;
 }
@@ -72,7 +79,7 @@ void ArucoDrone::fly(){
 // --------------------------------------------------------------------------
 cv::Point3d ArucoDrone::get_GPS_position(){
 	double x,y,z;
-	ardrone.getPosition(&x,&y,&z);
+	getPosition(&x,&y,&z);
 	return cv::Point3d(x,y,z);
 }
 

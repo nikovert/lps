@@ -1,6 +1,5 @@
 //
 //  camerlocation.cpp
-//  detect_marker
 //
 //  Created by Niko Vertovec on 30/06/16.
 //  Copyright © 2016 Niko Vertovec. All rights reserved.
