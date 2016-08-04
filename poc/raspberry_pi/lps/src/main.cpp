@@ -14,11 +14,19 @@
 
 using namespace std;
 
+bool exit;
+// --------------------------------------------------------------------------
+//! @brief waits for input from user, used by separate thread
+//! @param None
+//! @return  None
+// --------------------------------------------------------------------------
 void input(){
 	int s;
 	cin >> s;
-	if(s==5)
+	if(s==5){
 		cout << "s is 5" <<endl;
+		exit = true;
+	}
 	else
 		cout << "s is not 5" <<endl;
 }
@@ -29,7 +37,12 @@ void input(){
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
+	exit = false;
 	thread t1(input);
+
+	wait(!exit){
+		cout << "waiting" << endl;
+	}
 
 	ArucoDrone drone;
 	drone.initAll();
