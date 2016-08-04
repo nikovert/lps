@@ -9,8 +9,12 @@
 #include <iostream>
 #include "ar_drone/drone.h"
 #include "detect_marker/location.h"
+#include "arucodrone/arucodrone.h"
+
 
 using namespace std;
+
+
 
 // --------------------------------------------------------------------------
 //! @brief this is the fist function that must be called
@@ -18,17 +22,13 @@ using namespace std;
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
-	if(argc > 1){
-		if(strcmp(argv[1], "test_connection") == 0){
-			cout << "testing connection, drone will activate for 3 seconds" << endl;
-			testconnection();
-			cout << "finished!"<< endl;
-			return 0;
-		}
-	}
+	ArucoDrone drone;
+	drone.initAll();
+
 	while(1){
-		fly();
+		drone.fly();
 	}
+
     cout << "finished!"<< endl;
     return 0;
 }

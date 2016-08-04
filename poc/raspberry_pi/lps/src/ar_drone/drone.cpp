@@ -68,7 +68,7 @@ void fly(){
     // Take off
     if (ardrone.onGround()) ardrone.takeoff();
     
-    // detect marker
+    // detect marker and updates the drone_location
     detect();
     
     ardrone.move3D(vx(), vy(), vz(), vr());
@@ -155,32 +155,16 @@ void fly(){
 //    return 0;
 //}
 
-//for if the ar_drone camera stream is wanted, but the drone hasn't been initialized.
-//can be deleted
-bool init_stream(int camera_channel){
-    if(!drone_initialised){
-        cout << "Initializing drone..." << endl;
-        if (!ardrone.open()) {
-            std::cout << "Failed to initialize." << std::endl;
-            cv::Mat image;
-            return false;
-        }
-        cout << "Drone up and running!" << endl;
-        drone_initialised = true;
-        ardrone.setCamera(camera_channel%2);
-    }
-    return true;
-}
 
 // --------------------------------------------------------------------------
 //! @brief returns the location of the drone according to the GPS
 //! @param None
 //! @return a 3D Point of the drones location
 // --------------------------------------------------------------------------
-Point3d get_GPS_position(){
+cv::Point3d get_GPS_position(){
 	double x,y,z;
 	ardrone.getPosition(&x,&y,&z);
-	return Point3d(x,y,z);
+	return cv::Point3d(x,y,z);
 }
 
 // --------------------------------------------------------------------------
@@ -188,13 +172,13 @@ Point3d get_GPS_position(){
 //! @param None
 //! @return a 3D Point of the drones location
 // --------------------------------------------------------------------------
-Point3d get_IMU_position(){
+cv::Point3d get_IMU_position(){
 	double x,y,z;
 	cerr << "this fuction stil needs to be implemented" << endl;
 	//calculate position with IMU datas
 		//by getting constant readings of the IMU velocity in the 6 directions of orientation,
 		//we can calculate the new position of the drone.
-	return Point3d(x,y,z);
+	return cv::Point3d(x,y,z);
 }
 
 

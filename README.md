@@ -122,4 +122,7 @@ hand tab). You should now have three tabs in the centre window. BuildSettings | 
 		cd build
 		cmake ../src
 		make
+
+•	enabel the camera and reboot with the command
+		sudo raspi-config
 	
