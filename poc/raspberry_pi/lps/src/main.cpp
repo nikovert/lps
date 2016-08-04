@@ -29,7 +29,7 @@ void input(){
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
-	thread t1(input, NULL);
+	thread t1(input);
 
 	ArucoDrone drone;
 	drone.initAll();
