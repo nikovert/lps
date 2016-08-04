@@ -77,6 +77,10 @@ void ArucoDrone::initAll(){
 	initialize_drone();
 	//Initialize the Camera and the marker detect function
 	initialize_detection();
+	//Initialize PID clock
+	pid_x.initClock();
+	pid_y.initClock();
+	pid_z.initClock();
 }
 
 
@@ -92,4 +96,21 @@ cv::Point3d ArucoDrone::get_GPS_position(){
 	getPosition(&x,&y,&z);
 	return cv::Point3d(x,y,z);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -27,10 +27,20 @@ PID::PID(double kp, double ki, double kd, double dt):
  */
 PID::~PID() { }
 
+void PID::initClock(){
+	//SETUP HEARTBEAT TIMER
+	clock_gettime(CLOCK_REALTIME, &gettime_now);
+	last_heartbeat = gettime_now.tv_nsec;
+}
+
 /**
  * calculates the speed
  */
 double PID::refresh(double dronelocation, double destination){
+
+	//calculate time difference
+	clock_gettime(CLOCK_REALTIME, &gettime_now);
+	_dt = (gettime_now.tv_nsec - last_heartbeat)/1000000000;
 
 	//calculate current error
 	double error = dronelocation-destination;
