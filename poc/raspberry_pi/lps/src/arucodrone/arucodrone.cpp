@@ -20,10 +20,8 @@ ArucoDrone::ArucoDrone():
 	// PID controllers for X,Y and Z direction
 	pid_x(0,0,0,0),
 	pid_y(0,0,0,0),
-	pid_z(0,0,0,0),
-	// Initialize the Camera and the detection
-	initialize_detection(),
-	initialize_drone() {}
+	pid_z(0,0,0,0)
+	{initialize_drone(); initialize_detection();}
 
 
 // --------------------------------------------------------------------------
@@ -34,7 +32,7 @@ ArucoDrone::ArucoDrone():
 void ArucoDrone::initialize_drone(){
     cout << "Initializing drone" << endl;
     // Initialize
-    if (!ardrone.open()) {
+    if (!open()) {
         cout << "Failed to initialize." << endl;
         return;
     }
@@ -65,9 +63,6 @@ void ArucoDrone::fly(){
     if(check()){
         landing();
     }
-
-    // optional altitude check
-    if(altitude) cout << "Altitude: " << getAltitude() << endl;
 
     tick++;
 }
