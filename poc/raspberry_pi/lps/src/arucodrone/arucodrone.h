@@ -31,6 +31,7 @@ public:
 	void detect();
 
 	//move
+	/*
 	void move_straight(int x);
 	void move_backward(int x);
 	void move_up(int x);
@@ -40,17 +41,18 @@ public:
 	void move_clockwise(int x);
 	void move_anticlockwise(int x);
 
-	bool straight, backward, up, down, port, starbourd, clockwise, anticlockwise, land;
+	bool straight, backward, up, down, port, starbourd, clockwise, anticlockwise;
 	int int_straight, int_backward, int_up, int_down, int_port, int_starbourd, int_clockwise, int_anticlockwise;
+	*/
 
 	//pid
 	PID pid_x;
 	PID pid_y;
 	PID pid_z;
 
-
 	cv::Point3d drone_location;
 	double TheMarkerSize;
+	Point3d speed;
 
 	//markerlocation
 	cv::Point2d getWorldCoordsfromID(int id);
@@ -71,9 +73,9 @@ public:
 	cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 
 	//commands
-	string terminal_input;
-	bool getinput;
+	enum Command {land = 0, hold = 1, noinput = -1};
 	void initialize_thread();
+	int command;
 
 private:
 	//move

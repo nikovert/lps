@@ -8,27 +8,43 @@
 #include "arucodrone.h"
 #include <thread>
 
-string terminal_input;
 bool getinput;
 
 // --------------------------------------------------------------------------
+//! @brief parses the input from the terminal
+//! @return  an int representing the command
+// --------------------------------------------------------------------------
+int parseinput(string terminal_input){
+	//for use with enum later on
+		// land = 0,
+		// hold = 1,
+	if(terminal_input.compare("land") == 0) return 0;
+	if(terminal_input.compare("hold") == 0) return 1;
+	return -1;
+}
+
+// --------------------------------------------------------------------------
 //! @brief waits for input from user, used by separate thread
-//! @param None
 //! @return  None
 // --------------------------------------------------------------------------
-void input(){
-	while(getinput)
+void input(int &command){
+	string terminal_input;
+	while(getinput){
 		std::getline(std::cin, terminal_input);
+		*command = parseinput(terminal_input); //must be checked if it works
+	}
 }
 
 // --------------------------------------------------------------------------
 //! @brief initilizes a new thread that waits for a user input
-//! @param None
 //! @return  None
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_thread(){
-	std::thread t1(input);
+	getinput = true;
+	command(-1);
+	std::thread t1(input, &command);
 }
+
 
 
 

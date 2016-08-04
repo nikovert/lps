@@ -116,8 +116,7 @@ Point3d MatPoint(Mat mat){
 }
 
 // --------------------------------------------------------------------------
-//! @brief initializes the marker detection, must be executed first time
-//! @param None
+//! @brief initializes the marker detection
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_detection(){
@@ -184,7 +183,6 @@ void ArucoDrone::initialize_detection(){
 
 // --------------------------------------------------------------------------
 //! @brief can be looped, detects the marker and sets the drone_location
-//! @param None
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::detect(){
