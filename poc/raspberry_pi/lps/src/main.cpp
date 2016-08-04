@@ -14,7 +14,7 @@
 
 using namespace std;
 
-bool exit;
+bool boolexit;
 // --------------------------------------------------------------------------
 //! @brief waits for input from user, used by separate thread
 //! @param None
@@ -25,7 +25,7 @@ void input(){
 	cin >> s;
 	if(s==5){
 		cout << "s is 5" <<endl;
-		exit = true;
+		boolexit = true;
 	}
 	else
 		cout << "s is not 5" <<endl;
@@ -37,10 +37,10 @@ void input(){
 //! @return  0 if all was successful
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
-	exit = false;
+	boolexit = false;
 	thread t1(input);
 
-	while(!exit){
+	while(!boolexit){
 		cout << "waiting" << endl;
 	}
 
