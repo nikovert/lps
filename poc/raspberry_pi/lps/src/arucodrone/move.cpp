@@ -190,8 +190,5 @@ bool ArucoDrone::check(){
         anticlockwise = false;
     }
     
-    if(land){
-        return true;
-    }
     return false;
 }

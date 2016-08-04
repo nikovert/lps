@@ -8,34 +8,42 @@
 #include "pid.h"
 
 
-/**
- * Implementation
- */
+// --------------------------------------------------------------------------
+//! @brief   Constructor of the PID controller class
+//! @return  None
+// --------------------------------------------------------------------------
 PID::PID(double kp, double ki, double kd, double dt):
 	_kp(kp),
 	_ki(ki),
 	_kd(kd),
 	_dt(dt),
 	_max(5), //the maximum speed
-	_min(0), //the minimum speed
+	_min(-5), //the minimum speed (opposite direction)
 	_integral(0), //the integral starts at 0
 	_pre_error(0)
 	{ }
 
-/**
- * destructor
- */
+// --------------------------------------------------------------------------
+//! @brief   Destructor of the PID controller class
+//! @return  None
+// --------------------------------------------------------------------------
 PID::~PID() { }
 
+// --------------------------------------------------------------------------
+//! @brief Initializes the Clock
+//! @return  None
+// --------------------------------------------------------------------------
 void PID::initClock(){
 	//SETUP HEARTBEAT TIMER
 	clock_gettime(CLOCK_REALTIME, &gettime_now);
 	last_heartbeat = gettime_now.tv_nsec;
 }
 
-/**
- * calculates the speed
- */
+// --------------------------------------------------------------------------
+//! @brief calculates the speed according to the distance to fly
+//! @param the distance to fly
+//! @return the speed from -5 (backwards) to 5 (forwards)
+// --------------------------------------------------------------------------
 double PID::refresh(double error){
 
 	//calculate time difference

@@ -52,12 +52,19 @@ double ArucoDrone::getspeed(int x){
 
 
 // --------------------------------------------------------------------------
-//! @brief fly along a vector
+//! @brief sets the speeds to fly along a vector
 //! @param a vector that should be flown
 //! @return  None
 // --------------------------------------------------------------------------
 void ArucoDrone::flyto(Point3d vector){
-    if(vector.x>0){
+	speed.x = pid_x.refresh((double) vector.x);
+	speed.y = pid_y.refresh((double) vector.y);
+	speed.z = pid_z.refresh((double) vector.z);
+
+
+
+
+    /*if(vector.x>0){
         int_straight = vector.x;
         straight = true;
     }
@@ -85,5 +92,5 @@ void ArucoDrone::flyto(Point3d vector){
     if(vector.z<0){
         int_down = vector.z * -1;
         down = true;
-    }
+    }*/
 }
