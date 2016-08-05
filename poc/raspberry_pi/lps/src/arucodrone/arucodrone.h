@@ -52,7 +52,9 @@ public:
 
 	cv::Point3d drone_location;
 	double TheMarkerSize;
-	Point3d speed;
+	cv::Point3d speed;
+	cv::Point3d holdpos;
+	int command;
 
 	//markerlocation
 	cv::Point2d getWorldCoordsfromID(int id);
@@ -67,15 +69,15 @@ public:
 	double distancetofly(cv::Point3d point);
 	cv::Point3d vectortofly(cv::Point3d point);
 	double getspeed(int x);
+	void flytocoords(cv::Point3d point);
 	void flyto(cv::Point3d vector);
 
 	//cameralocation
 	cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 
 	//commands
-	enum Command {land = 0, hold = 1, noinput = -1};
+	enum Command {hold = -1, land = 0, takeoff = 1};
 	void initialize_thread();
-	int command;
 
 private:
 	//move

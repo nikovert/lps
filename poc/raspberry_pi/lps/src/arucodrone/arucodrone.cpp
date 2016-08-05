@@ -6,6 +6,7 @@
  */
 
 #include "arucodrone.h"
+#include <unistd.h>
 
 using namespace std;
 
@@ -40,10 +41,10 @@ void ArucoDrone::initialize_drone(){
     cout << "Battery = " << getBatteryPercentage() << "[%]" << endl;
 
     // Outdoor mode
-    setOutdoorMode(true);
+    setOutdoorMode(false);
 
     speed(0,0,0); //set all speeds to zero
-
+    command = hold;
     return;
 }
 
@@ -68,7 +69,7 @@ void ArucoDrone::fly(){
     // detect marker and updates the drone_location
     detect();
 
-    //this will be the actual move function
+    //this will be the move function
     move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
 
     //move.cpp and this function will be removed in later versions
@@ -77,9 +78,18 @@ void ArucoDrone::fly(){
     //check will be removed in later versions
     //check();
 
-    //will need to implement complete command functionality
-    if(command = land){
-        landing();
+    switch(command){
+    	case hold:
+        	flytocoords(holdpos);
+        	break;
+    	case land:
+    		landing();
+    		break;
+    	case takeoff:
+    		if (onGround()) takeoff();
+    		usleep(5000);
+    		holdpos = drone_location;
+    		break;
     }
 
     tick++;

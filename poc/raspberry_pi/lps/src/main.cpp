@@ -24,11 +24,9 @@ using namespace std;
 int main(int argc, char **argv){
 	ArucoDrone drone;
 	drone.initAll();
-
 	while(1){
 		drone.fly();
 	}
-
     cout << "finished!"<< endl;
     return 0;
 }

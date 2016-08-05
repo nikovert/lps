@@ -49,6 +49,14 @@ double ArucoDrone::getspeed(int x){
 	}
 }
 
+// --------------------------------------------------------------------------
+//! @brief sets the speeds to fly to a point
+//! @param a point to which to fly
+//! @return  None
+// --------------------------------------------------------------------------
+void ArucoDrone::flytocoords(Point3d point){
+	flyto(vectortofly(point));
+}
 
 
 // --------------------------------------------------------------------------

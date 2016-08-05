@@ -12,14 +12,12 @@ bool getinput;
 
 // --------------------------------------------------------------------------
 //! @brief parses the input from the terminal
-//! @return  an int representing the command
+//! @return  an integer representing the command
 // --------------------------------------------------------------------------
 int parseinput(string terminal_input){
-	//for use with enum later on
-		// land = 0,
-		// hold = 1,
+	if(terminal_input.compare("hold") == 0) return -1;
 	if(terminal_input.compare("land") == 0) return 0;
-	if(terminal_input.compare("hold") == 0) return 1;
+	if(terminal_input.compare("takeoff") == 0) return 1;
 	return -1;
 }
 
