@@ -42,10 +42,7 @@
 using namespace cv;
 using namespace aruco;
 
-bool detection_init = false;
 raspicam::RaspiCam_Cv Camera; //Camera object
-string TheIntrinsicFile;
-double TheMarkerSize = -1;
 int ThePyrDownLevel;
 MarkerDetector MDetector;
 vector< Marker > TheMarkers;
@@ -64,10 +61,14 @@ class Settings{
 public:
     Settings() : goodInput(false) {}
     bool goodInput;
+    string TheIntrinsicFile;
+    double TheMarkerSize;
+    int Matwidth;
     
     void read(const FileNode& node){
         node["TheIntrinsicFile"] >> TheIntrinsicFile;
         node["TheMarkerSize"] >> TheMarkerSize;
+        node["Matwidth"] << Matwidth;
         validate();
     }
     
@@ -81,6 +82,10 @@ public:
             cerr << "Marker size not provided " << endl;
             goodInput = false;
         }
+        if (Matwidth <= 0){
+                    cerr << "Mat width not provided " << endl;
+                    goodInput = false;
+		}
     }
 };
 
@@ -153,25 +158,22 @@ void ArucoDrone::initialize_detection(){
         Camera.retrieve(TheInputImage);
         
         // read camera parameters if passed
-        if (TheIntrinsicFile != "") {
-            TheCameraParameters.readFromXMLFile(TheIntrinsicFile);
+        if (s.TheIntrinsicFile != "") {
+            TheCameraParameters.readFromXMLFile(s.TheIntrinsicFile);
             TheCameraParameters.resize(TheInputImage.size());
         }
+        TheMarkerSize = s.TheMarkerSize;
+        Matwidth = s.Matwidth;
         
-        int index = 0;
-                index++; // number of images captured
-                double tick = (double)getTickCount(); // for checking the speed
-                // Detection of markers in the image passed
-                MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
-                // check the speed by calculating the mean speed of all iterations
-                AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
-                AvrgTime.second++;
-                cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
-        
-        //Camera.release(); needs to be called when done
-        
-        detection_init = true;
-        
+        //Calculates the speed at which the markers are detected
+			double tick = (double)getTickCount(); // for checking the speed
+			// Detection of markers in the image passed
+			MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
+			// check the speed by calculating the mean speed of all iterations
+			AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
+			AvrgTime.second++;
+			cout << "\rTime detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
+
         cout << endl;
     } catch (std::exception &ex)
     
@@ -187,10 +189,6 @@ void ArucoDrone::initialize_detection(){
 // --------------------------------------------------------------------------
 void ArucoDrone::detect(){
     try {
-        if(!detection_init){
-            cout << "initialize_detection()" << endl;
-            initialize_detection();
-        }
         Camera.grab();
         // Detection of markers in the image passed
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);

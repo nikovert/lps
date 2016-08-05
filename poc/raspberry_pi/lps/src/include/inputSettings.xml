@@ -5,5 +5,6 @@
    <TheIntrinsicFile>"../src/include/out_camera_data.xml"</TheIntrinsicFile>
   <!-- The size of the markers, in this case in cm -->
   <TheMarkerSize>8.89</TheMarkerSize>
+  <Matwidth>Matwidth</Matwidth>
 </Settings>
 </opencv_storage>

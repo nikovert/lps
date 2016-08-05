@@ -13,7 +13,6 @@ using namespace cv;
 
 vector<Point3d> world_coords;
 
-int width = 8; //we choose 8 for now (number of markers on the Matt on X aches)
 
 // --------------------------------------------------------------------------
 //! @brief need to set width of the aruco board(length of X-aches)
@@ -21,7 +20,7 @@ int width = 8; //we choose 8 for now (number of markers on the Matt on X aches)
 //! @return  2D coordinates of the location of the Marker on the Mat
 // --------------------------------------------------------------------------
 Point2d ArucoDrone::getWorldCoordsfromID(int id){
-    int x = id%width;
+    int x = id%Matwidth;
     int y = id/8;
     Point2d pos(x, y);
     return pos;

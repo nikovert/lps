@@ -55,6 +55,7 @@ public:
 	cv::Point3d speed;
 	cv::Point3d holdpos;
 	int command;
+	int Matwidth;
 
 	//markerlocation
 	cv::Point2d getWorldCoordsfromID(int id);
