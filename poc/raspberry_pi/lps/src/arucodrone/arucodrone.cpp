@@ -43,7 +43,10 @@ void ArucoDrone::initialize_drone(){
     // Outdoor mode
     setOutdoorMode(false);
 
-    speed(0,0,0); //set all speeds to zero
+    //set all speeds to zero
+    speed.x = 0;
+    speed.y = 0;
+    speed.z = 0;
     command = hold;
     return;
 }
@@ -85,7 +88,7 @@ void ArucoDrone::fly(){
     	case land:
     		landing();
     		break;
-    	case takeoff:
+    	case start:
     		if (onGround()) takeoff();
     		usleep(5000);
     		holdpos = drone_location;

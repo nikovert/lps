@@ -23,7 +23,7 @@ using namespace std;
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
 	cout << "starting Aruco Drone" << endl << "possible commands are: " << endl;
-	cout << "hold" << endl << "land" << endl << "takeoff" << endl "flyto" << endl;
+	cout << "hold" << endl << "land" << endl << "takeoff" << endl << "flyto" << endl;
 	ArucoDrone drone;
 	drone.initAll();
 	while(1){
