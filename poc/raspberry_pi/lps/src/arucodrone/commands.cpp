@@ -18,6 +18,15 @@ int parseinput(string terminal_input){
 	if(terminal_input.compare("hold") == 0) return -1;
 	if(terminal_input.compare("land") == 0) return 0;
 	if(terminal_input.compare("takeoff") == 0) return 1;
+	if(terminal_input.compare("flyto") == 0){
+		std::cout << std::endl << "Please enter the x coordinates: ";
+		std::cin >> holdpos.x;
+		std::cout << std::endl << "Please enter the y coordinates: ";
+		std::cin >> holdpos.y;
+		std::cout << std::endl << "Please enter the z coordinates: ";
+		std::cin >> holdpos.z;
+		return -1;
+	}
 	return -1;
 }
 
