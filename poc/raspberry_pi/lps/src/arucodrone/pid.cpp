@@ -39,6 +39,12 @@ void PID::initClock(){
 	last_heartbeat = gettime_now.tv_nsec;
 }
 
+void PID::set(double kp, double ki, double kd){
+	_kp = kp;
+	_ki = ki;
+	_kd = kd;
+}
+
 // --------------------------------------------------------------------------
 //! @brief calculates the speed according to the distance to fly
 //! @param the distance to fly

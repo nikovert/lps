@@ -16,8 +16,11 @@ cv::Point3d drone_location;
 //! @brief   Constructor of the Aruco Drone class
 //! @return  None
 // --------------------------------------------------------------------------
-ArucoDrone::ArucoDrone():
-	tick(0)
+ArucoDrone::ArucoDrone() :
+	tick(0),
+	pid_x(0,0,0),
+	pid_y(0,0,0),
+	pid_z(0,0,0)
 	{}
 
 

@@ -70,7 +70,7 @@ public:
         node["TheIntrinsicFile"] >> TheIntrinsicFile;
         node["TheMarkerSize"] >> TheMarkerSize;
         node["Matwidth"] >> Matwidth;
-        node[PID] >> PID;
+        node["PID"] >> PID;
         validate();
     }
     
@@ -168,9 +168,9 @@ void ArucoDrone::initialize_detection(){
         Matwidth = s.Matwidth;
 
     	// PID controllers for X,Y and Z direction
-    	pid_x(s.PID.at<double>(0,0), s.PID.at<double>(1,0), s.PID.at<double>(2,0));
-		pid_x(s.PID.at<double>(0,1), s.PID.at<double>(1,1), s.PID.at<double>(2,1));
-		pid_x(s.PID.at<double>(0,2), s.PID.at<double>(1,2), s.PID.at<double>(2,2));
+    	pid_x.set(s.PID.at<double>(0,0), s.PID.at<double>(1,0), s.PID.at<double>(2,0));
+		pid_x.set(s.PID.at<double>(0,1), s.PID.at<double>(1,1), s.PID.at<double>(2,1));
+		pid_x.set(s.PID.at<double>(0,2), s.PID.at<double>(1,2), s.PID.at<double>(2,2));
         
         //Calculates the speed at which the markers are detected
 			double tick = (double)getTickCount(); // for checking the speed

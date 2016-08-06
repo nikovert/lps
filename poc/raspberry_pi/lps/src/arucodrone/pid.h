@@ -16,6 +16,7 @@ public:
 	virtual ~PID();
 	double refresh(double error);
 	void initClock();
+	void set(double _kp, double _ki, double _kd);
 private:
 	double _kp; // -  proportional gain
 	double _ki; // -  Integral gain
