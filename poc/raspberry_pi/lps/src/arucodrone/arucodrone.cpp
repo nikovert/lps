@@ -17,7 +17,7 @@ cv::Point3d drone_location;
 //! @return  None
 // --------------------------------------------------------------------------
 ArucoDrone::ArucoDrone():
-	tick(0),
+	tick(0)
 	{}
 
 

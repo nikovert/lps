@@ -12,7 +12,7 @@
 
 class PID {
 public:
-	PID(double kp, double ki, double kd,  double dt);
+	PID(double kp, double ki, double kd);
 	virtual ~PID();
 	double refresh(double error);
 	void initClock();

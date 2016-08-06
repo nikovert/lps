@@ -7,8 +7,6 @@
 //
 
 #include <iostream>
-#include "ar_drone/drone.h"
-#include "detect_marker/location.h"
 #include "arucodrone/arucodrone.h"
 
 
