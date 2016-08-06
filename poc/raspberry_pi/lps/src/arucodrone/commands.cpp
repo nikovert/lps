@@ -15,6 +15,7 @@ bool getinput;
 //! @return  an integer representing the command
 // --------------------------------------------------------------------------
 int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location){
+	if(terminal_input.compare("off") == 0) return -2;
 	if(terminal_input.compare("hold") == 0) return -1;
 	if(terminal_input.compare("land") == 0) return 0;
 	if(terminal_input.compare("takeoff") == 0) return 1;

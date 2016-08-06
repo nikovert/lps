@@ -12,11 +12,11 @@
 //! @brief   Constructor of the PID controller class
 //! @return  None
 // --------------------------------------------------------------------------
-PID::PID(double kp, double ki, double kd, double dt):
+PID::PID(double kp, double ki, double kd):
 	_kp(kp),
 	_ki(ki),
 	_kd(kd),
-	_dt(dt),
+	_dt(0),
 	_max(5), //the maximum speed
 	_min(-5), //the minimum speed (opposite direction)
 	_integral(0), //the integral starts at 0

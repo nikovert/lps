@@ -77,7 +77,7 @@ public:
 	cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 
 	//commands
-	enum Command {hold = -1, land = 0, start = 1};
+	enum Command {off = -2, hold = -1, land = 0, start = 1};
 	void initialize_thread();
 
 private:

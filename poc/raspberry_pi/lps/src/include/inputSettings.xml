@@ -2,9 +2,28 @@
 <opencv_storage>
 <Settings>
   <!-- the calibrationfile of the camera used-->
-   <TheIntrinsicFile>"../src/include/out_camera_data.xml"</TheIntrinsicFile>
+  <TheIntrinsicFile>"../src/include/out_camera_data.xml"</TheIntrinsicFile>
+  
   <!-- The size of the markers, in this case in cm -->
   <TheMarkerSize>8.89</TheMarkerSize>
-  <Matwidth>Matwidth</Matwidth>
+  
+  <!-- The width of the Mat, in this case in cm -->
+  <Matwidth>18</Matwidth>
+  
+  <!-- The values of the PID controllers -->
+  <!--	x.p y.p z.p -->
+  <!--	x.i y.i z.i -->
+  <!--	x.d y.d z.d -->
+  <PID type_id="opencv-matrix">
+	  <rows>3</rows>
+	  <cols>3</cols>
+	  <dt>d</dt>
+	  <data>
+	    0. 0. 0.
+	    0. 0. 0.
+	    0. 0. 0.
+	  </data>
+  </PID>
+  
 </Settings>
 </opencv_storage>

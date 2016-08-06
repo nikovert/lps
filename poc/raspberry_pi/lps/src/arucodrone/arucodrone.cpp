@@ -18,10 +18,6 @@ cv::Point3d drone_location;
 // --------------------------------------------------------------------------
 ArucoDrone::ArucoDrone():
 	tick(0),
-	// PID controllers for X,Y and Z direction
-	pid_x(0,0,0,0),
-	pid_y(0,0,0,0),
-	pid_z(0,0,0,0)
 	{}
 
 
@@ -82,6 +78,7 @@ void ArucoDrone::fly(){
     //check();
 
     switch(command){
+    	case off: break;
     	case hold:
         	flytocoords(holdpos);
         	break;
