@@ -81,12 +81,15 @@ public:
             goodInput = false;
         }
         if (TheMarkerSize <= 0){
-            cerr << "Marker size not provided " << endl;
+            cerr << "Marker size not provided" << endl;
             goodInput = false;
         }
         if (Matwidth <= 0){
-                    cerr << "Mat width not provided " << endl;
-                    goodInput = false;
+			cerr << "Mat width not provided" << endl;
+			goodInput = false;
+		}
+        if (PID.empty()){
+			cerr << "WARNING! No PID values where given" << endl;
 		}
     }
 };
@@ -127,6 +130,7 @@ Point3d MatPoint(Mat mat){
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_detection(){
+	 cout << "Reading settings from xml file" << endl;
     try {
         //! [file_read]
         Settings s;

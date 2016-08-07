@@ -65,9 +65,6 @@ ArucoDrone::~ArucoDrone() {
 // --------------------------------------------------------------------------
 void ArucoDrone::fly(){
 
-    // Take off
-    if (onGround()) takeoff();
-
     // detect marker and updates the drone_location
     detect();
 
@@ -127,21 +124,3 @@ cv::Point3d ArucoDrone::get_GPS_position(){
 	getPosition(&x,&y,&z);
 	return cv::Point3d(x,y,z);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
