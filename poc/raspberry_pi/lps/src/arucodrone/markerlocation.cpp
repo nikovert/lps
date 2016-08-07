@@ -20,8 +20,8 @@ vector<Point3d> world_coords;
 //! @return  2D coordinates of the location of the Marker on the Mat
 // --------------------------------------------------------------------------
 Point2d ArucoDrone::getWorldCoordsfromID(int id){
-    int x = id%Matwidth;
-    int y = id/8;
+    int x = (id-1)%Matwidth;
+    int y = (id-1)/Matwidth;
     Point2d pos(x, y);
     return pos;
 }
@@ -78,12 +78,12 @@ vector<Point3d> ArucoDrone::setWorldCoords(int id){
     if(id==698){
         return world_coords = setWorldCoords(Point3d (0, 0, 0), Point3d (8.89, 0, 0), Point3d (8.89, -8.89, 0), Point3d (0, -8.89, 0));
     }
-    Point2d center = getWorldCoordsfromID(id);
-    double size = TheMarkerSize/2;
-    world_coords.push_back (Point3d(center.x-size, center.y-size, 0));
-    world_coords.push_back (Point3d(center.x+size, center.y-size, 0));
-    world_coords.push_back (Point3d(center.x-size, center.y+size, 0));
-    world_coords.push_back (Point3d (center.x+size, center.y+size, 0));
+    Point2d topleft = getWorldCoordsfromID(id);
+    double size = TheMarkerSize;
+    world_coords.push_back (Point3d(topleft, topleft, 0));
+    world_coords.push_back (Point3d(topleft+size, topleft, 0));
+    world_coords.push_back (Point3d(topleft, center.y+size, 0));
+    world_coords.push_back (Point3d (topleft+size, topleft+size, 0));
     return world_coords;
 }
 
