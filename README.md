@@ -115,6 +115,7 @@ hand tab). You should now have three tabs in the centre window. BuildSettings | 
 		cmake ..
 		make
 		sudo make install
+		cd
 		sudo apt-get install libavdevice-dev libavfilter-dev
 		git clone https://github.com/felixge/lps.git
 		cd lps/poc/raspberry_pi/lps/
