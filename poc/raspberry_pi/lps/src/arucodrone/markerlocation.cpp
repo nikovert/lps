@@ -80,10 +80,10 @@ vector<Point3d> ArucoDrone::setWorldCoords(int id){
     }
     Point2d topleft = getWorldCoordsfromID(id);
     double size = TheMarkerSize;
-    world_coords.push_back (Point3d(topleft, topleft, 0));
-    world_coords.push_back (Point3d(topleft+size, topleft, 0));
-    world_coords.push_back (Point3d(topleft, center.y+size, 0));
-    world_coords.push_back (Point3d (topleft+size, topleft+size, 0));
+    world_coords.push_back (Point3d(topleft.x, topleft.y, 0));
+    world_coords.push_back (Point3d(topleft.x+size, topleft.y, 0));
+    world_coords.push_back (Point3d(topleft.x, topleft.y+size, 0));
+    world_coords.push_back (Point3d (topleft.x+size, topleft.y+size, 0));
     return world_coords;
 }
 
