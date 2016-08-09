@@ -67,10 +67,12 @@ public:
     Mat PID;
     
     void read(const FileNode& node){
+    	cout << "Reading..." << endl;
         node["TheIntrinsicFile"] >> TheIntrinsicFile;
         node["TheMarkerSize"] >> TheMarkerSize;
         node["Matwidth"] >> Matwidth;
         node["PID"] >> PID;
+        cout << "Validating..." << endl;
         validate();
     }
     
@@ -130,7 +132,7 @@ Point3d MatPoint(Mat mat){
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_detection(){
-	 cout << "Reading settings from xml file" << endl;
+	cout << "Reading settings from xml file" << endl;
     try {
         //! [file_read]
         Settings s;
@@ -140,7 +142,7 @@ void ArucoDrone::initialize_detection(){
             cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
             return;
         }
-        
+        cout << "Parsing Settings" << endl;
         fs["Settings"] >> s;
         fs.release();  // close Settings file
         

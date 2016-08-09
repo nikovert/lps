@@ -23,6 +23,7 @@ int main(int argc, char **argv){
 	cout << "off" << endl << "hold" << endl << "land" << endl << "takeoff" << endl << "flyto" << endl << "getpos" << endl << "changePID" << endl;
 	ArucoDrone drone;
 	drone.initAll();
+	cout << "Initializing complete" << endl;
 	while(1){
 		drone.fly();
 	}
