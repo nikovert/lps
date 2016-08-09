@@ -11,7 +11,7 @@
 
 using namespace cv;
 
-vector<Point3d> world_coords;
+//vector<Point3d> world_coords;
 
 
 // --------------------------------------------------------------------------
@@ -53,7 +53,7 @@ vector<Point2d> ArucoDrone::setPixelCoords(aruco::Marker m){
 // --------------------------------------------------------------------------
 //! @brief sets the world coordinates of a markers corners
 //! @param the coordinates of the corners of the marker
-//! @return a vector of the §D coordinates of the marker corners
+//! @return a vector of the 3D coordinates of the marker corners
 // --------------------------------------------------------------------------
 vector<Point3d> ArucoDrone::setWorldCoords(Point3d top_left, Point3d top_right, Point3d bottom_left, Point3d bottom_right){
     vector<Point3d> world_coords;
@@ -72,12 +72,6 @@ vector<Point3d> ArucoDrone::setWorldCoords(Point3d top_left, Point3d top_right, 
 // --------------------------------------------------------------------------
 vector<Point3d> ArucoDrone::setWorldCoords(int id){
     vector<Point3d> world_coords;
-    if(id==50){
-        return world_coords = setWorldCoords(Point3d(-8.89,12.7,0),Point3d(0,12.7,0),Point3d(0,3.81,0),Point3d(-8.89,3.81,0));
-    }
-    if(id==698){
-        return world_coords = setWorldCoords(Point3d (0, 0, 0), Point3d (8.89, 0, 0), Point3d (8.89, -8.89, 0), Point3d (0, -8.89, 0));
-    }
     Point2d topleft = getWorldCoordsfromID(id);
     double size = TheMarkerSize;
     world_coords.push_back (Point3d(topleft.x, topleft.y, 0));
@@ -103,7 +97,7 @@ double ArucoDrone::distance(int id){
 //! @param the id of the aruco marker
 //! @return a vector of the §D coordinates of the marker corners
 // --------------------------------------------------------------------------
-vector<Point3d> ArucoDrone::setup(int id){
+/*vector<Point3d> ArucoDrone::setup(int id){
     if(id==50){
         world_coords = setWorldCoords(Point3d(-8.89,12.7,0),Point3d(0,12.7,0),Point3d(0,3.81,0),Point3d(-8.89,3.81,0));
     }
@@ -112,3 +106,4 @@ vector<Point3d> ArucoDrone::setup(int id){
     }
     return world_coords;
 }
+*/

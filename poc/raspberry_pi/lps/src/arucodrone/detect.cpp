@@ -185,9 +185,8 @@ void ArucoDrone::initialize_detection(){
 			// check the speed by calculating the mean speed of all iterations
 			AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
 			AvrgTime.second++;
-			cout << endl << "Time detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << std::flush;
+			cout << "Time detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << endl;
 
-        cout << endl;
     } catch (std::exception &ex)
     
     {
@@ -203,13 +202,12 @@ void ArucoDrone::initialize_detection(){
 void ArucoDrone::detect(){
     try {
         Camera.grab();
+
         // Detection of markers in the image passed
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
         
-        Mat position;
-        
         if(TheMarkers.size()>0){
-            position = getLocation(TheMarkers[0], TheCameraParameters, false);
+        	Mat position = getLocation(TheMarkers[0], TheCameraParameters, false);
             for (unsigned int i = 1; i < TheMarkers.size(); i++) {
                 add(getLocation(TheMarkers[i], TheCameraParameters, false), position, position);
             }

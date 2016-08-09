@@ -26,8 +26,7 @@ Mat ArucoDrone::getLocation(Marker m, CameraParameters TheCameraParameters, bool
     //bool debug = false;
     if(print) cout << "Marker id: " << m.id << endl;
     Mat rvec, tvec;
-    vector<Point3d> world_coords = setup(m.id);
-    if(m.id!=50 && m.id!=698) return tvec;
+    vector<Point3d> world_coords = setWorldCoords(m.id);
     
     //solvePnP returns the rotation and the translation vectors
     solvePnP(world_coords, setPixelCoords(m), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);

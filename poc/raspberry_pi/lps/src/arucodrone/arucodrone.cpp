@@ -84,11 +84,13 @@ void ArucoDrone::fly(){
         	break;
     	case land:
     		landing();
+    		command = off;
     		break;
     	case start:
     		if (onGround()) takeoff();
     		usleep(5000);
     		holdpos = drone_location;
+    		command = holdpos;
     		break;
     }
 
