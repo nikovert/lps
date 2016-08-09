@@ -64,14 +64,14 @@ public:
     string TheIntrinsicFile;
     double TheMarkerSize;
     int Matwidth;
-    Mat PID;
+    Mat pid_matrix;
     
     void read(const FileNode& node){
     	cout << "Reading..." << endl;
         node["TheIntrinsicFile"] >> TheIntrinsicFile;
         node["TheMarkerSize"] >> TheMarkerSize;
         node["Matwidth"] >> Matwidth;
-        node["PID"] >> PID;
+        node["pid_matrix"] >> pid_matrix;
         cout << "Validating..." << endl;
         validate();
     }
@@ -90,7 +90,7 @@ public:
 			cerr << "Mat width not provided" << endl;
 			goodInput = false;
 		}
-        if (PID.empty()){
+        if (pid_matrix.empty()){
 			cerr << "WARNING! No PID values where given" << endl;
 		}
     }
@@ -174,9 +174,9 @@ void ArucoDrone::initialize_detection(){
         Matwidth = s.Matwidth;
 
     	// PID controllers for X,Y and Z direction
-    	pid_x.set(s.PID.at<double>(0,0), s.PID.at<double>(1,0), s.PID.at<double>(2,0));
-		pid_x.set(s.PID.at<double>(0,1), s.PID.at<double>(1,1), s.PID.at<double>(2,1));
-		pid_x.set(s.PID.at<double>(0,2), s.PID.at<double>(1,2), s.PID.at<double>(2,2));
+    	pid_x.set(s.pid_matrix.at<double>(0,0), s.pid_matrix.at<double>(1,0), s.pid_matrix.at<double>(2,0));
+		pid_x.set(s.pid_matrix.at<double>(0,1), s.pid_matrix.at<double>(1,1), s.pid_matrix.at<double>(2,1));
+		pid_x.set(s.pid_matrix.at<double>(0,2), s.pid_matrix.at<double>(1,2), s.pid_matrix.at<double>(2,2));
         
         //Calculates the speed at which the markers are detected
 			double tick = (double)getTickCount(); // for checking the speed

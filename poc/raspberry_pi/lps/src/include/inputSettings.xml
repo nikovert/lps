@@ -14,16 +14,13 @@
   <!--	x.p y.p z.p -->
   <!--	x.i y.i z.i -->
   <!--	x.d y.d z.d -->
-  <PID type_id="opencv-matrix">
-	  <rows>3</rows>
-	  <cols>3</cols>
-	  <dt>d</dt>
-	  <data>
-	    0. 0. 0.
-	    0. 0. 0.
-	    0. 0. 0.
-	  </data>
-  </PID>
+  <pid_matrix type_id="opencv-matrix">
+  <rows>3</rows>
+  <cols>3</cols>
+  <dt>d</dt>
+  <data>
+    0. 0. 0. 0.
+    0. 0. 0. 0. 0.</data></pid_matrix>
   
 </Settings>
 </opencv_storage>
