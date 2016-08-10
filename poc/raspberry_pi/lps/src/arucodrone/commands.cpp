@@ -21,7 +21,7 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 	if(terminal_input.compare("takeoff") == 0) return 1;
 	if(terminal_input.compare("start") == 0) return 1;
 	if(terminal_input.compare("getpos") == 0) {
-		std::cout << std::endl << "Drone is currently at: " << *drone_location;
+		std::cout << "Drone is currently at: " << *drone_location << std::endl;
 		return -1;
 	}
 	if(terminal_input.compare("flyto") == 0){
@@ -58,6 +58,7 @@ void ArucoDrone::initialize_thread(){
 	getinput = true;
 	command = -1;
 	std::thread t1(input, &command, &holdpos, &drone_location);
+	t1.detach();
 }
 
 

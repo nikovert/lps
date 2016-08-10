@@ -205,7 +205,7 @@ void ArucoDrone::detect(){
 
         // Detection of markers in the image passed
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
-        
+        cout << "nmarkers = " << TheMarkers.size();
         if(TheMarkers.size()>0){
         	Mat position = getLocation(TheMarkers[0], TheCameraParameters, false);
             for (unsigned int i = 1; i < TheMarkers.size(); i++) {

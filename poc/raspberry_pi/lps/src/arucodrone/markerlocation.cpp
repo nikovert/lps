@@ -22,7 +22,7 @@ using namespace cv;
 Point2d ArucoDrone::getWorldCoordsfromID(int id){
     int x = (id-1)%Matwidth;
     int y = (id-1)/Matwidth;
-    Point2d pos(x, y);
+    Point2d pos(x*16, y*16);
     return pos;
 }
 
@@ -59,8 +59,8 @@ vector<Point3d> ArucoDrone::setWorldCoords(Point3d top_left, Point3d top_right, 
     vector<Point3d> world_coords;
     world_coords.push_back (top_left);
     world_coords.push_back (top_right);
-    world_coords.push_back (bottom_left);
     world_coords.push_back (bottom_right);
+    world_coords.push_back (bottom_left);
     return world_coords;
 }
 
@@ -76,8 +76,8 @@ vector<Point3d> ArucoDrone::setWorldCoords(int id){
     double size = TheMarkerSize;
     world_coords.push_back (Point3d(topleft.x, topleft.y, 0));
     world_coords.push_back (Point3d(topleft.x+size, topleft.y, 0));
-    world_coords.push_back (Point3d(topleft.x, topleft.y+size, 0));
     world_coords.push_back (Point3d (topleft.x+size, topleft.y+size, 0));
+    world_coords.push_back (Point3d(topleft.x, topleft.y+size, 0));
     return world_coords;
 }
 

@@ -90,7 +90,7 @@ void ArucoDrone::fly(){
     		if (onGround()) takeoff();
     		usleep(5000);
     		holdpos = drone_location;
-    		command = holdpos;
+    		command = hold;
     		break;
     }
 
