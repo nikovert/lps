@@ -23,6 +23,16 @@ ArucoDrone::ArucoDrone() :
 	holdpos(-1.0,-1.0,-1.0)
 	{}
 
+//// --------------------------------------------------------------------------
+////! @brief writes string to log file
+////! @param the string to be logged
+////! @return None
+//// --------------------------------------------------------------------------
+//void log( const string &text ){
+//    ofstream log_file(
+//        "log_file.txt", ios_base::out | ios_base::app );
+//    log_file << text << end;
+//}
 
 // --------------------------------------------------------------------------
 //! @brief Initializes Drone
@@ -30,22 +40,22 @@ ArucoDrone::ArucoDrone() :
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_drone(){
 	cout << "Initializing drone" << endl;
-    log_file << "Initializing drone" << endl;
+    //log_file << "Initializing drone" << endl;
     // Initialize
     if (!open()) {
         cout << "Failed to initialize." << endl;
-        log_file << "Failed to initialize." << endl;
+        //log_file << "Failed to initialize." << endl;
         return;
     }
 
     // Battery
     cout << "Battery = " << getBatteryPercentage() << "[%]" << endl;
-    log_file << "Battery = " << getBatteryPercentage() << "[%]" << endl;
+    //log_file << "Battery = " << getBatteryPercentage() << "[%]" << endl;
     // Outdoor mode
     setOutdoorMode(false);
 
     //set all speeds to zero
-    log_file << "setting up: speed.x = 0; speed.y = 0; speed.z = 0; command = off; drone_location.z = -1;" << endl;
+    //log_file << "setting up: speed.x = 0; speed.y = 0; speed.z = 0; command = off; drone_location.z = -1;" << endl;
     speed.x = 0;
     speed.y = 0;
     speed.z = 0;
@@ -117,23 +127,23 @@ void ArucoDrone::fly(){
 // --------------------------------------------------------------------------
 void ArucoDrone::initAll(){
 	//Initialize the AR Drone
-	log_file << "initialize_drone();" << endl;
+	//log_file << "initialize_drone();" << endl;
 	initialize_drone();
 
 	//Initialize the Camera and the marker detect function
-	log_file << "initialize_drone();" << endl;
+	//log_file << "initialize_drone();" << endl;
 	initialize_detection();
 
 	//Initialize PID clock
-	log_file << "pid_x.initClock();" << endl;
+	//log_file << "pid_x.initClock();" << endl;
 	pid_x.initClock();
-	log_file << "pid_y.initClock();" << endl;
+	//log_file << "pid_y.initClock();" << endl;
 	pid_y.initClock();
-	log_file << "pid_z.initClock();" << endl;
+	//log_file << "pid_z.initClock();" << endl;
 	pid_z.initClock();
 
 	//Initialize thread to get input
-	log_file << "initialize_thread();" << endl;
+	//log_file << "initialize_thread();" << endl;
 	initialize_thread();
 }
 

@@ -9,6 +9,7 @@
 #define ARUCODRONE_H_
 
 #include "../ar_drone/ardrone/ardrone.h"
+#include <fstream>
 #include "pid.h"
 #include <aruco/aruco.h>
 #include <aruco/cvdrawingutils.h>
