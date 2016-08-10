@@ -149,7 +149,7 @@ void ArucoDrone::initialize_detection(){
         // check video is open
         if ( !Camera.open()) {
         	cerr<<"Error opening camera"<<endl;
-        	log_file<<"Error opening camera"<<endl;
+        	//log_file<<"Error opening camera"<<endl;
         	return;
         }
         Camera.grab();

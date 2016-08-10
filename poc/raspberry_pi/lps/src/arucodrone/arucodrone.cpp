@@ -96,14 +96,14 @@ void ArucoDrone::fly(){
     	case hold:
     		if (onGround()){
     			cout << "can not hold position because the drone is still on the ground" << endl;
-    			log_file << "can not hold position because the drone is still on the ground" << endl;
+    			//log_file << "can not hold position because the drone is still on the ground" << endl;
     			break;
     		}
         	flytocoords(holdpos);
         	break;
     	case land:
     		landing();
-    		log_file << "setting command to off" << endl;
+    		//log_file << "setting command to off" << endl;
     		command = off;
     		break;
     	case start:
@@ -111,7 +111,7 @@ void ArucoDrone::fly(){
     		else{
     			if(drone_location.z != -1){
     				holdpos = drone_location;
-    				log_file << "setting command to hold" << endl;
+    				//log_file << "setting command to hold" << endl;
     				command = hold;
     			}
 			break;
