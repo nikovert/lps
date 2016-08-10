@@ -9,7 +9,6 @@
 #define ARUCODRONE_H_
 
 #include "../ar_drone/ardrone/ardrone.h"
-#include <fstream>
 #include "pid.h"
 #include <aruco/aruco.h>
 #include <aruco/cvdrawingutils.h>
@@ -51,7 +50,6 @@ public:
 	PID pid_y;
 	PID pid_z;
 
-	ofstream log_file("log_file.txt", ios_base::out | ios_base::app );
 	cv::Point3d drone_location;
 	double TheMarkerSize;
 	cv::Point3d speed;
