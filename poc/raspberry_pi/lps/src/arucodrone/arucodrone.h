@@ -74,7 +74,7 @@ public:
 	void flyto(cv::Point3d vector);
 
 	//cameralocation
-	cv::Mat getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
+	cv::Point3d getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
 
 	//commands
 	enum Command {off = -2, hold = -1, land = 0, start = 1};

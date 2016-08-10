@@ -6,11 +6,10 @@
  */
 
 #include "arucodrone.h"
-#include <unistd.h>
 
 using namespace std;
 
-cv::Point3d drone_location;
+
 
 // --------------------------------------------------------------------------
 //! @brief   Constructor of the Aruco Drone class
@@ -20,7 +19,8 @@ ArucoDrone::ArucoDrone() :
 	tick(0),
 	pid_x(0.1,0,0),
 	pid_y(0.1,0,0),
-	pid_z(0.1,0,0)
+	pid_z(0.1,0,0),
+	holdpos(-1.0,-1.0,-1.0)
 	{}
 
 
@@ -46,7 +46,8 @@ void ArucoDrone::initialize_drone(){
     speed.x = 0;
     speed.y = 0;
     speed.z = 0;
-    command = hold;
+    command = off;
+    drone_location.z = -1;
     return;
 }
 
@@ -80,6 +81,10 @@ void ArucoDrone::fly(){
     switch(command){
     	case off: break;
     	case hold:
+    		if (onGround()){
+    			cout << "can not hold position because the drone is still on the ground" << endl;
+    			break;
+    		}
         	flytocoords(holdpos);
         	break;
     	case land:
@@ -88,10 +93,13 @@ void ArucoDrone::fly(){
     		break;
     	case start:
     		if (onGround()) takeoff();
-    		usleep(5000);
-    		holdpos = drone_location;
-    		command = hold;
-    		break;
+    		else{
+    			if(drone_location.z != -1){
+    				holdpos = drone_location;
+    				command = hold;
+    			}
+			break;
+    		}
     }
 
     tick++;
