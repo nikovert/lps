@@ -67,12 +67,10 @@ public:
     Mat pid_matrix;
     
     void read(const FileNode& node){
-    	cout << "Reading..." << endl;
         node["TheIntrinsicFile"] >> TheIntrinsicFile;
         node["TheMarkerSize"] >> TheMarkerSize;
         node["Matwidth"] >> Matwidth;
         node["pid_matrix"] >> pid_matrix;
-        cout << "Validating..." << endl;
         validate();
     }
     
@@ -80,18 +78,22 @@ public:
         goodInput = true;
         if (TheIntrinsicFile.empty()){
             cerr << "No intrinsic file provided in settings file" << endl;
+            log_file << "No intrinsic file provided in settings file" << endl;
             goodInput = false;
         }
         if (TheMarkerSize <= 0){
             cerr << "Marker size not provided" << endl;
+            log_file << "Marker size not provided" << endl;
             goodInput = false;
         }
         if (Matwidth <= 0){
 			cerr << "Mat width not provided" << endl;
+			log_file << "Mat width not provided" << endl;
 			goodInput = false;
 		}
         if (pid_matrix.empty()){
 			cerr << "WARNING! No PID values where given" << endl;
+			log_file << "WARNING! No PID values where given" << endl;
 		}
     }
 };
@@ -116,6 +118,7 @@ static inline void read(const FileNode& node, Settings& x, const Settings& defau
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_detection(){
 	cout << "Reading settings from xml file" << endl;
+	log_file << "Reading settings from xml file" << endl;
     try {
         //! [file_read]
         Settings s;
@@ -123,15 +126,16 @@ void ArucoDrone::initialize_detection(){
         FileStorage fs(inputSettingsFile, FileStorage::READ); // Read the settings
         if (!fs.isOpened()) {
             cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
+            log_file << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
             return;
         }
-        cout << "Parsing Settings" << endl;
         fs["Settings"] >> s;
         fs.release();  // close Settings file
         
         if (!s.goodInput)
         {
             cout << "Invalid input detected. Application stopping. " << endl;
+            log_file << "Invalid input detected. Application stopping. " << endl;
             return;
         }
 
@@ -140,9 +144,14 @@ void ArucoDrone::initialize_detection(){
         
         //Open camera
         cout<<"Opening Camera..."<<endl;
+        log_file<<"Opening Camera..."<<endl;
         
         // check video is open
-        if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return ;}
+        if ( !Camera.open()) {
+        	cerr<<"Error opening camera"<<endl;
+        	log_file<<"Error opening camera"<<endl;
+        	return;
+        }
         Camera.grab();
         
         // read first image to get the dimensions
@@ -169,11 +178,13 @@ void ArucoDrone::initialize_detection(){
 			AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
 			AvrgTime.second++;
 			cout << "Time detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << endl;
+			log_file << "Time detection=" << 1000 * AvrgTime.first / AvrgTime.second << " milliseconds nmarkers=" << TheMarkers.size() << endl;
 
     } catch (std::exception &ex)
     
     {
         cout << "Exception :" << ex.what() << endl;
+        log_file << "Exception :" << ex.what() << endl;
     }
 }
 
@@ -203,7 +214,10 @@ void ArucoDrone::detect(){
         	//get IMU data
         }
         Camera.retrieve (TheInputImage);
-    } catch (std::exception &ex){ cout << "Exception :" << ex.what() << endl; }
+    } catch (std::exception &ex){
+    	cout << "Exception :" << ex.what() << endl;
+    	log_file << "Exception :" << ex.what() << endl;
+    }
 }
 
 

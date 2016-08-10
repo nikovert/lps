@@ -50,6 +50,7 @@ public:
 	PID pid_y;
 	PID pid_z;
 
+	ofstream log_file("log_file.txt", ios_base::out | ios_base::app );
 	cv::Point3d drone_location;
 	double TheMarkerSize;
 	cv::Point3d speed;

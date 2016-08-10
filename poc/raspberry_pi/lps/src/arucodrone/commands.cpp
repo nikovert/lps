@@ -35,7 +35,7 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 		*holdpos = point;
 		return -1;
 	}
-	return -1;
+	return *command;
 }
 
 // --------------------------------------------------------------------------
