@@ -19,7 +19,7 @@ ArucoDrone::ArucoDrone() :
 	tick(0),
 	pid_x(0.1,0,0),
 	pid_y(0.1,0,0),
-	pid_z(0.1,0,0),
+	pid_z(0,0,0),
 	holdpos(-1.0,-1.0,-1.0)
 	{}
 
@@ -83,7 +83,7 @@ void ArucoDrone::fly(){
     detect();
 
     //this will be the move function
-//    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
+    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
 
     //move.cpp and this function will be removed in later versions
     //move3D(vx(), vy(), vz(), vr());
@@ -92,7 +92,11 @@ void ArucoDrone::fly(){
     //check();
 
     switch(command){
-    	case off: break;
+    	case off:
+    		speed.x = 0;
+			speed.y = 0;
+			speed.z = 0;
+    		break;
     	case hold:
     		if (onGround()){
     			cout << "can not hold position because the drone is still on the ground" << endl;
@@ -100,8 +104,7 @@ void ArucoDrone::fly(){
     			command = off;
     			break;
     		}
-        	flytocoords(holdpos);
-        	command = off;
+        	if(holdpos.z > 0) flytocoords(holdpos);
         	break;
     	case land:
     		landing();
@@ -147,6 +150,11 @@ void ArucoDrone::initAll(){
 	//Initialize thread to get input
 	//log_file << "initialize_thread();" << endl;
 	initialize_thread();
+
+	cout << "PID settings:" << endl;
+	cout << "PID X: p = " << pid_x.kp() << " i = " << pid_x.ki() << " d = " << pid_x.kd() << endl;
+	cout << "PID Y: p = " << pid_y.kp() << " i = " << pid_y.ki() << " d = " << pid_y.kd() << endl;
+	cout << "PID Z: p = " << pid_z.kp() << " i = " << pid_z.ki() << " d = " << pid_z.kd() << endl;
 }
 
 // --------------------------------------------------------------------------
