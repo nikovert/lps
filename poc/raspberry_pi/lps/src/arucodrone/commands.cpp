@@ -14,7 +14,7 @@ bool getinput;
 //! @brief parses the input from the terminal
 //! @return  an integer representing the command
 // --------------------------------------------------------------------------
-int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command){
+int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command, cv::Point3d *speed){
 	if(terminal_input.compare("off") == 0) return -2;
 	if(terminal_input.compare("hold") == 0) return -1;
 	if(terminal_input.compare("land") == 0) return 0;
@@ -24,6 +24,10 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 		std::cout << "Drone is currently at: " << *drone_location << std::endl;
 		return *command;
 	}
+	if(terminal_input.compare("showspeed") == 0) {
+			std::cout << "Drone speed currently: " << speed << std::endl;
+			return *command;
+		}
 	if(terminal_input.compare("flyto") == 0){
 		cv::Point3d point;
 		std::cout << std::endl << "Please enter the x coordinates: ";
@@ -42,11 +46,14 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 //! @brief waits for input from user, used by separate thread
 //! @return  None
 // --------------------------------------------------------------------------
-void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location){
+void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int *prev_command, cv::Point3d *speed){
 	string terminal_input;
 	while(getinput){
 		std::getline(std::cin, terminal_input);
-		*command = parseinput(terminal_input, holdpos, drone_location, command); //must be checked if it works
+		*prev_command = *command;
+		*command = parseinput(terminal_input, holdpos, drone_location, command, speed); //must be checked if it works
+		if(*prev_command != *command)
+			cout << "command changed" << endl;;
 	}
 }
 
@@ -56,7 +63,7 @@ void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location){
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_thread(){
 	getinput = true;
-	std::thread t1(input, &command, &holdpos, &drone_location);
+	std::thread t1(input, &command, &holdpos, &drone_location, &prev_command, &speed);
 	t1.detach();
 }
 

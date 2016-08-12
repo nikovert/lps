@@ -55,6 +55,7 @@ public:
 	cv::Point3d speed;
 	cv::Point3d holdpos;
 	int command;
+	int prev_command;
 	int Matwidth;
 
 	//markerlocation
