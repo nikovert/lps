@@ -20,7 +20,7 @@ using namespace std;
 // --------------------------------------------------------------------------
 int main(int argc, char **argv){
 	cout << "starting Aruco Drone" << endl << "possible commands are: " << endl;
-	cout << "\toff" << endl << "\thold" << endl << "\tland" << endl << "\ttakeoff" << endl << "\tflyto" << endl << "\tgetpos" << endl << "\tchangePID" << "\tshowspeed" << endl << endl;
+	cout << "\toff" << endl << "\thold" << endl << "\tland" << endl << "\ttakeoff" << endl << "\tflyto" << endl << "\tgetpos" << endl << "\tchangePID" << endl << "\tshowspeed" << endl << endl;
 	ArucoDrone drone;
 	drone.initAll();
 	cout << "Initialization complete, ready to take commands" << endl;

@@ -25,7 +25,7 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 		return *command;
 	}
 	if(terminal_input.compare("showspeed") == 0) {
-			std::cout << "Drone speed currently: " << speed << std::endl;
+			std::cout << "Drone speed currently: " << *speed << std::endl;
 			return *command;
 		}
 	if(terminal_input.compare("flyto") == 0){

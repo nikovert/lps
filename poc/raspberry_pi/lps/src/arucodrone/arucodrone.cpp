@@ -97,6 +97,7 @@ void ArucoDrone::fly(){
     		if (onGround()){
     			cout << "can not hold position because the drone is still on the ground" << endl;
     			//log_file << "can not hold position because the drone is still on the ground" << endl;
+    			command = off;
     			break;
     		}
         	flytocoords(holdpos);
