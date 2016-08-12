@@ -83,7 +83,7 @@ void ArucoDrone::fly(){
     detect();
 
     //this will be the move function
-    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
+//    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
 
     //move.cpp and this function will be removed in later versions
     //move3D(vx(), vy(), vz(), vr());
@@ -100,6 +100,7 @@ void ArucoDrone::fly(){
     			break;
     		}
         	flytocoords(holdpos);
+        	command = off;
         	break;
     	case land:
     		landing();
