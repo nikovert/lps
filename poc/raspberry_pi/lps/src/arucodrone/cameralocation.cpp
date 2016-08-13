@@ -16,13 +16,35 @@
 using namespace cv;
 using namespace aruco;
 
+// --------------------------------------------------------------------------
+//! @brief calculates yaw pitch and roll of drone (source: http://answers.opencv.org/answers/57759/revisions/)
+//! @param rotation Matrix and the Vec3d to which the euler angle should be written
+//! @return
+// --------------------------------------------------------------------------
+void ArucoDrone::setEulerAngles(Mat &rotCamerMatrix,Vec3d &eulerAngles){
+    Mat cameraMatrix,rotMatrix,transVect,rotMatrixX,rotMatrixY,rotMatrixZ;
+    double* _r = rotCamerMatrix.ptr<double>();
+    double projMatrix[12] = {_r[0],_r[1],_r[2],0,
+                          _r[3],_r[4],_r[5],0,
+                          _r[6],_r[7],_r[8],0};
+
+    decomposeProjectionMatrix( Mat(3,4,CV_64FC1,projMatrix),
+                               cameraMatrix,
+                               rotMatrix,
+                               transVect,
+                               rotMatrixX,
+                               rotMatrixY,
+                               rotMatrixZ,
+                               eulerAngles);
+}
+
 
 // --------------------------------------------------------------------------
 //! @brief calculates the coordinates of the drone, may be used in future to calculate camera pose
 //! @param the aruco marker, the camera parametera, and an  optional boolean if the location should be printed
 //! @return a Matrix of the drone location
 // --------------------------------------------------------------------------
-Point3d ArucoDrone::getLocation(Marker m, CameraParameters TheCameraParameters, bool print){
+void ArucoDrone::getLocation(Marker m, CameraParameters TheCameraParameters, Point3d *position, Mat *rotation, bool print){
     //bool debug = false;
     if(print) cout << "Marker id: " << m.id << endl;
     //if(print) log_file << "Marker id: " << m.id << endl;
@@ -32,13 +54,16 @@ Point3d ArucoDrone::getLocation(Marker m, CameraParameters TheCameraParameters, 
     //solvePnP returns the rotation and the translation vectors
     solvePnP(world_coords, setPixelCoords(m), TheCameraParameters.CameraMatrix, TheCameraParameters.Distorsion, rvec, tvec);
     
-    
     if(print)cout << "rvec: "<< rvec << endl << "tvec: " << tvec << endl;
     //if(print)log_file << "rvec: "<< rvec << endl << "tvec: " << tvec << endl;
     Mat R;
     //The direction of the rotation vector indicates the axis of rotation, while the length (or “norm”) of the vector gives the angle.
     //Rodrigues converts the vector to a matrix
     Rodrigues(rvec, R);
+    *rotation = R;
+    //sets euler angle
+    //setEulerAngles(rvec, eulerAngle);
+
     if(print)cout << "R: "<< R << endl;
     //if(print)log_file << "R: "<< R << endl;
     //we now need to calculate the extrinsic matrix
@@ -53,5 +78,5 @@ Point3d ArucoDrone::getLocation(Marker m, CameraParameters TheCameraParameters, 
     cv::Mat extrinsic_inv = extrinsic.inv();
     if(print)cout << "extrinsic_inv: "<< extrinsic_inv << endl;
     //if(print)log_file << "extrinsic_inv: "<< extrinsic_inv << endl;
-    return cv::Point3d(extrinsic_inv.at<double>(0,3),extrinsic_inv.at<double>(1,3),extrinsic_inv.at<double>(2,3));
+    *position = cv::Point3d(extrinsic_inv.at<double>(0,3),extrinsic_inv.at<double>(1,3),extrinsic_inv.at<double>(2,3));
 }

@@ -166,9 +166,9 @@ void ArucoDrone::initialize_detection(){
         Matwidth = s.Matwidth;
 
     	// PID controllers for X,Y and Z direction
-    	pid_x.set(s.pid_matrix.at<double>(0,0), s.pid_matrix.at<double>(1,0), s.pid_matrix.at<double>(2,0));
-		pid_x.set(s.pid_matrix.at<double>(0,1), s.pid_matrix.at<double>(1,1), s.pid_matrix.at<double>(2,1));
-		pid_x.set(s.pid_matrix.at<double>(0,2), s.pid_matrix.at<double>(1,2), s.pid_matrix.at<double>(2,2));
+    	//pid_x.set(s.pid_matrix.at<double>(0,0), s.pid_matrix.at<double>(1,0), s.pid_matrix.at<double>(2,0));
+		//pid_y.set(s.pid_matrix.at<double>(0,1), s.pid_matrix.at<double>(1,1), s.pid_matrix.at<double>(2,1));
+		//pid_z.set(s.pid_matrix.at<double>(0,2), s.pid_matrix.at<double>(1,2), s.pid_matrix.at<double>(2,2));
         
         //Calculates the speed at which the markers are detected
 			double tick = (double)getTickCount(); // for checking the speed
@@ -189,7 +189,7 @@ void ArucoDrone::initialize_detection(){
 }
 
 // --------------------------------------------------------------------------
-//! @brief can be looped, detects the marker and sets the drone_location
+//! @brief can be looped, detects the marker and sets the drone_location and the euler angle
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::detect(){
@@ -200,13 +200,18 @@ void ArucoDrone::detect(){
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
         //cout << "nmarkers = " << TheMarkers.size();
         if(TheMarkers.size()>0){
-        	Point3d position = getLocation(TheMarkers[0], TheCameraParameters, false);
+        	Point3d position, position_tmp;
+        	Mat rotation, rotation_tmp;
+        	getLocation(TheMarkers[0], TheCameraParameters, &position, &rotation, false);
             for (unsigned int i = 1; i < TheMarkers.size(); i++) {
-            	position += getLocation(TheMarkers[i], TheCameraParameters, false);
+            	getLocation(TheMarkers[i], TheCameraParameters, &position_tmp, &rotation_tmp ,false);
+            	position += position_tmp;
+            	rotation += rotation_tmp;
             }
-            drone_location.x = position.x /TheMarkers.size();
-            drone_location.y = position.y /TheMarkers.size();
-            drone_location.z = position.z /TheMarkers.size() * -1;
+            drone_location.x = position.x / TheMarkers.size();
+            drone_location.y = position.y / TheMarkers.size();
+            drone_location.z = position.z / TheMarkers.size() * -1;
+            rot = rotation / TheMarkers.size();
 
             //cout << "\rDrone position: x = " << drone_location.x << "\ty = " << drone_location.y << "\tz = " << drone_location.z; // "\e[A" to go up a line
         }else{

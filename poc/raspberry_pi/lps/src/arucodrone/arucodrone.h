@@ -51,6 +51,7 @@ public:
 	PID pid_z;
 
 	cv::Point3d drone_location;
+	cv::Mat rot; //pitch = eulerAngles[0]; yaw   = eulerAngles[1]; roll  = eulerAngles[2];
 	double TheMarkerSize;
 	cv::Point3d speed;
 	cv::Point3d holdpos;
@@ -75,7 +76,8 @@ public:
 	void flyto(cv::Point3d vector);
 
 	//cameralocation
-	cv::Point3d getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, bool print);
+	void setEulerAngles(cv::Mat &rotCamerMatrix,cv::Vec3d &eulerAngles);
+	void getLocation(aruco::Marker m, aruco::CameraParameters TheCameraParameters, cv::Point3d *position, cv::Mat *rotation, bool print);
 
 	//commands
 	enum Command {off = -2, hold = -1, land = 0, start = 1};

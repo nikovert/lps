@@ -28,7 +28,13 @@ double ArucoDrone::distancetofly(Point3d point){
 //! @return a vector that points to the point
 // --------------------------------------------------------------------------
 Point3d ArucoDrone::vectortofly(Point3d point){
-    return Point3d((point.x - drone_location.x), (point.y - drone_location.y), (point.z - drone_location.z));
+	Point3d vec((drone_location.x - point.x), (drone_location.y - point.y), (drone_location.z - point.z));
+	Mat_<double> mat(3,1);
+	mat(0,0) = vec.x;
+	mat(1,0) = vec.y;
+	mat(2,0) = vec.z;
+	mat = rot * mat;
+	return Point3d(mat);
 }
 
 // --------------------------------------------------------------------------

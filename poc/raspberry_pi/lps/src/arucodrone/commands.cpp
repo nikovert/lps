@@ -14,7 +14,7 @@ bool getinput;
 //! @brief parses the input from the terminal
 //! @return  an integer representing the command
 // --------------------------------------------------------------------------
-int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command, cv::Point3d *speed){
+int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command, cv::Point3d *speed, cv::Mat *rot){
 	if(terminal_input.compare("off") == 0) return -2;
 	if(terminal_input.compare("hold") == 0) return -1;
 	if(terminal_input.compare("land") == 0) return 0;
@@ -24,10 +24,14 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 		std::cout << "Drone is currently at: " << *drone_location << std::endl;
 		return *command;
 	}
-	if(terminal_input.compare("showspeed") == 0) {
+	if(terminal_input.compare("getspeed") == 0) {
 			std::cout << "Drone speed currently: " << *speed << std::endl;
 			return *command;
-		}
+	}
+	if(terminal_input.compare("getrotation") == 0) {
+				std::cout << "Drone angle is currently: " << *rot << std::endl;
+				return *command;
+	}
 	if(terminal_input.compare("flyto") == 0){
 		cv::Point3d point;
 		std::cout << std::endl << "Please enter the x coordinates: ";
@@ -46,12 +50,12 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 //! @brief waits for input from user, used by separate thread
 //! @return  None
 // --------------------------------------------------------------------------
-void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int *prev_command, cv::Point3d *speed){
+void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int *prev_command, cv::Point3d *speed, cv::Mat *rot){
 	string terminal_input;
 	while(getinput){
 		std::getline(std::cin, terminal_input);
 		*prev_command = *command;
-		*command = parseinput(terminal_input, holdpos, drone_location, command, speed); //must be checked if it works
+		*command = parseinput(terminal_input, holdpos, drone_location, command, speed, rot); //must be checked if it works
 		if(*prev_command != *command)
 			cout << "command changed" << endl;;
 	}
@@ -63,7 +67,7 @@ void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int 
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_thread(){
 	getinput = true;
-	std::thread t1(input, &command, &holdpos, &drone_location, &prev_command, &speed);
+	std::thread t1(input, &command, &holdpos, &drone_location, &prev_command, &speed, &rot);
 	t1.detach();
 }
 
