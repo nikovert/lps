@@ -17,10 +17,10 @@ using namespace std;
 // --------------------------------------------------------------------------
 ArucoDrone::ArucoDrone() :
 	tick(0),
-	pid_x(0.1,0,0),
-	pid_y(0.1,0,0),
-	pid_z(0,0,0),
-	holdpos(-1.0,-1.0,-1.0)
+	pid_x(0.01,0,0),
+	pid_y(0.00,0,0),
+	pid_z(0.00,0,0),
+	holdpos(0,0,-1.0)
 	{}
 
 //// --------------------------------------------------------------------------
@@ -61,6 +61,8 @@ void ArucoDrone::initialize_drone(){
     speed.z = 0;
     command = off;
     drone_location.z = -1;
+    double m[3][3] = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+	camerarot = Mat(3, 3, CV_64F, m).inv();
     return;
 }
 
@@ -83,7 +85,7 @@ void ArucoDrone::fly(){
     detect();
 
     //this will be the move function
-    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
+    move3D(speed.x, -speed.y, speed.z, 0); //currently not able to rotate
 
     //move.cpp and this function will be removed in later versions
     //move3D(vx(), vy(), vz(), vr());
@@ -114,6 +116,10 @@ void ArucoDrone::fly(){
     	case start:
     		if (onGround()) takeoff();
     		else{
+    			if(drone_location.z == -1 && getAltitude() < 0.5){
+    				//cout << "flying up, altitude = " << getAltitude() << endl;
+    				move3D(0, 0, 1, 0);
+    			}
     			if(drone_location.z != -1){
     				holdpos = drone_location;
     				//log_file << "setting command to hold" << endl;

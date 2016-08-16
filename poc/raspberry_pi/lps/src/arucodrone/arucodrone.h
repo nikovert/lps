@@ -51,7 +51,8 @@ public:
 	PID pid_z;
 
 	cv::Point3d drone_location;
-	cv::Mat rot; //pitch = eulerAngles[0]; yaw   = eulerAngles[1]; roll  = eulerAngles[2];
+	cv::Mat rot;
+	cv:: Mat camerarot; //rotation of camera
 	double TheMarkerSize;
 	cv::Point3d speed;
 	cv::Point3d holdpos;
