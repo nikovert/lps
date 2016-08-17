@@ -34,6 +34,7 @@ Point3d ArucoDrone::vectortofly(Point3d point){
 	mat(1,0) = vec.y;
 	mat(2,0) = vec.z;
 	if(!rot.empty())mat = camerarot * (rot * mat); // must also calculate rotation of camera, this value is fixed
+	//cout << "flying to point: " << point << " with vector: " << mat << " from location: " << drone_location << endl;
 	return Point3d(mat);
 }
 

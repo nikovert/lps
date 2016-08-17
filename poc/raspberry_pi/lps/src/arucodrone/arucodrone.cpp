@@ -17,10 +17,11 @@ using namespace std;
 // --------------------------------------------------------------------------
 ArucoDrone::ArucoDrone() :
 	tick(0),
-	pid_x(0.01,0,0),
-	pid_y(0.00,0,0),
-	pid_z(0.00,0,0),
-	holdpos(0,0,-1.0)
+	pid_x(0.001,0,0),
+	pid_y(0.001,0,0),
+	pid_z(0.000,0,0),
+	holdpos(0,0,-1),
+	reset(false)
 	{}
 
 //// --------------------------------------------------------------------------
@@ -61,8 +62,8 @@ void ArucoDrone::initialize_drone(){
     speed.z = 0;
     command = off;
     drone_location.z = -1;
-    double m[3][3] = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
-	camerarot = Mat(3, 3, CV_64F, m).inv();
+    double m[3][3] = {{-1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
+	camerarot = cv::Mat(3, 3, CV_64F, m).inv();
     return;
 }
 
@@ -84,14 +85,22 @@ void ArucoDrone::fly(){
     // detect marker and updates the drone_location
     detect();
 
+
     //this will be the move function
-    move3D(speed.x, -speed.y, speed.z, 0); //currently not able to rotate
+    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
+
+    //in the case, that the new speed isn't set
+    speed.x = 0;
+	speed.y = 0;
+	speed.z = 0;
+
 
     //move.cpp and this function will be removed in later versions
     //move3D(vx(), vy(), vz(), vr());
 
     //check will be removed in later versions
     //check();
+
 
     switch(command){
     	case off:
@@ -104,7 +113,12 @@ void ArucoDrone::fly(){
     			cout << "can not hold position because the drone is still on the ground" << endl;
     			//log_file << "can not hold position because the drone is still on the ground" << endl;
     			command = off;
+    			cout << "command changed to off" << endl;
     			break;
+    		}
+    		if(drone_location.z == -1){
+    			command = off;
+				cout << "command changed to off" << endl;
     		}
         	if(holdpos.z > 0) flytocoords(holdpos);
         	break;
@@ -112,6 +126,7 @@ void ArucoDrone::fly(){
     		landing();
     		//log_file << "setting command to off" << endl;
     		command = off;
+    		cout << "command changed to off" << endl;
     		break;
     	case start:
     		if (onGround()) takeoff();
@@ -123,11 +138,20 @@ void ArucoDrone::fly(){
     			if(drone_location.z != -1){
     				holdpos = drone_location;
     				//log_file << "setting command to hold" << endl;
-    				command = hold;
+    				command = off; // tmp measure, should be changed to hold
+    				reset = true;
+    				cout << "command changed to off" << endl;
     			}
 			break;
     		}
     }
+
+    //if(reset){
+    //	pid_x.reset();
+    //	pid_y.reset();
+    //	pid_z.reset();
+    //	reset = false;
+    //}
 
     tick++;
 }

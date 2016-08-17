@@ -39,8 +39,8 @@ PID::PID(double kp, double ki, double kd):
 	_ki(ki),
 	_kd(kd),
 	_dt(0),
-	_max(5.0), //the maximum speed
-	_min(-5.0), //the minimum speed (opposite direction)
+	_max(1.0), //the maximum speed is 5
+	_min(-1.0), //the minimum speed (opposite direction)
 	_integral(0), //the integral starts at 0
 	_pre_error(0)
 	{ }
@@ -93,6 +93,15 @@ void PID::set(double kp, double ki, double kd){
 }
 
 // --------------------------------------------------------------------------
+//! @brief resets the PID controller for a new target
+//! @return the speed from -5 (backwards) to 5 (forwards)
+// --------------------------------------------------------------------------
+void PID::reset(){
+	_integral = 0; //the integral starts at 0
+	_pre_error = 0;
+}
+
+// --------------------------------------------------------------------------
 //! @brief calculates the speed according to the distance to fly
 //! @param the distance to fly
 //! @return the speed from -5 (backwards) to 5 (forwards)
@@ -100,10 +109,10 @@ void PID::set(double kp, double ki, double kd){
 double PID::refresh(double error){
 	//calculate time difference
 
-	// find the duration
-	//d = hr_clock::now() - prog_start;
+		// find the duration
+		//d = hr_clock::now() - prog_start;
 
-	// cast the duration to milliseconds
+		// cast the duration to milliseconds
 	_dt =  timediff().count();
 
 	//std::cout << "dt: " << _dt << std::endl;

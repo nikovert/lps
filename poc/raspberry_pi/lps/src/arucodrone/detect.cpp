@@ -195,7 +195,6 @@ void ArucoDrone::initialize_detection(){
 void ArucoDrone::detect(){
     try {
         Camera.grab();
-
         // Detection of markers in the image passed
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
         //cout << "nmarkers = " << TheMarkers.size();

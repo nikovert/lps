@@ -21,6 +21,7 @@ public:
 	double kp();
 	double ki();
 	double kd();
+	void reset();
 private:
 	double _kp; 		// -  proportional gain
 	double _ki; 		// -  Integral gain

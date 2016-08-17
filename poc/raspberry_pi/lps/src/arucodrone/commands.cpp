@@ -14,9 +14,12 @@ bool getinput;
 //! @brief parses the input from the terminal
 //! @return  an integer representing the command
 // --------------------------------------------------------------------------
-int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command, cv::Point3d *speed, cv::Mat *rot){
+int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command, cv::Point3d *speed, cv::Mat *rot, bool *reset){
 	if(terminal_input.compare("off") == 0) return -2;
-	if(terminal_input.compare("hold") == 0) return -1;
+	if(terminal_input.compare("hold") == 0){
+		*reset = true;
+		return -1;
+	}
 	if(terminal_input.compare("land") == 0) return 0;
 	if(terminal_input.compare("takeoff") == 0) return 1;
 	if(terminal_input.compare("start") == 0) return 1;
@@ -41,6 +44,7 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 		std::cout << std::endl << "Please enter the z coordinates: ";
 		std::cin >> point.z;
 		*holdpos = point;
+		*reset = true;
 		return -1;
 	}
 	return *command;
@@ -50,14 +54,14 @@ int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_l
 //! @brief waits for input from user, used by separate thread
 //! @return  None
 // --------------------------------------------------------------------------
-void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int *prev_command, cv::Point3d *speed, cv::Mat *rot){
+void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int *prev_command, cv::Point3d *speed, cv::Mat *rot, bool *reset){
 	string terminal_input;
 	while(getinput){
 		std::getline(std::cin, terminal_input);
 		*prev_command = *command;
-		*command = parseinput(terminal_input, holdpos, drone_location, command, speed, rot); //must be checked if it works
+		*command = parseinput(terminal_input, holdpos, drone_location, command, speed, rot, reset); //must be checked if it works
 		if(*prev_command != *command)
-			cout << "command changed" << endl;;
+			cout << "command changed to " << *command << endl;
 	}
 }
 
@@ -67,7 +71,7 @@ void input(int *command, cv::Point3d *holdpos, cv::Point3d *drone_location, int 
 // --------------------------------------------------------------------------
 void ArucoDrone::initialize_thread(){
 	getinput = true;
-	std::thread t1(input, &command, &holdpos, &drone_location, &prev_command, &speed, &rot);
+	std::thread t1(input, &command, &holdpos, &drone_location, &prev_command, &speed, &rot, &reset);
 	t1.detach();
 }
 

@@ -49,6 +49,7 @@ public:
 	PID pid_x;
 	PID pid_y;
 	PID pid_z;
+	bool reset;
 
 	cv::Point3d drone_location;
 	cv::Mat rot;
