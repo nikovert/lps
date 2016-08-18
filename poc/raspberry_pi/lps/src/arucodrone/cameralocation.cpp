@@ -16,6 +16,7 @@
 using namespace cv;
 using namespace aruco;
 
+//this function can be deleted
 // --------------------------------------------------------------------------
 //! @brief calculates yaw pitch and roll of drone (source: http://answers.opencv.org/answers/57759/revisions/)
 //! @param rotation Matrix and the Vec3d to which the euler angle should be written

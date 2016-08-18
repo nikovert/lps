@@ -37,6 +37,7 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <raspicam/raspicam_cv.h>
 #include <unistd.h>
+#include <math.h>
 #include "arucodrone.h"
 
 using namespace cv;
@@ -192,7 +193,7 @@ void ArucoDrone::initialize_detection(){
 //! @brief can be looped, detects the marker and sets the drone_location and the euler angle
 //! @return None
 // --------------------------------------------------------------------------
-void ArucoDrone::detect(){
+int ArucoDrone::detect(){
     try {
         Camera.grab();
         // Detection of markers in the image passed
@@ -204,8 +205,11 @@ void ArucoDrone::detect(){
         	getLocation(TheMarkers[0], TheCameraParameters, &position, &rotation, false);
             for (unsigned int i = 1; i < TheMarkers.size(); i++) {
             	getLocation(TheMarkers[i], TheCameraParameters, &position_tmp, &rotation_tmp ,false);
-            	position += position_tmp;
-            	rotation += rotation_tmp;
+            	if(abs(position_tmp.x - position.x) < 50 && abs(position_tmp.y - position.y) < 50 && abs(position_tmp.z - position.z) < 50){
+					position += position_tmp;
+					rotation += rotation_tmp;
+            	}else
+            		cout << "throwing postition" << endl;
             }
             drone_location.x = position.x / TheMarkers.size();
             drone_location.y = position.y / TheMarkers.size();
@@ -214,13 +218,15 @@ void ArucoDrone::detect(){
 
             //cout << "\rDrone position: x = " << drone_location.x << "\ty = " << drone_location.y << "\tz = " << drone_location.z; // "\e[A" to go up a line
         }else{
-        	//currently only GPS data works!
-        	//get IMU data
+        	cout << "can't see markers" << endl;
+        	return -1;
         }
         Camera.retrieve (TheInputImage);
+        return 0;
     } catch (std::exception &ex){
     	cout << "Exception :" << ex.what() << endl;
     	//log_file << "Exception :" << ex.what() << endl;
+    	return -1;
     }
 }
 

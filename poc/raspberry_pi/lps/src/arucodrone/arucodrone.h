@@ -28,7 +28,7 @@ public:
 
 	//detect
 	void initialize_detection();
-	void detect();
+	int detect();
 
 	//move
 	/*

@@ -17,9 +17,9 @@ using namespace std;
 // --------------------------------------------------------------------------
 ArucoDrone::ArucoDrone() :
 	tick(0),
-	pid_x(0.001,0,0),
-	pid_y(0.001,0,0),
-	pid_z(0.000,0,0),
+	pid_x(0.005,0,0.00),
+	pid_y(0.005,0,0.00),
+	pid_z(0.0001,0,0),
 	holdpos(0,0,-1),
 	reset(false)
 	{}
@@ -81,26 +81,10 @@ ArucoDrone::~ArucoDrone() {
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::fly(){
-
-    // detect marker and updates the drone_location
-    detect();
-
-
-    //this will be the move function
-    move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
-
-    //in the case, that the new speed isn't set
-    speed.x = 0;
-	speed.y = 0;
-	speed.z = 0;
-
-
-    //move.cpp and this function will be removed in later versions
-    //move3D(vx(), vy(), vz(), vr());
-
-    //check will be removed in later versions
-    //check();
-
+	int x = -1;
+	// detect marker and updates the drone_location
+	if(!onGround())
+		x = detect();
 
     switch(command){
     	case off:
@@ -119,6 +103,9 @@ void ArucoDrone::fly(){
     		if(drone_location.z == -1){
     			command = off;
 				cout << "command changed to off" << endl;
+    		}
+    		if(getAltitude() > 1.8){
+    			command = off;
     		}
         	if(holdpos.z > 0) flytocoords(holdpos);
         	break;
@@ -142,16 +129,31 @@ void ArucoDrone::fly(){
     				reset = true;
     				cout << "command changed to off" << endl;
     			}
-			break;
     		}
+    		break;
     }
 
-    //if(reset){
-    //	pid_x.reset();
-    //	pid_y.reset();
-    //	pid_z.reset();
-    //	reset = false;
-    //}
+    //if no marker was detected, don't fly
+	if(x == -1){
+		speed.x = 0;
+		speed.y = 0;
+		speed.z = 0;
+	}
+
+    //this will be the move function
+	move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
+
+	//in the case, that the new speed isn't set
+	speed.x = 0;
+	speed.y = 0;
+	speed.z = 0;
+
+    if(reset){
+    	pid_x.reset();
+    	pid_y.reset();
+    	pid_z.reset();
+    	reset = false;
+    }
 
     tick++;
 }

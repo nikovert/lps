@@ -15,14 +15,26 @@ bool getinput;
 //! @return  an integer representing the command
 // --------------------------------------------------------------------------
 int parseinput(string terminal_input, cv::Point3d *holdpos, cv::Point3d *drone_location, int *command, cv::Point3d *speed, cv::Mat *rot, bool *reset){
-	if(terminal_input.compare("off") == 0) return -2;
+	if(terminal_input.compare("off") == 0){
+		*reset = true;
+		return -2;
+	}
 	if(terminal_input.compare("hold") == 0){
 		*reset = true;
 		return -1;
 	}
-	if(terminal_input.compare("land") == 0) return 0;
-	if(terminal_input.compare("takeoff") == 0) return 1;
-	if(terminal_input.compare("start") == 0) return 1;
+	if(terminal_input.compare("land") == 0){
+		*reset = true;
+		return 0;
+	}
+	if(terminal_input.compare("takeoff") == 0){
+		*reset = true;
+		return 1;
+	}
+	if(terminal_input.compare("start") == 0){
+		*reset = true;
+		return 1;
+	}
 	if(terminal_input.compare("getpos") == 0) {
 		std::cout << "Drone is currently at: " << *drone_location << std::endl;
 		return *command;
