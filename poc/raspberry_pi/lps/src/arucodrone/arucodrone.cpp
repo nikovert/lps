@@ -9,7 +9,11 @@
 
 using namespace std;
 
-
+// for readability
+using hr_clock = std::chrono::high_resolution_clock;
+using hr_time_point = hr_clock::time_point;
+using hr_duration = hr_clock::duration;
+using millisec = std::chrono::duration<double, std::milli>;
 
 // --------------------------------------------------------------------------
 //! @brief   Constructor of the Aruco Drone class
@@ -64,6 +68,7 @@ void ArucoDrone::initialize_drone(){
     drone_location.z = -1;
     double m[3][3] = {{-1, 0, 0}, {0, 1, 0}, {0, 0, -1}};
 	camerarot = cv::Mat(3, 3, CV_64F, m).inv();
+	previous = hr_clock::now();
     return;
 }
 
@@ -75,19 +80,35 @@ ArucoDrone::~ArucoDrone() {
 	close();
 }
 
+// --------------------------------------------------------------------------
+//! @brief calculates the time since the the function was last called
+//! @return time since the last person was called
+// --------------------------------------------------------------------------
+millisec ArucoDrone::timediff(){
+    // get current time
+    hr_time_point current = hr_clock::now();
+
+    // get the time difference
+    millisec ms = std::chrono::duration_cast<millisec>(current - previous);
+
+    // store current time for next call
+    previous = current;
+
+    // return elapsed time in milliseconds
+    return ms;
+}
 
 // --------------------------------------------------------------------------
 //! @brief the main loop function during the flight that executes all other functions
 //! @return None
 // --------------------------------------------------------------------------
 void ArucoDrone::fly(){
-
-    // detect marker and updates the drone_location
+	// detect marker and updates the drone_location
     detect();
-
 
     //this will be the move function
     move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate
+
 
     //in the case, that the new speed isn't set
     speed.x = 0;

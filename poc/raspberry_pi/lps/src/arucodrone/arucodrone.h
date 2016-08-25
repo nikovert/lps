@@ -17,6 +17,9 @@
 #include <raspicam/raspicam_cv.h>
 #include <string.h>
 
+#include <time.h>
+#include <chrono>
+
 class ArucoDrone: public ARDrone {
 public:
 	ArucoDrone();
@@ -25,6 +28,8 @@ public:
 	void initialize_drone();
 	void initAll();
 	cv::Point3d get_GPS_position();
+	std::chrono::high_resolution_clock::time_point previous;
+	std::chrono::duration<double, std::milli> timediff();
 
 	//detect
 	void initialize_detection();

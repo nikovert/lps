@@ -56,9 +56,6 @@ PID::~PID() { }
 //! @return time since the last person was called
 // --------------------------------------------------------------------------
 millisec PID::timediff(){
-    // save time between function call
-    previous = hr_clock::now();
-
     // get current time
     hr_time_point current = hr_clock::now();
 
@@ -82,7 +79,8 @@ void PID::initClock(){
 	//last_heartbeat = gettime_now.tv_nsec;
 	//clock_gettime(CLOCK_REALTIME, &last);
 
-	timediff();
+	// save time between function call
+	    previous = hr_clock::now();
 	//prog_start = hr_clock::now();
 }
 
@@ -114,7 +112,7 @@ double PID::refresh(double error){
 
 		// cast the duration to milliseconds
 	_dt =  timediff().count();
-
+	std::cout << _dt << std::endl;
 	//std::cout << "dt: " << _dt << std::endl;
 //	clock_gettime(CLOCK_REALTIME, &now);
 //	clock_gettime(CLOCK_REALTIME, &gettime_now);

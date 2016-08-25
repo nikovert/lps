@@ -141,6 +141,8 @@ void ArucoDrone::initialize_detection(){
 
         //set camera params
         Camera.set( CV_CAP_PROP_FORMAT, CV_8UC1 );
+        Camera.set( CV_CAP_PROP_FRAME_WIDTH, 320 );
+        Camera.set( CV_CAP_PROP_FRAME_HEIGHT, 240 );
         
         //Open camera
         cout<<"Opening Camera..."<<endl;
@@ -173,6 +175,7 @@ void ArucoDrone::initialize_detection(){
         //Calculates the speed at which the markers are detected
 			double tick = (double)getTickCount(); // for checking the speed
 			// Detection of markers in the image passed
+			MDetector.setDesiredSpeed(2);
 			MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
 			// check the speed by calculating the mean speed of all iterations
 			AvrgTime.first += ((double)getTickCount() - tick) / getTickFrequency();
@@ -195,9 +198,15 @@ void ArucoDrone::initialize_detection(){
 void ArucoDrone::detect(){
     try {
         Camera.grab();
+        Camera.retrieve (TheInputImage);
+        timediff();
+
         // Detection of markers in the image passed
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
-        //cout << "nmarkers = " << TheMarkers.size();
+
+        cout << "nmarkers = " << TheMarkers.size();
+        cout << "after marker detect " << timediff().count() << endl;
+
         if(TheMarkers.size()>0){
         	Point3d position, position_tmp;
         	Mat rotation, rotation_tmp;
@@ -217,7 +226,6 @@ void ArucoDrone::detect(){
         	//currently only GPS data works!
         	//get IMU data
         }
-        Camera.retrieve (TheInputImage);
     } catch (std::exception &ex){
     	cout << "Exception :" << ex.what() << endl;
     	//log_file << "Exception :" << ex.what() << endl;
