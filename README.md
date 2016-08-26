@@ -3,6 +3,8 @@ Local Positioning System.
 
 This Project is dedicated to develop a positioning system based on the aruco marker model used for augmented reality.
 
+There is no stable release at the moment, but feel free to use as much of the code as needed.
+
 ###Installing Aruco
 Currently lps only runs on osx, therfore we will only documents an osx installation, we hope to update this issue soon.
 
