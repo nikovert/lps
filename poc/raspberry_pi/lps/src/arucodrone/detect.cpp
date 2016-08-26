@@ -141,8 +141,8 @@ void ArucoDrone::initialize_detection(){
 
         //set camera params
         Camera.set( CV_CAP_PROP_FORMAT, CV_8UC1 );
-        Camera.set( CV_CAP_PROP_FRAME_WIDTH, 320 );
-        Camera.set( CV_CAP_PROP_FRAME_HEIGHT, 240 );
+        //Camera.set( CV_CAP_PROP_FRAME_WIDTH, 320 );
+        //Camera.set( CV_CAP_PROP_FRAME_HEIGHT, 240 );
         
         //Open camera
         cout<<"Opening Camera..."<<endl;
@@ -204,8 +204,8 @@ void ArucoDrone::detect(){
         // Detection of markers in the image passed
         MDetector.detect(TheInputImage, TheMarkers, TheCameraParameters, TheMarkerSize);
 
-        cout << "nmarkers = " << TheMarkers.size();
-        cout << "after marker detect " << timediff().count() << endl;
+        client.gauge("markers", (float) TheMarkers.size());
+        client.gauge("detect", (float) timediff().count());
 
         if(TheMarkers.size()>0){
         	Point3d position, position_tmp;

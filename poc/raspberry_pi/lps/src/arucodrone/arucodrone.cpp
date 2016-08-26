@@ -25,7 +25,8 @@ ArucoDrone::ArucoDrone() :
 	pid_y(0.001,0,0),
 	pid_z(0.000,0,0),
 	holdpos(0,0,-1),
-	reset(false)
+	reset(false),
+	client("10.0.1.17", 9876, "arucodrone.")
 	{}
 
 //// --------------------------------------------------------------------------
@@ -105,6 +106,10 @@ millisec ArucoDrone::timediff(){
 void ArucoDrone::fly(){
 	// detect marker and updates the drone_location
     detect();
+
+    client.gauge("position-x", (float) drone_location.x);
+    client.gauge("position-y", (float) drone_location.y);
+    client.gauge("position-z", (float) drone_location.z);
 
     //this will be the move function
     move3D(speed.x, speed.y, speed.z, 0); //currently not able to rotate

@@ -73,9 +73,11 @@ void ArucoDrone::flytocoords(Point3d point){
 // --------------------------------------------------------------------------
 void ArucoDrone::flyto(Point3d vector){
 	speed.x = pid_x.refresh((double) vector.x);
+	client.gauge("pid_x-error", (float) vector.x);
 	speed.y = pid_y.refresh((double) vector.y);
+	client.gauge("pid_y-error", (float) vector.y);
 	speed.z = pid_z.refresh((double) vector.z);
-
+	client.gauge("pid_z-error", (float) vector.z);
 
 
 

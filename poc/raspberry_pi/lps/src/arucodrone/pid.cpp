@@ -112,7 +112,6 @@ double PID::refresh(double error){
 
 		// cast the duration to milliseconds
 	_dt =  timediff().count();
-	std::cout << _dt << std::endl;
 	//std::cout << "dt: " << _dt << std::endl;
 //	clock_gettime(CLOCK_REALTIME, &now);
 //	clock_gettime(CLOCK_REALTIME, &gettime_now);

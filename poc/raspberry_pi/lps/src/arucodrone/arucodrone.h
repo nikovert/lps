@@ -9,6 +9,7 @@
 #define ARUCODRONE_H_
 
 #include "../ar_drone/ardrone/ardrone.h"
+#include "../statsd-client-cpp/src/statsd_client.h"
 #include "pid.h"
 #include <aruco/aruco.h>
 #include <aruco/cvdrawingutils.h>
@@ -28,6 +29,8 @@ public:
 	void initialize_drone();
 	void initAll();
 	cv::Point3d get_GPS_position();
+
+
 	std::chrono::high_resolution_clock::time_point previous;
 	std::chrono::duration<double, std::milli> timediff();
 
@@ -98,6 +101,7 @@ private:
 	double vr();
 	bool check();
 	int tick;
+	statsd::StatsdClient client;
 };
 
 #endif /* ARUCODRONE_H_ */
