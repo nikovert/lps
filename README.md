@@ -1,11 +1,11 @@
 # LPS
 Local Positioning System.
 
-This Project is dedicated to develop a positioning system based on the aruco marker model used for augmented reality.
+This Project is dedicated to develop a local positioning system for the Ar Drone using augmented reality markers.
 
 There is no stable release at the moment, but feel free to use as much of the code as needed.
 
-All that is needed is a raspberry pi, a pi camera (needs to be calibrated (the calibration application in poc, can help with that)) and an AR Drone. The Raspberry Pi should be mounted under the drone with the camera pointing down. We used a carpet of aruco markers, but the more markers are used, the slower the program gets.
+All that is needed is a raspberry pi, a pi camera (needs to be calibrated (the calibration program is in poc)) and an AR Drone. The Raspberry Pi should be mounted under the drone with the camera pointing down. We used a carpet of aruco markers, but the more markers are used, the slower the program gets.
 
 ###Installation for the Raspberry Pi:
 
